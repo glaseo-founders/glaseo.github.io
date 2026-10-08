@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f0f0ec">
+  <meta name="description" content="Около — будущее Android-приложение о местах, событиях и предложениях рядом. Начинаем с Иннополиса.">
+  <meta property="og:title" content="Около — выйди за привычное">
+  <meta property="og:description" content="Весь город в одной живой ленте. Скоро на Android.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Около">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary">
+  <title>Около — выйди за привычное</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/geist-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Before first paint: the chosen theme (none stored means "follow the system"), then the opening screen,
+       which is skipped for reduced motion and for links into a section. -->
+  <script>try{var t=localStorage.getItem('okolo-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}
+  try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!location.hash)document.documentElement.classList.add('intro-on')}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <!-- Where the closing buttons lead. Empty means "not available yet": the button is shown as coming soon. -->
+  <meta name="okolo-rustore" content="">
+  <meta name="okolo-pwa" content="">
+  <meta name="okolo-business-url" content="">
+  <meta name="okolo-donate" content="">
+  <script src="intro.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-role="user">
+  <!-- Opening screen, driven by intro.js. Glyphs are Geist Bold outlines, the face the wordmark is set in. -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro-top">
+      <svg id="intro-svg" viewBox="173 300 1310 460">
+        <defs>
+          <path id="intro-o" d="M309 -12Q227 -12 166 23Q105 57 71 120Q37 183 37 268Q37 353 71 416Q105 478 166 513Q227 548 309 548Q391 548 452 513Q513 478 547 416Q581 353 581 268Q581 183 547 120Q513 57 452 23Q391 -12 309 -12ZM309 103Q365 103 396 147Q427 190 427 268Q427 346 396 390Q365 433 309 433Q253 433 222 390Q191 346 191 268Q191 190 222 147Q253 103 309 103Z"/>
+          <path id="intro-k" d="M427 0L201 264L421 536L598 536L366 265L604 0ZM66 0L66 536L216 536L216 0Z"/>
+          <path id="intro-l" d="M46 -4L46 112L68 112Q88 112 98 121Q108 130 111 157L151 536L576 536L576 0L426 0L426 422L272 422L242 128Q235 61 208 29Q180 -4 112 -4Z"/>
+        </defs>
+        <g id="intro-stage" class="intro-stage">
+          <g class="intro-c">
+            <use href="#intro-o" id="intro-j3" transform="translate(300 700) scale(.36 -.36)"/>
+            <use href="#intro-k" id="intro-j2" transform="translate(490.1 700) scale(.36 -.36)"/>
+            <use href="#intro-o" id="intro-j1" transform="translate(691.7 700) scale(.36 -.36)"/>
+            <use href="#intro-l" id="intro-j0" transform="translate(881.8 700) scale(.36 -.36)"/>
+            <use href="#intro-o" id="intro-letter" transform="translate(1080.5 700) scale(.36 -.36)" visibility="hidden"/>
+          </g>
+          <rect id="intro-dot" class="intro-r" x="1283.9" y="644.9" width="58.7" height="55.1" visibility="hidden"/>
+          <path id="intro-ms" class="intro-c" fill-rule="evenodd"/>
+          <path id="intro-mb" class="intro-r"/>
+          <g id="intro-lamp" visibility="hidden">
+            <ellipse id="intro-base" class="intro-r" cx="512" cy="812" rx="180" ry="76"/>
+            <path id="intro-stem" class="intro-c" d="M474 530 L550 530 L558 750 Q558 770 538 770 L486 770 Q466 770 466 750 Z"/>
+            <g id="intro-head">
+              <path id="intro-shade" class="intro-c" d="M415 153 L609 153 Q655 153 678 193 L812 440 Q846 512 772 527 Q512 550 252 527 Q178 512 212 440 L346 193 Q369 153 415 153 Z"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <a class="skip-link" href="#main">К содержанию</a>
+
+  <header class="site-header" id="top">
+    <a class="wordmark" href="#top" aria-label="Около — наверх" translate="no" data-intro-target>около<span>.</span></a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#possibilities">Что внутри</a>
+      <a href="#product">Как работает</a>
+    </nav>
+    <div class="header-tools">
+      <div class="theme-switch" role="group" aria-label="Тема оформления" data-choice="system">
+        <button type="button" data-theme-choice="light" aria-pressed="false">Светлая</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false">Тёмная</button>
+        <button type="button" data-theme-choice="system" aria-pressed="true">Системная</button>
+      </div>
+      <a class="header-cta" href="#launch">
+        <span>Жду Около</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true">
+        <div class="signal-disc"><i></i><i></i><i></i></div>
+        <div class="signal-route"><span></span></div>
+        <b>рядом</b>
+      </div>
+      <div class="hero-copy">
+        <h1 id="hero-title"><span>Выйди за</span><span>привычное<span class="berry-dot">.</span></span></h1>
+        <div class="hero-bottom">
+          <div class="hero-offer">
+            <p>Места, события и предложения твоего города. Всё, ради чего стоит выйти из дома.</p>
+            <a class="button button-berry" href="#possibilities">
+              <span>Посмотреть, что внутри</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg>
+            </a>
+            <p class="release-note">Скоро на Android. Начинаем с Иннополиса.</p>
+          </div>
+          <a class="scroll-cue" href="#possibilities">
+            <span>Ближе, чем кажется.</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18M5 14l7 7 7-7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="statement-band" aria-hidden="true">
+      <span>Твой город.</span><span>Твой ритм.</span>
+    </div>
+
+    <section class="audience" id="audience" aria-labelledby="audience-title">
+      <h2 id="audience-title">Около — для кого?</h2>
+      <div class="role-switch" role="group" aria-label="Для кого показать страницу">
+        <button type="button" data-role-choice="user" aria-pressed="true"><span>Для пользователя</span><small>Жителю города</small></button>
+        <button type="button" data-role-choice="business" aria-pressed="false"><span>Для бизнеса</span><small>Заведению и сервису</small></button>
+      </div>
+    </section>
+
+    <section class="possibilities section-pearl" id="possibilities" aria-labelledby="possibilities-title" data-for="user">
+      <div class="section-head">
+        <h2 id="possibilities-title">На любой<br>твой «а что, если?»</h2>
+        <p>Не ищи по десяткам чатов. Собери свой город в одной ленте.</p>
+      </div>
+
+      <div class="scenario-rail" role="group" aria-label="Возможности приложения">
+        <article class="scenario scenario-route is-active" data-scenario="route">
+          <button class="scenario-toggle" type="button" aria-expanded="true">
+            <span class="scenario-number">01</span><span class="scenario-title">Сменить маршрут</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <div class="route-graphic" aria-hidden="true"><i></i><i></i><span></span></div>
+          <div class="scenario-copy"><h3>Сменить маршрут</h3><p>Новые места и любимые адреса.</p></div>
+        </article>
+
+        <article class="scenario scenario-moment" data-scenario="moment">
+          <button class="scenario-toggle" type="button" aria-expanded="false">
+            <span class="scenario-number">02</span><span class="scenario-title">Поймать момент</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <div class="moment-poster" aria-hidden="true"><span>Сегодня</span><strong>19:00</strong><i></i></div>
+          <div class="scenario-copy"><h3>Поймать момент</h3><p>События, которые начинаются сегодня.</p></div>
+        </article>
+
+        <article class="scenario scenario-own" data-scenario="own">
+          <button class="scenario-toggle" type="button" aria-expanded="false">
+            <span class="scenario-number">03</span><span class="scenario-title">Найти своё</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <div class="asterisk" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="scenario-copy"><h3>Найти своё</h3><p>Категории помогают оставить в ленте нужное.</p></div>
+        </article>
+      </div>
+      <p class="honest-note">Примеры возможностей будущего приложения.</p>
+    </section>
+
+    <section class="product" id="product" aria-labelledby="product-title" data-for="user">
+      <div class="product-copy">
+        <h2 id="product-title">Меньше поиска.<br><span>Больше жизни.</span></h2>
+        <ol class="steps">
+          <li><span>01</span><div><h3>Выбери город</h3><p>Начинаем с Иннополиса.</p></div></li>
+          <li><span>02</span><div><h3>Найди свои места</h3><p>Листай общую ленту и выбирай категории.</p></div></li>
+          <li><span>03</span><div><h3>Будь в курсе</h3><p>Подпишись — новости любимых мест соберутся отдельно.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="phone-stage">
+        <div class="orbit-line" aria-hidden="true"></div>
+        <div class="phone" aria-label="Интерактивная концепция приложения Около">
+          <div class="phone-hardware" aria-hidden="true"><span></span></div>
+          <div class="phone-screen">
+            <div class="statusbar" aria-hidden="true"><span>9:41</span><span>● ▴ ▰</span></div>
+            <div class="app-head"><span>Иннополис</span><h3>Что нового?</h3></div>
+            <div class="feed-tabs" role="tablist" aria-label="Ленты">
+              <button type="button" role="tab" aria-selected="true" aria-controls="feed-panel" data-feed="all">Общая</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="feed-panel" data-feed="following">Подписки</button>
+            </div>
+            <div class="filters" role="group" aria-label="Категории ленты">
+              <button class="is-active" type="button" data-filter="all" aria-pressed="true">Все</button>
+              <button type="button" data-filter="coffee" aria-pressed="false">Кофе</button>
+              <button type="button" data-filter="leisure" aria-pressed="false">Досуг</button>
+            </div>
+            <div class="feed" id="feed-panel" role="tabpanel" aria-live="polite">
+              <article class="post post-event" data-kind="leisure" data-followed="false">
+                <div class="poster"><small>Сегодня / Иннополис</small><strong>Вечер<br>в городе</strong><i></i></div>
+                <div class="post-info"><div><h4>Планы на этот вечер</h4><p>Музыка, встречи и новые поводы выйти.</p></div><button class="follow" type="button" aria-pressed="false">Подписаться</button></div>
+              </article>
+              <article class="post post-coffee" data-kind="coffee" data-followed="true">
+                <div class="coffee-poster"><small>Рядом</small><strong>Кофе.<br>И пауза.</strong><svg aria-hidden="true" viewBox="0 0 80 80"><path d="M13 29h45l-5 35H18l-5-35Zm7-10h32M58 35h7c11 0 11 17 0 17h-9"/></svg></div>
+                <div class="post-info"><div><h4>Новости любимого места</h4><p>Новое меню уже в ленте.</p></div><button class="follow is-followed" type="button" aria-pressed="true">В подписках</button></div>
+              </article>
+              <p class="feed-empty" hidden>Пока здесь тихо. Подпишись на место из общей ленты.</p>
+            </div>
+          </div>
+        </div>
+        <p>Концепция интерфейса</p>
+      </div>
+    </section>
+
+    <section class="screens section-pearl" id="screens" aria-labelledby="screens-title" data-for="user">
+      <div class="section-head">
+        <h2 id="screens-title">Так выглядит<br>Около<span class="berry-dot">.</span></h2>
+        <p>Лента, места, карточка заведения и карта города.</p>
+      </div>
+      <ul class="screen-strip" aria-label="Экраны приложения">
+        <li><figure><img src="assets/screens/app-feed.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Лента»: категории, ближайшие события и публикации заведений"><figcaption><span>01</span><strong>Лента</strong><small>Новости, акции и события города — общая и по подпискам.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/app-places.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Места»: поиск и список заведений с часами работы"><figcaption><span>02</span><strong>Места</strong><small>Каталог заведений с поиском и фильтрами.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/app-place.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Карточка заведения: подписка, связь, новости и меню"><figcaption><span>03</span><strong>Карточка места</strong><small>Часы работы, меню, новости и связь с заведением.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/app-map.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Карта»: заведения на карте Иннополиса"><figcaption><span>04</span><strong>Карта</strong><small>Все места города на одной карте.</small></figcaption></figure></li>
+      </ul>
+      <p class="honest-note">Экраны демо-версии: заведения и публикации на них — примеры.</p>
+    </section>
+
+    <section class="faq section-pearl" aria-labelledby="faq-title" data-for="user">
+      <h2 id="faq-title">Есть<br>вопрос?</h2>
+      <div class="faq-list">
+        <details open><summary>Когда можно скачать?<span aria-hidden="true"></span></summary><p>Около готовится к запуску. Для Android приложение в ближайшее время появится в RuStore, на iPhone Около будет открываться как веб-приложение (PWA) — без магазина. Ссылки появятся здесь.</p></details>
+        <details><summary>Это бесплатно?<span aria-hidden="true"></span></summary><p>Да. Приложение для жителей будет бесплатным.</p></details>
+        <details><summary>В каком городе будет работать?<span aria-hidden="true"></span></summary><p>Первым станет Иннополис. Архитектура продукта предусматривает запуск в других городах.</p></details>
+      </div>
+    </section>
+
+    <section class="business section-pearl" id="business" aria-labelledby="business-title" data-for="business">
+      <div class="section-head">
+        <h2 id="business-title">Расскажите<br>городу о себе<span class="berry-dot">.</span></h2>
+        <p>Около — лента города, в которой жители сами подписываются на места рядом.</p>
+      </div>
+      <ol class="benefits">
+        <li><span>01</span><div><h3>Карточка заведения</h3><p>Описание, адрес, часы работы и меню — в каталоге города, который житель открывает в приложении.</p></div></li>
+        <li><span>02</span><div><h3>Новости, акции и события</h3><p>Публикации выходят в общей ленте и у подписчиков заведения. Акцию можно анонсировать заранее.</p></div></li>
+        <li><span>03</span><div><h3>Подписчики</h3><p>Житель подписывается сам — и узнаёт о новом без рассылок и чатов.</p></div></li>
+        <li><span>04</span><div><h3>Команда с ролями</h3><p>Владелец выдаёт сотрудникам готовые учётные записи: каждый делает только то, что ему разрешено.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="screens section-pearl" id="cabinet" aria-labelledby="cabinet-title" data-for="business">
+      <div class="section-head">
+        <h2 id="cabinet-title">Кабинет<br>заведения<span class="berry-dot">.</span></h2>
+        <p>Открывается в браузере — на компьютере и на телефоне.</p>
+      </div>
+      <figure class="screen-wide"><img src="assets/screens/cab-desk-home.jpg" width="2560" height="1600" loading="lazy" decoding="async" alt="Главная страница кабинета на компьютере: обращения жителей и показатели заведения"><figcaption><span>01</span><strong>Главная</strong><small>Кто ждёт ответа и как идут дела у заведения.</small></figcaption></figure>
+      <ul class="screen-strip" aria-label="Экраны кабинета на телефоне">
+        <li><figure><img src="assets/screens/cab-phone-home.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Главная страница кабинета на телефоне"><figcaption><span>02</span><strong>На телефоне</strong><small>Тот же кабинет помещается в ладонь.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/cab-phone-orders.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Раздел «Заказы и чаты» в кабинете"><figcaption><span>03</span><strong>Заказы и чаты</strong><small>Обращения жителей — в одном списке.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/cab-phone-post.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Форма новой публикации в кабинете"><figcaption><span>04</span><strong>Публикация</strong><small>Новость, акция или событие — три поля и отправка на проверку.</small></figcaption></figure></li>
+      </ul>
+      <p class="honest-note">Экраны тестового кабинета: заведение и обращения на них — примеры.</p>
+    </section>
+
+    <section class="product business-path" aria-labelledby="business-path-title" data-for="business">
+      <div class="product-copy">
+        <h2 id="business-path-title">Три шага<br><span>до кабинета.</span></h2>
+        <ol class="steps">
+          <li><span>01</span><div><h3>Заявка</h3><p>Владелец оставляет заявку на подключение заведения.</p></div></li>
+          <li><span>02</span><div><h3>Проверка</h3><p>Мы убеждаемся, что заявку подал представитель заведения.</p></div></li>
+          <li><span>03</span><div><h3>Доступ</h3><p>Владелец получает данные для входа, заполняет карточку и раздаёт доступ сотрудникам.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="faq section-pearl" aria-labelledby="business-faq-title" data-for="business">
+      <h2 id="business-faq-title">Есть<br>вопрос?</h2>
+      <div class="faq-list">
+        <details open><summary>Кто может подключиться?<span aria-hidden="true"></span></summary><p>Заведения и сервисы города. Первым городом станет Иннополис.</p></details>
+        <details><summary>Кто видит публикации?<span aria-hidden="true"></span></summary><p>Жители города в общей ленте и подписчики заведения — в своей. Каждую публикацию перед выходом читает команда Около.</p></details>
+        <details><summary>Как проходит проверка?<span aria-hidden="true"></span></summary><p>Мы сверяем данные организации и убеждаемся, что заявку подал её представитель. После этого владелец получает доступ в кабинет.</p></details>
+      </div>
+    </section>
+
+    <section class="launch" id="launch" aria-labelledby="launch-title">
+      <div class="launch-copy"><h2 id="launch-title">Всё начинается<br>около<span>.</span></h2></div>
+      <div class="launch-card" data-for="user">
+        <div class="android-status">
+          <svg aria-hidden="true" viewBox="0 0 64 64"><path d="M22 6h20a5 5 0 0 1 5 5v42a5 5 0 0 1-5 5H22a5 5 0 0 1-5-5V11a5 5 0 0 1 5-5Zm6 46h8"/></svg>
+          <div><strong>Скоро на Android и iPhone</strong><p>Первый город — Иннополис.<br>Для жителей — бесплатно.</p></div>
+        </div>
+        <div class="store-links">
+          <a class="store-link" data-link="okolo-rustore" data-live-note="Для Android" aria-disabled="true"><span>RuStore</span><small>Для Android · в ближайшее время</small></a>
+          <a class="store-link" data-link="okolo-pwa" data-live-note="Для iPhone · веб-приложение" aria-disabled="true"><span>PWA</span><small>Для iPhone · скоро</small></a>
+        </div>
+        <a class="channel-link" href="https://t.me/okolo_tech" target="_blank" rel="noopener"><span>Новости проекта — в Telegram</span><b translate="no">@okolo_tech</b></a>
+        <button class="share-button" type="button"><span>Скопировать ссылку</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="share-status" aria-live="polite"></p>
+      </div>
+      <div class="launch-card" data-for="business">
+        <div class="android-status">
+          <svg aria-hidden="true" viewBox="0 0 64 64"><path d="M8 26 32 8l24 18M14 24v32h36V24M26 56V38h12v18"/></svg>
+          <div><strong>Подключение бизнеса</strong><p>Заявка подаётся на сайте сервиса.<br>Первый город — Иннополис.</p></div>
+        </div>
+        <a class="share-button connect-link" data-link="okolo-business-url" aria-disabled="true"><span>Подключить свой бизнес</span><small>Скоро</small><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+        <a class="channel-link" href="https://t.me/okolo_tech" target="_blank" rel="noopener"><span>Новости проекта — в Telegram</span><b translate="no">@okolo_tech</b></a>
+      </div>
+      <aside class="donate" aria-labelledby="donate-title">
+        <div><h3 id="donate-title">Поддержать Около</h3><p>Для жителей приложение бесплатно. Помочь запуску можно пожертвованием — любой суммой.</p></div>
+        <a class="donate-link" data-link="okolo-donate" data-new-tab aria-disabled="true"><span>Пожертвовать через ЮMoney</span><small>Скоро</small><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      </aside>
+      <footer class="site-footer">
+        <a class="wordmark" href="#top" aria-label="Около — наверх" translate="no">около<span>.</span></a>
+        <p>Город ближе, чем кажется.</p>
+        <a href="https://t.me/okolo_tech" target="_blank" rel="noopener" translate="no">Telegram @okolo_tech</a>
+        <a href="#audience">Для пользователя / для бизнеса</a>
+        <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

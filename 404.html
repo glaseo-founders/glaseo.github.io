@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Страница не найдена — Около</title>
+  <!-- Served for any missing address at any depth, so it carries its own styles and links from the site root. -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem('okolo-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <style>
+    @font-face{font-family:Geist;src:url("/assets/fonts/geist-regular.woff2") format("woff2");font-weight:400;font-display:swap}
+    @font-face{font-family:Geist;src:url("/assets/fonts/geist-bold.woff2") format("woff2");font-weight:700 900;font-display:swap}
+    :root{--pearl:#f3f3ef;--ink:#0d0d0c;--berry:#d12d23;--muted:#6e6e68;--line:rgba(13,13,12,.24);--gutter:clamp(20px,4vw,68px);color-scheme:light}
+    @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pearl:#0d0d0c;--ink:#f3f3ef;--muted:#9a9a93;--line:rgba(243,243,239,.26);color-scheme:dark}}
+    :root[data-theme="dark"]{--pearl:#0d0d0c;--ink:#f3f3ef;--muted:#9a9a93;--line:rgba(243,243,239,.26);color-scheme:dark}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;min-height:100dvh;display:grid;grid-template-rows:auto 1fr;background:var(--pearl);color:var(--ink);font-family:Geist,"Arial Narrow",Arial,sans-serif;font-size:16px;line-height:1.35;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    :focus-visible{outline:2px dotted var(--berry);outline-offset:5px}
+    header{padding:22px var(--gutter);border-bottom:1px solid var(--line)}
+    .wordmark{display:inline-flex;align-items:center;min-height:44px;font-size:26px;font-weight:800;letter-spacing:-.06em}
+    .wordmark span,h1 span{color:var(--berry)}
+    main{display:grid;align-content:end;gap:28px;padding:48px var(--gutter) clamp(40px,8vw,96px)}
+    .code{color:var(--muted);font-size:14px;letter-spacing:.08em}
+    h1{margin:0;font-size:clamp(52px,13vw,200px);font-weight:800;line-height:.86;letter-spacing:-.065em}
+    p{margin:0;max-width:34ch;font-size:clamp(18px,2vw,24px)}
+    .button{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;justify-self:start;min-height:56px;padding:0 22px;background:var(--berry);color:#fff;font-weight:700}
+    .button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  </style>
+</head>
+<body>
+  <header><a class="wordmark" href="/" aria-label="Около — на главную" translate="no">около<span>.</span></a></header>
+  <main>
+    <span class="code">404</span>
+    <h1>Здесь<br>пусто<span>.</span></h1>
+    <p>Такой страницы нет. Возможно, адрес изменился или в нём опечатка.</p>
+    <a class="button" href="/">
+      <span>На главную</span>
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg>
+    </a>
+  </main>
+</body>
+</html>
