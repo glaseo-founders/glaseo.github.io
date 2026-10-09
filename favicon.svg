@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#0d0d0c"/>
-  <g transform="translate(7.64 49.1) scale(.0637 -.0637)">
-    <path fill="#f3f3ef" d="M309 -12Q227 -12 166 23Q105 57 71 120Q37 183 37 268Q37 353 71 416Q105 478 166 513Q227 548 309 548Q391 548 452 513Q513 478 547 416Q581 353 581 268Q581 183 547 120Q513 57 452 23Q391 -12 309 -12ZM309 103Q365 103 396 147Q427 190 427 268Q427 346 396 390Q365 433 309 433Q253 433 222 390Q191 346 191 268Q191 190 222 147Q253 103 309 103Z"/>
-    <rect fill="#d12d23" x="565" y="0" width="163" height="153"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#141213"/><path fill="#fff" transform="translate(17 10) scale(.2857)" d="M40 2H110V42H48Q42 42 42 48V154H0V42Q0 2 40 2Z"/></svg>

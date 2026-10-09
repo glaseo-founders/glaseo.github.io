@@ -3,18 +3,18 @@
 // Runs only when the head script has set .intro-on on <html>; the header wordmark is [data-intro-target].
 (function () {
   var GROUND = 700, S = 0.35, FS = 0.36, X0 = 300;
-  var O_X = 1080.5, O_CX = O_X + 309 * FS;
-  var DOT = { x: 1283.9, y: 644.9, w: 58.7, h: 55.1 };
-  var REST_X = 1410, HALF_BASE = 63, N = 140, FLY_DUR = 0.7;
+  var O_X = 1180.84987012987, O_CX = O_X + 268 * FS;
+  var DOT = {"x":1396.3636363636363,"y":643.6155844155844,"w":56.38441558441558,"h":56.38441558441558};
+  var REST_X = 1520.7480519480519, HALF_BASE = 63, N = 140, FLY_DUR = 0.7;
   // static letters, nearest to the impact first: [id, x, delay, height of the jolt]
-  var JOLT = [['intro-j0', 881.8, 0.04, 26], ['intro-j1', 691.7, 0.1, 19], ['intro-j2', 490.1, 0.16, 13], ['intro-j3', 300, 0.22, 9]];
+  var JOLT = [["intro-j0",981.624935064935,0.04,25],["intro-j1",819.9896103896103,0.1,21],["intro-j2",619.5116883116882,0.16,17],["intro-j3",398.98597402597403,0.22,13],["intro-j4",300,0.27999999999999997,9]];
   var EASE = {
     lin: function (p) { return p; },
     'in': function (p) { return p * p; },
     out: function (p) { return 1 - (1 - p) * (1 - p); },
     io: function (p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
   };
-  var root = document.documentElement, raf = 0, cleanup = null;
+  var root = document.documentElement, raf = 0, cleanup = null, watchdog = 0;
 
   function reveal() {
     if (window.okoloRevealed) return;
@@ -23,6 +23,7 @@
   }
   function finish() {
     cancelAnimationFrame(raf);
+    clearTimeout(watchdog);
     if (cleanup) cleanup();
     cleanup = null;
     reveal();
@@ -31,6 +32,8 @@
 
   function start() {
     cancelAnimationFrame(raf);
+    clearTimeout(watchdog);
+    watchdog = window.setTimeout(finish, 6500);
     if (cleanup) cleanup();
     cleanup = null;
     window.okoloRevealed = false;
@@ -77,9 +80,9 @@
 
     K('x', -1, startX); K('y', -1, 0); K('sq', -1, 1); K('lean', -1, 0); K('head', -1, 0); K('fall', -1, 0); K('m', -1, 0);
     for (var i = 0; i < hops; i++) {
-      hop(0.25 + i * 0.56, startX - i * step, startX - (i + 1) * step, 110 + step * 0.04, 0.34, i === 0, i === hops - 1);
+      hop(0.55 + i * 0.56, startX - i * step, startX - (i + 1) * step, 110 + step * 0.04, 0.34, i === 0, i === hops - 1);
     }
-    var LAND = 0.25 + (hops - 1) * 0.56 + 0.34, FALL = LAND + 0.14, IMPACT = FALL + 0.4, FLY = IMPACT + 0.85;
+    var LAND = 0.55 + (hops - 1) * 0.56 + 0.34, FALL = LAND + 0.14, IMPACT = FALL + 0.4, FLY = IMPACT + 0.85;
     // tips over to the left; the moment it hits the floor the shade splats into the letter
     // and the base is thrown off and lands as the dot
     K('fall', FALL, 0); K('fall', IMPACT, -70, 'in');
@@ -134,8 +137,18 @@
       return from.map(function (_, i) { return best[0][(i + best[1]) % N]; });
     }
     function glyph(p) { return [O_X + p[0] * FS, GROUND - p[1] * FS]; }
+    // Smooth periodic cubic curves; never render the morph as a pixel trace or polygon.
     function poly(pts) {
-      return 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join('L') + 'Z';
+      var count = pts.length;
+      function at(i) { return pts[(i + count) % count]; }
+      function point(x, y) { return x.toFixed(3) + ' ' + y.toFixed(3); }
+      var d = 'M' + point(pts[0][0], pts[0][1]);
+      for (var i = 0; i < count; i++) {
+        var before = at(i - 1), a = at(i), b = at(i + 1), after = at(i + 2);
+        d += 'C' + point(a[0] + (b[0] - before[0]) / 6, a[1] + (b[1] - before[1]) / 6) + ' ' +
+          point(b[0] - (after[0] - a[0]) / 6, b[1] - (after[1] - a[1]) / 6) + ' ' + point(b[0], b[1]);
+      }
+      return d + 'Z';
     }
     function lerp(a, b, k) {
       return a.map(function (p, i) { return [p[0] + (b[i][0] - p[0]) * k, p[1] + (b[i][1] - p[1]) * k]; });
@@ -154,7 +167,7 @@
     var shadeFrom = sample(shade.getAttribute('d')).map(via(restHead));
     var shadeTo = align(shadeFrom, sample(oParts[0] + 'Z').map(glyph));
     var hole = sample(oParts[1] + 'Z').map(glyph);
-    var holeC = [O_X + 309 * FS, GROUND - 268 * FS];
+    var holeC = [O_CX, GROUND - 268 * FS];
     // base and dot outlines are kept relative to their centres, so the base can spin through the air
     var C0 = via(rest)([512, 812]), C1 = [DOT.x + DOT.w / 2, DOT.y + DOT.h / 2];
     var baseFrom = [];
@@ -206,14 +219,11 @@
     // Where the drawn wordmark has to end up to sit exactly on the real one, and the circle the screen closes into.
     // The circle shrinks ever faster, so it is gone in a frame or two once it reaches the wordmark.
     function takeoff() {
-      var r = target.getBoundingClientRect(), size = parseFloat(getComputedStyle(target).fontSize);
-      var probe = document.createElement('span');
-      probe.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
-      target.insertBefore(probe, target.firstChild);
-      var baseline = probe.getBoundingClientRect().bottom;
-      target.removeChild(probe);
-      var c = svg.getScreenCTM(), b = intro.getBoundingClientRect(), g = size / 1000 / (FS * c.a);
-      var dx = (r.left - c.e) / c.a - g * X0, dy = (baseline - c.f) / c.a - g * GROUND;
+      var r = target.querySelector('.wordmark-logo').getBoundingClientRect();
+      var c = svg.getScreenCTM(), b = intro.getBoundingClientRect();
+      var g = r.width / (1152.7480519480519 * c.a);
+      var dx = (r.left - c.e) / c.a - g * X0;
+      var dy = (r.bottom - c.f) / c.a - g * GROUND;
       // the screen closes into the dot of the landed wordmark
       var cx = c.a * (g * C1[0] + dx) + c.e - b.left, cy = c.a * (g * C1[1] + dy) + c.f - b.top;
       under = top.cloneNode(true);
@@ -235,7 +245,7 @@
 
     function frame(now) {
       try {
-        var dt = last === null ? 0 : Math.min((now - last) / 1000, 0.05);
+        var dt = last === null ? 0 : Math.max((now - last) / 1000, 0);
         last = now;
         t += dt;
         if (!fly) {

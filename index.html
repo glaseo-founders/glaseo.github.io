@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f0f0ec">
-  <meta name="description" content="Около — будущее Android-приложение о местах, событиях и предложениях рядом. Начинаем с Иннополиса.">
-  <meta property="og:title" content="Около — выйди за привычное">
-  <meta property="og:description" content="Весь город в одной живой ленте. Скоро на Android.">
+  <meta name="description" content="гласео — места, события и предложения города. Открытый выбор для жителей и инструменты для локального бизнеса. Без платного приоритета. Начинаем с Иннополиса.">
+  <meta property="og:title" content="гласео — город рядом. Выбор твой.">
+  <meta property="og:description" content="Городская лента, карта и любимые места. Люди выбирают сами, бизнес работает с клиентами напрямую.">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Около">
+  <meta property="og:site_name" content="гласео">
   <meta property="og:locale" content="ru_RU">
   <meta name="twitter:card" content="summary">
-  <title>Около — выйди за привычное</title>
+  <title>гласео — город рядом. Выбор твой.</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/geist-bold.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Before first paint: the chosen theme (none stored means "follow the system"), then the opening screen,
@@ -30,24 +30,28 @@
   <script src="script.js" defer></script>
 </head>
 <body data-role="user">
-  <!-- Opening screen, driven by intro.js. Glyphs are Geist Bold outlines, the face the wordmark is set in. -->
+  <!-- Opening screen, driven by intro.js. The wordmark uses analytic vector curves shared with the header. -->
   <div class="intro" id="intro" aria-hidden="true">
     <div class="intro-top">
-      <svg id="intro-svg" viewBox="173 300 1310 460">
+      <svg id="intro-svg" viewBox="173 300 1406.7480519480519 460">
         <defs>
-          <path id="intro-o" d="M309 -12Q227 -12 166 23Q105 57 71 120Q37 183 37 268Q37 353 71 416Q105 478 166 513Q227 548 309 548Q391 548 452 513Q513 478 547 416Q581 353 581 268Q581 183 547 120Q513 57 452 23Q391 -12 309 -12ZM309 103Q365 103 396 147Q427 190 427 268Q427 346 396 390Q365 433 309 433Q253 433 222 390Q191 346 191 268Q191 190 222 147Q253 103 309 103Z"/>
-          <path id="intro-k" d="M427 0L201 264L421 536L598 536L366 265L604 0ZM66 0L66 536L216 536L216 0Z"/>
-          <path id="intro-l" d="M46 -4L46 112L68 112Q88 112 98 121Q108 130 111 157L151 536L576 536L576 0L426 0L426 422L272 422L242 128Q235 61 208 29Q180 -4 112 -4Z"/>
+          <path id="intro-g" d="M139.22078 529.03896H382.85714V389.81818H167.06494Q146.18182 389.81818 146.18182 368.93506V0H0V389.81818Q0 529.03896 139.22078 529.03896Z"/>
+          <path id="intro-l" d="M0 0L229.71429 462.90909C250.5974 508.15584 281.92208 529.03896 330.64935 529.03896C379.37662 529.03896 414.18182 508.15584 438.54545 462.90909L668.25974 0H497.71429L334.12987 348.05195L163.58442 0Z"/>
+          <path id="intro-a" d="M268 536C415.92208 536 536 415.92208 536 268V0H396.77922V41.76623C358.49351 13.92208 313.24675 0 268 0C120.07792 0 0 120.07792 0 268C0 415.92208 120.07792 536 268 536ZM400.25974 268C400.25974 194.95496 341.04504 135.74026 268 135.74026C194.95496 135.74026 135.74026 194.95496 135.74026 268C135.74026 341.04504 194.95496 400.25974 268 400.25974C341.04504 400.25974 400.25974 341.04504 400.25974 268Z"/>
+          <path id="intro-s" d="M457.50461 457.50461C352.8441 562.16512 183.1559 562.16512 78.49539 457.50461C-26.16512 352.8441 -26.16512 183.1559 78.49539 78.49539C183.1559 -26.16512 352.8441 -26.16512 457.50461 78.49539L363.98284 172.01716C310.973 119.00728 225.027 119.00728 172.01716 172.01716C119.00728 225.027 119.00728 310.973 172.01716 363.98284C225.027 416.99272 310.973 416.99272 363.98284 363.98284Z"/>
+          <path id="intro-e" d="M532.51948 229.71429H140.96104C158.36364 170.54545 207.09091 132.25974 268 132.25974C308.02597 132.25974 346.31169 147.92208 370.67532 177.50649H515.11688C478.57143 71.35065 381.11688 0 268 0C120.07792 0 0 120.07792 0 268C0 415.92208 120.07792 536 268 536C415.92208 536 536 415.92208 536 268C536 254.07792 534.95584 240.15584 532.51948 229.71429ZM149.66234 327.16883H386.33766C361.97403 372.41558 316.72727 400.25974 268 400.25974C219.27273 400.25974 174.02597 372.41558 149.66234 327.16883Z"/>
+          <path id="intro-o" d="M536 268C536 119.98767 416.01233 0 268 0C119.98767 0 0 119.98767 0 268C0 416.01233 119.98767 536 268 536C416.01233 536 536 416.01233 536 268ZM400.25974 268C400.25974 194.95496 341.04504 135.74026 268 135.74026C194.95496 135.74026 135.74026 194.95496 135.74026 268C135.74026 341.04504 194.95496 400.25974 268 400.25974C341.04504 400.25974 400.25974 341.04504 400.25974 268Z"/>
         </defs>
         <g id="intro-stage" class="intro-stage">
-          <g class="intro-c">
-            <use href="#intro-o" id="intro-j3" transform="translate(300 700) scale(.36 -.36)"/>
-            <use href="#intro-k" id="intro-j2" transform="translate(490.1 700) scale(.36 -.36)"/>
-            <use href="#intro-o" id="intro-j1" transform="translate(691.7 700) scale(.36 -.36)"/>
-            <use href="#intro-l" id="intro-j0" transform="translate(881.8 700) scale(.36 -.36)"/>
-            <use href="#intro-o" id="intro-letter" transform="translate(1080.5 700) scale(.36 -.36)" visibility="hidden"/>
+          <g class="intro-c" fill-rule="evenodd">
+            <use href="#intro-g" id="intro-j4" transform="translate(300.00000 700) scale(.36 -.36)"/>
+            <use href="#intro-l" id="intro-j3" transform="translate(398.98597 700) scale(.36 -.36)"/>
+            <use href="#intro-a" id="intro-j2" transform="translate(619.51169 700) scale(.36 -.36)"/>
+            <use href="#intro-s" id="intro-j1" transform="translate(819.98961 700) scale(.36 -.36)"/>
+            <use href="#intro-e" id="intro-j0" transform="translate(981.62494 700) scale(.36 -.36)"/>
+            <use href="#intro-o" id="intro-letter" transform="translate(1180.84987 700) scale(.36 -.36)" visibility="hidden"/>
           </g>
-          <rect id="intro-dot" class="intro-r" x="1283.9" y="644.9" width="58.7" height="55.1" visibility="hidden"/>
+          <rect id="intro-dot" class="intro-r" x="1396.3636363636363" y="643.6155844155844" width="56.38441558441558" height="56.38441558441558" visibility="hidden"/>
           <path id="intro-ms" class="intro-c" fill-rule="evenodd"/>
           <path id="intro-mb" class="intro-r"/>
           <g id="intro-lamp" visibility="hidden">
@@ -64,7 +68,7 @@
   <a class="skip-link" href="#main">К содержанию</a>
 
   <header class="site-header" id="top">
-    <a class="wordmark" href="#top" aria-label="Около — наверх" translate="no" data-intro-target>около<span>.</span></a>
+    <a class="wordmark" href="#top" aria-label="гласео — наверх" translate="no" data-intro-target><svg class="wordmark-logo" aria-hidden="true" viewBox="0 0 920 154"><path fill="currentColor" fill-rule="evenodd" d="M40 2H110V42H48Q42 42 42 48V154H0V42Q0 2 40 2ZM79 154L145 21C151 8 160 2 174 2C188 2 198 8 205 21L271 154H222L175 54L126 154ZM332 0C374.5 0 409 34.5 409 77V154H369V142C358 150 345 154 332 154C289.5 154 255 119.5 255 77C255 34.5 289.5 0 332 0ZM370 77C370 97.98682 352.98682 115 332 115C311.01318 115 294 97.98682 294 77C294 56.01318 311.01318 39 332 39C352.98682 39 370 56.01318 370 77ZM546.44722 22.55278C516.37685 -7.51759 467.62315 -7.51759 437.55278 22.55278C407.48241 52.62315 407.48241 101.37685 437.55278 131.44722C467.62315 161.51759 516.37685 161.51759 546.44722 131.44722L519.57716 104.57716C504.34672 119.80761 479.65328 119.80761 464.42284 104.57716C449.19239 89.34672 449.19239 64.65328 464.42284 49.42284C479.65328 34.19239 504.34672 34.19239 519.57716 49.42284ZM697 88H584.5C589.5 105 603.5 116 621 116C632.5 116 643.5 111.5 650.5 103H692C681.5 133.5 653.5 154 621 154C578.5 154 544 119.5 544 77C544 34.5 578.5 0 621 0C663.5 0 698 34.5 698 77C698 81 697.7 85 697 88ZM587 60H655C648 47 635 39 621 39C607 39 594 47 587 60ZM857 77C857 119.52593 822.52593 154 780 154C737.47407 154 703 119.52593 703 77C703 34.47407 737.47407 0 780 0C822.52593 0 857 34.47407 857 77ZM818 77C818 97.98682 800.98682 115 780 115C759.01318 115 742 97.98682 742 77C742 56.01318 759.01318 39 780 39C800.98682 39 818 56.01318 818 77Z"/><rect class="wordmark-dot" x="875" y="109" width="45" height="45"/></svg></a>
     <nav class="nav" aria-label="Основная навигация">
       <a href="#possibilities">Что внутри</a>
       <a href="#product">Как работает</a>
@@ -76,7 +80,7 @@
         <button type="button" data-theme-choice="system" aria-pressed="true">Системная</button>
       </div>
       <a class="header-cta" href="#launch">
-        <span>Жду Около</span>
+        <span>Жду гласео</span>
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg>
       </a>
     </div>
@@ -90,18 +94,18 @@
         <b>рядом</b>
       </div>
       <div class="hero-copy">
-        <h1 id="hero-title"><span>Выйди за</span><span>привычное<span class="berry-dot">.</span></span></h1>
+        <h1 id="hero-title"><span>Твой город</span><span>Твой выбор<span class="berry-dot">.</span></span></h1>
         <div class="hero-bottom">
           <div class="hero-offer">
-            <p>Места, события и предложения твоего города. Всё, ради чего стоит выйти из дома.</p>
+            <p>Места, события и предложения твоего города в одной ленте. Находи новое и оставайся на связи с теми, кого выбираешь сам.</p>
             <a class="button button-berry" href="#possibilities">
               <span>Посмотреть, что внутри</span>
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg>
             </a>
-            <p class="release-note">Скоро на Android. Начинаем с Иннополиса.</p>
+            <p class="release-note">Готовимся к запуску в Иннополисе. Для жителей бесплатно.</p>
           </div>
           <a class="scroll-cue" href="#possibilities">
-            <span>Ближе, чем кажется.</span>
+            <span>Город сквозь призму честности.</span>
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18M5 14l7 7 7-7"/></svg>
           </a>
         </div>
@@ -109,67 +113,67 @@
     </section>
 
     <div class="statement-band" aria-hidden="true">
-      <span>Твой город.</span><span>Твой ритм.</span>
+      <span><span class="statement-word">Твой город</span><span class="statement-dot"></span></span><span><span class="statement-word">Твой выбор</span><span class="statement-dot"></span></span>
     </div>
 
     <section class="audience" id="audience" aria-labelledby="audience-title">
-      <h2 id="audience-title">Около — для кого?</h2>
+      <h2 id="audience-title">гласео — для кого?</h2>
       <div class="role-switch" role="group" aria-label="Для кого показать страницу">
-        <button type="button" data-role-choice="user" aria-pressed="true"><span>Для пользователя</span><small>Жителю города</small></button>
+        <button type="button" data-role-choice="user" aria-pressed="true"><span>Для жителей</span><small>Жителю города</small></button>
         <button type="button" data-role-choice="business" aria-pressed="false"><span>Для бизнеса</span><small>Заведению и сервису</small></button>
       </div>
     </section>
 
     <section class="possibilities section-pearl" id="possibilities" aria-labelledby="possibilities-title" data-for="user">
       <div class="section-head">
-        <h2 id="possibilities-title">На любой<br>твой «а что, если?»</h2>
-        <p>Не ищи по десяткам чатов. Собери свой город в одной ленте.</p>
+        <h2 id="possibilities-title">Всё, ради чего<br>стоит выйти</h2>
+        <p>Новости мест, события и предложения рядом. Собери свой город в одной ленте.</p>
       </div>
 
       <div class="scenario-rail" role="group" aria-label="Возможности приложения">
         <article class="scenario scenario-route is-active" data-scenario="route">
           <button class="scenario-toggle" type="button" aria-expanded="true">
-            <span class="scenario-number">01</span><span class="scenario-title">Сменить маршрут</span>
+            <span class="scenario-number">01</span><span class="scenario-title">Найти место</span>
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="route-graphic" aria-hidden="true"><i></i><i></i><span></span></div>
-          <div class="scenario-copy"><h3>Сменить маршрут</h3><p>Новые места и любимые адреса.</p></div>
+          <div class="scenario-copy"><h3>Найти место</h3><p>Каталог и карта подскажут, что рядом.</p></div>
         </article>
 
         <article class="scenario scenario-moment" data-scenario="moment">
           <button class="scenario-toggle" type="button" aria-expanded="false">
-            <span class="scenario-number">02</span><span class="scenario-title">Поймать момент</span>
+            <span class="scenario-number">02</span><span class="scenario-title">Выбрать событие</span>
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="moment-poster" aria-hidden="true"><span>Сегодня</span><strong>19:00</strong><i></i></div>
-          <div class="scenario-copy"><h3>Поймать момент</h3><p>События, которые начинаются сегодня.</p></div>
+          <div class="scenario-copy"><h3>Выбрать событие</h3><p>Встречи, выставки и другие поводы выйти.</p></div>
         </article>
 
         <article class="scenario scenario-own" data-scenario="own">
           <button class="scenario-toggle" type="button" aria-expanded="false">
-            <span class="scenario-number">03</span><span class="scenario-title">Найти своё</span>
+            <span class="scenario-number">03</span><span class="scenario-title">Быть на связи</span>
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="asterisk" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="scenario-copy"><h3>Найти своё</h3><p>Категории помогают оставить в ленте нужное.</p></div>
+          <div class="scenario-copy"><h3>Быть на связи</h3><p>Подпишись на место и следи за его новостями.</p></div>
         </article>
       </div>
-      <p class="honest-note">Примеры возможностей будущего приложения.</p>
+      <p class="honest-note">Места и события выбираешь ты. Платного приоритета в ленте нет.</p>
     </section>
 
     <section class="product" id="product" aria-labelledby="product-title" data-for="user">
       <div class="product-copy">
-        <h2 id="product-title">Меньше поиска.<br><span>Больше жизни.</span></h2>
+        <h2 id="product-title">Меньше поиска.<br><span>Больше своего.</span></h2>
         <ol class="steps">
-          <li><span>01</span><div><h3>Выбери город</h3><p>Начинаем с Иннополиса.</p></div></li>
-          <li><span>02</span><div><h3>Найди свои места</h3><p>Листай общую ленту и выбирай категории.</p></div></li>
-          <li><span>03</span><div><h3>Будь в курсе</h3><p>Подпишись — новости любимых мест соберутся отдельно.</p></div></li>
+          <li><span>01</span><div><h3>Найди место</h3><p>Открой ленту, каталог или карту своего города.</p></div></li>
+          <li><span>02</span><div><h3>Посмотри, что внутри</h3><p>Меню, часы работы, новости и способы связаться с местом.</p></div></li>
+          <li><span>03</span><div><h3>Останься на связи</h3><p>Подпишись — новости выбранных мест соберутся в твоей ленте.</p></div></li>
         </ol>
       </div>
 
       <div class="phone-stage">
         <div class="orbit-line" aria-hidden="true"></div>
-        <div class="phone" aria-label="Интерактивная концепция приложения Около">
+        <div class="phone" aria-label="Интерактивная концепция приложения гласео">
           <div class="phone-hardware" aria-hidden="true"><span></span></div>
           <div class="phone-screen">
             <div class="statusbar" aria-hidden="true"><span>9:41</span><span>● ▴ ▰</span></div>
@@ -196,67 +200,67 @@
             </div>
           </div>
         </div>
-        <p>Концепция интерфейса</p>
+        <p>Интерактивный пример ленты</p>
       </div>
     </section>
 
     <section class="screens section-pearl" id="screens" aria-labelledby="screens-title" data-for="user">
       <div class="section-head">
-        <h2 id="screens-title">Так выглядит<br>Около<span class="berry-dot">.</span></h2>
-        <p>Лента, места, карточка заведения и карта города.</p>
+        <h2 id="screens-title">Так выглядит<br>гласео<span class="berry-dot">.</span></h2>
+        <p>Найти место, узнать о нём и решить, куда пойти.</p>
       </div>
       <ul class="screen-strip" aria-label="Экраны приложения">
-        <li><figure><img src="assets/screens/app-feed.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Лента»: категории, ближайшие события и публикации заведений"><figcaption><span>01</span><strong>Лента</strong><small>Новости, акции и события города — общая и по подпискам.</small></figcaption></figure></li>
-        <li><figure><img src="assets/screens/app-places.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Места»: поиск и список заведений с часами работы"><figcaption><span>02</span><strong>Места</strong><small>Каталог заведений с поиском и фильтрами.</small></figcaption></figure></li>
-        <li><figure><img src="assets/screens/app-place.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Карточка заведения: подписка, связь, новости и меню"><figcaption><span>03</span><strong>Карточка места</strong><small>Часы работы, меню, новости и связь с заведением.</small></figcaption></figure></li>
-        <li><figure><img src="assets/screens/app-map.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Карта»: заведения на карте Иннополиса"><figcaption><span>04</span><strong>Карта</strong><small>Все места города на одной карте.</small></figcaption></figure></li>
+        <li><figure><span class="app-screen"><img src="assets/screens/app-feed.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Лента»: категории, ближайшие события и публикации заведений"><span class="screen-brand" aria-hidden="true"><svg class="wordmark-logo" aria-hidden="true" viewBox="0 0 920 154"><path fill="currentColor" fill-rule="evenodd" d="M40 2H110V42H48Q42 42 42 48V154H0V42Q0 2 40 2ZM79 154L145 21C151 8 160 2 174 2C188 2 198 8 205 21L271 154H222L175 54L126 154ZM332 0C374.5 0 409 34.5 409 77V154H369V142C358 150 345 154 332 154C289.5 154 255 119.5 255 77C255 34.5 289.5 0 332 0ZM370 77C370 97.98682 352.98682 115 332 115C311.01318 115 294 97.98682 294 77C294 56.01318 311.01318 39 332 39C352.98682 39 370 56.01318 370 77ZM546.44722 22.55278C516.37685 -7.51759 467.62315 -7.51759 437.55278 22.55278C407.48241 52.62315 407.48241 101.37685 437.55278 131.44722C467.62315 161.51759 516.37685 161.51759 546.44722 131.44722L519.57716 104.57716C504.34672 119.80761 479.65328 119.80761 464.42284 104.57716C449.19239 89.34672 449.19239 64.65328 464.42284 49.42284C479.65328 34.19239 504.34672 34.19239 519.57716 49.42284ZM697 88H584.5C589.5 105 603.5 116 621 116C632.5 116 643.5 111.5 650.5 103H692C681.5 133.5 653.5 154 621 154C578.5 154 544 119.5 544 77C544 34.5 578.5 0 621 0C663.5 0 698 34.5 698 77C698 81 697.7 85 697 88ZM587 60H655C648 47 635 39 621 39C607 39 594 47 587 60ZM857 77C857 119.52593 822.52593 154 780 154C737.47407 154 703 119.52593 703 77C703 34.47407 737.47407 0 780 0C822.52593 0 857 34.47407 857 77ZM818 77C818 97.98682 800.98682 115 780 115C759.01318 115 742 97.98682 742 77C742 56.01318 759.01318 39 780 39C800.98682 39 818 56.01318 818 77Z"/><rect class="wordmark-dot" x="875" y="109" width="45" height="45"/></svg></span></span><figcaption><span>01</span><strong>Лента</strong><small>Общая лента города и новости мест, на которые ты подписан.</small></figcaption></figure></li>
+        <li><figure><span class="app-screen"><img src="assets/screens/app-places.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Места»: поиск и список заведений с часами работы"><span class="screen-brand" aria-hidden="true"><svg class="wordmark-logo" aria-hidden="true" viewBox="0 0 920 154"><path fill="currentColor" fill-rule="evenodd" d="M40 2H110V42H48Q42 42 42 48V154H0V42Q0 2 40 2ZM79 154L145 21C151 8 160 2 174 2C188 2 198 8 205 21L271 154H222L175 54L126 154ZM332 0C374.5 0 409 34.5 409 77V154H369V142C358 150 345 154 332 154C289.5 154 255 119.5 255 77C255 34.5 289.5 0 332 0ZM370 77C370 97.98682 352.98682 115 332 115C311.01318 115 294 97.98682 294 77C294 56.01318 311.01318 39 332 39C352.98682 39 370 56.01318 370 77ZM546.44722 22.55278C516.37685 -7.51759 467.62315 -7.51759 437.55278 22.55278C407.48241 52.62315 407.48241 101.37685 437.55278 131.44722C467.62315 161.51759 516.37685 161.51759 546.44722 131.44722L519.57716 104.57716C504.34672 119.80761 479.65328 119.80761 464.42284 104.57716C449.19239 89.34672 449.19239 64.65328 464.42284 49.42284C479.65328 34.19239 504.34672 34.19239 519.57716 49.42284ZM697 88H584.5C589.5 105 603.5 116 621 116C632.5 116 643.5 111.5 650.5 103H692C681.5 133.5 653.5 154 621 154C578.5 154 544 119.5 544 77C544 34.5 578.5 0 621 0C663.5 0 698 34.5 698 77C698 81 697.7 85 697 88ZM587 60H655C648 47 635 39 621 39C607 39 594 47 587 60ZM857 77C857 119.52593 822.52593 154 780 154C737.47407 154 703 119.52593 703 77C703 34.47407 737.47407 0 780 0C822.52593 0 857 34.47407 857 77ZM818 77C818 97.98682 800.98682 115 780 115C759.01318 115 742 97.98682 742 77C742 56.01318 759.01318 39 780 39C800.98682 39 818 56.01318 818 77Z"/><rect class="wordmark-dot" x="875" y="109" width="45" height="45"/></svg></span></span><figcaption><span>02</span><strong>Места</strong><small>Каталог заведений с поиском и фильтрами.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/app-place.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Карточка заведения: подписка, связь, новости и меню"><figcaption><span>03</span><strong>Карточка места</strong><small>Меню, часы работы, подписка, сообщения, звонок и маршрут.</small></figcaption></figure></li>
+        <li><figure><span class="app-screen"><img src="assets/screens/app-map.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Экран «Карта»: заведения на карте Иннополиса"><span class="screen-brand" aria-hidden="true"><svg class="wordmark-logo" aria-hidden="true" viewBox="0 0 920 154"><path fill="currentColor" fill-rule="evenodd" d="M40 2H110V42H48Q42 42 42 48V154H0V42Q0 2 40 2ZM79 154L145 21C151 8 160 2 174 2C188 2 198 8 205 21L271 154H222L175 54L126 154ZM332 0C374.5 0 409 34.5 409 77V154H369V142C358 150 345 154 332 154C289.5 154 255 119.5 255 77C255 34.5 289.5 0 332 0ZM370 77C370 97.98682 352.98682 115 332 115C311.01318 115 294 97.98682 294 77C294 56.01318 311.01318 39 332 39C352.98682 39 370 56.01318 370 77ZM546.44722 22.55278C516.37685 -7.51759 467.62315 -7.51759 437.55278 22.55278C407.48241 52.62315 407.48241 101.37685 437.55278 131.44722C467.62315 161.51759 516.37685 161.51759 546.44722 131.44722L519.57716 104.57716C504.34672 119.80761 479.65328 119.80761 464.42284 104.57716C449.19239 89.34672 449.19239 64.65328 464.42284 49.42284C479.65328 34.19239 504.34672 34.19239 519.57716 49.42284ZM697 88H584.5C589.5 105 603.5 116 621 116C632.5 116 643.5 111.5 650.5 103H692C681.5 133.5 653.5 154 621 154C578.5 154 544 119.5 544 77C544 34.5 578.5 0 621 0C663.5 0 698 34.5 698 77C698 81 697.7 85 697 88ZM587 60H655C648 47 635 39 621 39C607 39 594 47 587 60ZM857 77C857 119.52593 822.52593 154 780 154C737.47407 154 703 119.52593 703 77C703 34.47407 737.47407 0 780 0C822.52593 0 857 34.47407 857 77ZM818 77C818 97.98682 800.98682 115 780 115C759.01318 115 742 97.98682 742 77C742 56.01318 759.01318 39 780 39C800.98682 39 818 56.01318 818 77Z"/><rect class="wordmark-dot" x="875" y="109" width="45" height="45"/></svg></span></span><figcaption><span>04</span><strong>Карта</strong><small>Места рядом и их расположение на карте города.</small></figcaption></figure></li>
       </ul>
-      <p class="honest-note">Экраны демо-версии: заведения и публикации на них — примеры.</p>
+      <p class="honest-note">Экраны демо-версии гласео. Заведения и публикации — примеры.</p>
     </section>
 
     <section class="faq section-pearl" aria-labelledby="faq-title" data-for="user">
       <h2 id="faq-title">Есть<br>вопрос?</h2>
       <div class="faq-list">
-        <details open><summary>Когда можно скачать?<span aria-hidden="true"></span></summary><p>Около готовится к запуску. Для Android приложение в ближайшее время появится в RuStore, на iPhone Около будет открываться как веб-приложение (PWA) — без магазина. Ссылки появятся здесь.</p></details>
-        <details><summary>Это бесплатно?<span aria-hidden="true"></span></summary><p>Да. Приложение для жителей будет бесплатным.</p></details>
-        <details><summary>В каком городе будет работать?<span aria-hidden="true"></span></summary><p>Первым станет Иннополис. Архитектура продукта предусматривает запуск в других городах.</p></details>
+        <details open><summary>Когда можно скачать?<span aria-hidden="true"></span></summary><p>гласео готовится к запуску. Для Android планируем выпуск в RuStore, для iPhone — веб-приложение в браузере. Ссылки появятся здесь, когда можно будет присоединиться.</p></details>
+        <details><summary>Это бесплатно?<span aria-hidden="true"></span></summary><p>Да. Для жителей приложение будет бесплатным. Ты сам выбираешь места и подписки, а бизнес не может купить приоритет в ленте.</p></details>
+        <details><summary>В каком городе будет работать?<span aria-hidden="true"></span></summary><p>Начинаем с Иннополиса. Позже планируем подключать другие города.</p></details>
       </div>
     </section>
 
     <section class="business section-pearl" id="business" aria-labelledby="business-title" data-for="business">
       <div class="section-head">
-        <h2 id="business-title">Расскажите<br>городу о себе<span class="berry-dot">.</span></h2>
-        <p>Около — лента города, в которой жители сами подписываются на места рядом.</p>
+        <h2 id="business-title">Внимание<br>не продаётся<span class="berry-dot">.</span></h2>
+        <p>В гласео у всех заведений одинаковые правила. Бизнес получает свою страницу и инструменты для работы с людьми, которым он интересен.</p>
       </div>
       <ol class="benefits">
-        <li><span>01</span><div><h3>Карточка заведения</h3><p>Описание, адрес, часы работы и меню — в каталоге города, который житель открывает в приложении.</p></div></li>
-        <li><span>02</span><div><h3>Новости, акции и события</h3><p>Публикации выходят в общей ленте и у подписчиков заведения. Акцию можно анонсировать заранее.</p></div></li>
-        <li><span>03</span><div><h3>Подписчики</h3><p>Житель подписывается сам — и узнаёт о новом без рассылок и чатов.</p></div></li>
-        <li><span>04</span><div><h3>Команда с ролями</h3><p>Владелец выдаёт сотрудникам готовые учётные записи: каждый делает только то, что ему разрешено.</p></div></li>
+        <li><span>01</span><div><h3>Карточка заведения</h3><p>Описание, адрес, часы работы, меню и услуги. Всё, что помогает человеку выбрать ваше место.</p></div></li>
+        <li><span>02</span><div><h3>Новости, акции и события</h3><p>Расскажите, что у вас нового. Публикации увидят в городской ленте и у подписчиков. Выберите время выхода и анонсируйте заранее.</p></div></li>
+        <li><span>03</span><div><h3>Записи и общение</h3><p>Отвечайте на сообщения, работайте с заказами и принимайте записи. Помогайте человеку перейти от интереса к визиту.</p></div></li>
+        <li><span>04</span><div><h3>Аналитика и PRO</h3><p>Смотрите подписки, просмотры и действия. В PRO развиваем карту спроса, рекомендации и интеграции. Эти возможности пока работают на демо-данных.</p></div></li>
       </ol>
     </section>
 
     <section class="screens section-pearl" id="cabinet" aria-labelledby="cabinet-title" data-for="business">
       <div class="section-head">
         <h2 id="cabinet-title">Кабинет<br>заведения<span class="berry-dot">.</span></h2>
-        <p>Открывается в браузере — на компьютере и на телефоне.</p>
+        <p>Публикации, обращения и показатели. Один кабинет на компьютере и телефоне.</p>
       </div>
-      <figure class="screen-wide"><img src="assets/screens/cab-desk-home.jpg" width="2560" height="1600" loading="lazy" decoding="async" alt="Главная страница кабинета на компьютере: обращения жителей и показатели заведения"><figcaption><span>01</span><strong>Главная</strong><small>Кто ждёт ответа и как идут дела у заведения.</small></figcaption></figure>
+      <figure class="screen-wide"><span class="app-screen app-screen-wide"><img src="assets/screens/cab-desk-analytics.png" width="1474" height="860" loading="lazy" decoding="async" alt="Дашборд организации: подписчики, просмотры, действия клиентов и динамика интереса"><span class="screen-brand" aria-hidden="true"><svg class="wordmark-logo" aria-hidden="true" viewBox="0 0 920 154"><path fill="currentColor" fill-rule="evenodd" d="M40 2H110V42H48Q42 42 42 48V154H0V42Q0 2 40 2ZM79 154L145 21C151 8 160 2 174 2C188 2 198 8 205 21L271 154H222L175 54L126 154ZM332 0C374.5 0 409 34.5 409 77V154H369V142C358 150 345 154 332 154C289.5 154 255 119.5 255 77C255 34.5 289.5 0 332 0ZM370 77C370 97.98682 352.98682 115 332 115C311.01318 115 294 97.98682 294 77C294 56.01318 311.01318 39 332 39C352.98682 39 370 56.01318 370 77ZM546.44722 22.55278C516.37685 -7.51759 467.62315 -7.51759 437.55278 22.55278C407.48241 52.62315 407.48241 101.37685 437.55278 131.44722C467.62315 161.51759 516.37685 161.51759 546.44722 131.44722L519.57716 104.57716C504.34672 119.80761 479.65328 119.80761 464.42284 104.57716C449.19239 89.34672 449.19239 64.65328 464.42284 49.42284C479.65328 34.19239 504.34672 34.19239 519.57716 49.42284ZM697 88H584.5C589.5 105 603.5 116 621 116C632.5 116 643.5 111.5 650.5 103H692C681.5 133.5 653.5 154 621 154C578.5 154 544 119.5 544 77C544 34.5 578.5 0 621 0C663.5 0 698 34.5 698 77C698 81 697.7 85 697 88ZM587 60H655C648 47 635 39 621 39C607 39 594 47 587 60ZM857 77C857 119.52593 822.52593 154 780 154C737.47407 154 703 119.52593 703 77C703 34.47407 737.47407 0 780 0C822.52593 0 857 34.47407 857 77ZM818 77C818 97.98682 800.98682 115 780 115C759.01318 115 742 97.98682 742 77C742 56.01318 759.01318 39 780 39C800.98682 39 818 56.01318 818 77Z"/><rect class="wordmark-dot" x="875" y="109" width="45" height="45"/></svg></span></span><figcaption><span>01</span><strong>Показатели</strong><small>Просмотры, подписки, целевые действия и динамика за период.</small></figcaption></figure>
       <ul class="screen-strip" aria-label="Экраны кабинета на телефоне">
-        <li><figure><img src="assets/screens/cab-phone-home.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Главная страница кабинета на телефоне"><figcaption><span>02</span><strong>На телефоне</strong><small>Тот же кабинет помещается в ладонь.</small></figcaption></figure></li>
-        <li><figure><img src="assets/screens/cab-phone-orders.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Раздел «Заказы и чаты» в кабинете"><figcaption><span>03</span><strong>Заказы и чаты</strong><small>Обращения жителей — в одном списке.</small></figcaption></figure></li>
-        <li><figure><img src="assets/screens/cab-phone-post.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Форма новой публикации в кабинете"><figcaption><span>04</span><strong>Публикация</strong><small>Новость, акция или событие — три поля и отправка на проверку.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/cab-phone-home.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Главная страница кабинета на телефоне"><figcaption><span>02</span><strong>На телефоне</strong><small>Главная, обращения и задачи заведения на телефоне.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/cab-phone-orders.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Раздел «Заказы и чаты» в кабинете"><figcaption><span>03</span><strong>Заказы и чаты</strong><small>Сообщения и заказы со статусами. Рядом — переход к записям.</small></figcaption></figure></li>
+        <li><figure><img src="assets/screens/cab-phone-post.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Форма новой публикации в кабинете"><figcaption><span>04</span><strong>Публикация</strong><small>Подготовьте новость, акцию или событие. Сохраните черновик или отправьте на проверку.</small></figcaption></figure></li>
       </ul>
-      <p class="honest-note">Экраны тестового кабинета: заведение и обращения на них — примеры.</p>
+      <p class="honest-note">Экраны демо-версии гласео. Все показатели и обращения приведены для примера.</p>
     </section>
 
     <section class="product business-path" aria-labelledby="business-path-title" data-for="business">
       <div class="product-copy">
         <h2 id="business-path-title">Три шага<br><span>до кабинета.</span></h2>
         <ol class="steps">
-          <li><span>01</span><div><h3>Заявка</h3><p>Владелец оставляет заявку на подключение заведения.</p></div></li>
+          <li><span>01</span><div><h3>Заявка</h3><p>После открытия приёма заявок представитель заведения оставляет заявку.</p></div></li>
           <li><span>02</span><div><h3>Проверка</h3><p>Мы убеждаемся, что заявку подал представитель заведения.</p></div></li>
-          <li><span>03</span><div><h3>Доступ</h3><p>Владелец получает данные для входа, заполняет карточку и раздаёт доступ сотрудникам.</p></div></li>
+          <li><span>03</span><div><h3>Доступ</h3><p>Владелец заполняет карточку и назначает сотрудникам роли и доступы.</p></div></li>
         </ol>
       </div>
     </section>
@@ -264,44 +268,44 @@
     <section class="faq section-pearl" aria-labelledby="business-faq-title" data-for="business">
       <h2 id="business-faq-title">Есть<br>вопрос?</h2>
       <div class="faq-list">
-        <details open><summary>Кто может подключиться?<span aria-hidden="true"></span></summary><p>Заведения и сервисы города. Первым городом станет Иннополис.</p></details>
-        <details><summary>Кто видит публикации?<span aria-hidden="true"></span></summary><p>Жители города в общей ленте и подписчики заведения — в своей. Каждую публикацию перед выходом читает команда Около.</p></details>
-        <details><summary>Как проходит проверка?<span aria-hidden="true"></span></summary><p>Мы сверяем данные организации и убеждаемся, что заявку подал её представитель. После этого владелец получает доступ в кабинет.</p></details>
+        <details open><summary>Кто может подключиться?<span aria-hidden="true"></span></summary><p>Заведения и сервисы Иннополиса. Перед подключением проверяем данные организации и полномочия её представителя.</p></details>
+        <details><summary>Кто видит публикации?<span aria-hidden="true"></span></summary><p>Жители города в общей ленте и подписчики заведения — в своей. Каждую публикацию перед выходом читает команда гласео.</p></details>
+        <details><summary>Можно заплатить за место выше других?<span aria-hidden="true"></span></summary><p>Нет. Ни тариф, ни дополнительные инструменты не дают приоритета в ленте. Внимание нельзя купить — его можно только заслужить. Люди сами решают, кого выбрать.</p></details>
       </div>
     </section>
 
     <section class="launch" id="launch" aria-labelledby="launch-title">
-      <div class="launch-copy"><h2 id="launch-title">Всё начинается<br>около<span>.</span></h2></div>
+      <div class="launch-copy"><h2 id="launch-title">Увидимся<br>в городе<span>.</span></h2></div>
       <div class="launch-card" data-for="user">
         <div class="android-status">
           <svg aria-hidden="true" viewBox="0 0 64 64"><path d="M22 6h20a5 5 0 0 1 5 5v42a5 5 0 0 1-5 5H22a5 5 0 0 1-5-5V11a5 5 0 0 1 5-5Zm6 46h8"/></svg>
-          <div><strong>Скоро на Android и iPhone</strong><p>Первый город — Иннополис.<br>Для жителей — бесплатно.</p></div>
+          <div><strong>Готовимся к запуску</strong><p>Первый город — Иннополис.<br>Для жителей — бесплатно.</p></div>
         </div>
         <div class="store-links">
-          <a class="store-link" data-link="okolo-rustore" data-live-note="Для Android" aria-disabled="true"><span>RuStore</span><small>Для Android · в ближайшее время</small></a>
+          <a class="store-link" data-link="okolo-rustore" data-live-note="Для Android" aria-disabled="true"><span>RuStore</span><small>Для Android · готовим запуск</small></a>
           <a class="store-link" data-link="okolo-pwa" data-live-note="Для iPhone · веб-приложение" aria-disabled="true"><span>PWA</span><small>Для iPhone · скоро</small></a>
         </div>
-        <a class="channel-link" href="https://t.me/okolo_tech" target="_blank" rel="noopener"><span>Новости проекта — в Telegram</span><b translate="no">@okolo_tech</b></a>
+        <a class="channel-link" href="https://t.me/glaseo_tech" target="_blank" rel="noopener"><span>Новости проекта — в Telegram</span><b translate="no">@glaseo_tech</b></a>
         <button class="share-button" type="button"><span>Скопировать ссылку</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <p class="share-status" aria-live="polite"></p>
       </div>
       <div class="launch-card" data-for="business">
         <div class="android-status">
           <svg aria-hidden="true" viewBox="0 0 64 64"><path d="M8 26 32 8l24 18M14 24v32h36V24M26 56V38h12v18"/></svg>
-          <div><strong>Подключение бизнеса</strong><p>Заявка подаётся на сайте сервиса.<br>Первый город — Иннополис.</p></div>
+          <div><strong>Подключение бизнеса</strong><p>Готовим приём заявок.<br>Первый город — Иннополис.</p></div>
         </div>
         <a class="share-button connect-link" data-link="okolo-business-url" aria-disabled="true"><span>Подключить свой бизнес</span><small>Скоро</small><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
-        <a class="channel-link" href="https://t.me/okolo_tech" target="_blank" rel="noopener"><span>Новости проекта — в Telegram</span><b translate="no">@okolo_tech</b></a>
+        <a class="channel-link" href="https://t.me/glaseo_tech" target="_blank" rel="noopener"><span>Новости проекта — в Telegram</span><b translate="no">@glaseo_tech</b></a>
       </div>
       <aside class="donate" aria-labelledby="donate-title">
-        <div><h3 id="donate-title">Поддержать Около</h3><p>Для жителей приложение бесплатно. Помочь запуску можно пожертвованием — любой суммой.</p></div>
+        <div><h3 id="donate-title">Поддержать гласео</h3><p>Для жителей приложение бесплатно. Помочь запуску можно пожертвованием — любой суммой.</p></div>
         <a class="donate-link" data-link="okolo-donate" data-new-tab aria-disabled="true"><span>Пожертвовать через ЮMoney</span><small>Скоро</small><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
       </aside>
       <footer class="site-footer">
-        <a class="wordmark" href="#top" aria-label="Около — наверх" translate="no">около<span>.</span></a>
-        <p>Город ближе, чем кажется.</p>
-        <a href="https://t.me/okolo_tech" target="_blank" rel="noopener" translate="no">Telegram @okolo_tech</a>
-        <a href="#audience">Для пользователя / для бизнеса</a>
+        <a class="wordmark" href="#top" aria-label="гласео — наверх" translate="no"><svg class="wordmark-logo" aria-hidden="true" viewBox="0 0 920 154"><path fill="currentColor" fill-rule="evenodd" d="M40 2H110V42H48Q42 42 42 48V154H0V42Q0 2 40 2ZM79 154L145 21C151 8 160 2 174 2C188 2 198 8 205 21L271 154H222L175 54L126 154ZM332 0C374.5 0 409 34.5 409 77V154H369V142C358 150 345 154 332 154C289.5 154 255 119.5 255 77C255 34.5 289.5 0 332 0ZM370 77C370 97.98682 352.98682 115 332 115C311.01318 115 294 97.98682 294 77C294 56.01318 311.01318 39 332 39C352.98682 39 370 56.01318 370 77ZM546.44722 22.55278C516.37685 -7.51759 467.62315 -7.51759 437.55278 22.55278C407.48241 52.62315 407.48241 101.37685 437.55278 131.44722C467.62315 161.51759 516.37685 161.51759 546.44722 131.44722L519.57716 104.57716C504.34672 119.80761 479.65328 119.80761 464.42284 104.57716C449.19239 89.34672 449.19239 64.65328 464.42284 49.42284C479.65328 34.19239 504.34672 34.19239 519.57716 49.42284ZM697 88H584.5C589.5 105 603.5 116 621 116C632.5 116 643.5 111.5 650.5 103H692C681.5 133.5 653.5 154 621 154C578.5 154 544 119.5 544 77C544 34.5 578.5 0 621 0C663.5 0 698 34.5 698 77C698 81 697.7 85 697 88ZM587 60H655C648 47 635 39 621 39C607 39 594 47 587 60ZM857 77C857 119.52593 822.52593 154 780 154C737.47407 154 703 119.52593 703 77C703 34.47407 737.47407 0 780 0C822.52593 0 857 34.47407 857 77ZM818 77C818 97.98682 800.98682 115 780 115C759.01318 115 742 97.98682 742 77C742 56.01318 759.01318 39 780 39C800.98682 39 818 56.01318 818 77Z"/><rect class="wordmark-dot" x="875" y="109" width="45" height="45"/></svg></a>
+        <p>Это не реклама. Нас выбирают люди.</p>
+        <a href="https://t.me/glaseo_tech" target="_blank" rel="noopener" translate="no">Telegram @glaseo_tech</a>
+        <a href="#audience">Для жителей / для бизнеса</a>
         <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
       </footer>
     </section>
