@@ -18,6 +18,9 @@
        which is skipped for reduced motion and for links into a section. -->
   <script>try{var t=localStorage.getItem('okolo-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}
   try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!location.hash)document.documentElement.classList.add('intro-on')}catch(e){}</script>
+  <!-- The language, also before first paint: an English page stays hidden until i18n.js has put the English in
+       (at most a second and a half, should the script fail to load). -->
+  <script>try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('glaseo-lang');if(l!=='en'&&l!=='ru')l=/^ru\b/i.test(navigator.language||'ru')?'ru':'en';document.documentElement.dataset.lang=l;setTimeout(function(){document.documentElement.classList.add('i18n-ready')},1500)}catch(e){}</script>
   <link rel="stylesheet" href="styles.css">
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
@@ -28,6 +31,7 @@
   <meta name="okolo-donate" content="">
   <script src="intro.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="i18n.js" defer></script>
 </head>
 <body data-role="user">
   <!-- Opening screen, driven by intro.js. The wordmark uses analytic vector curves shared with the header. -->
@@ -78,6 +82,10 @@
         <button type="button" data-theme-choice="light" aria-pressed="false">Светлая</button>
         <button type="button" data-theme-choice="dark" aria-pressed="false">Тёмная</button>
         <button type="button" data-theme-choice="system" aria-pressed="true">Системная</button>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Язык" data-choice="ru" translate="no">
+        <button type="button" data-lang-choice="ru" lang="ru" aria-label="Русский" aria-pressed="true">RU</button>
+        <button type="button" data-lang-choice="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
       </div>
       <a class="header-cta" href="#launch">
         <span>Жду гласео</span>
