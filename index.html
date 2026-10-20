@@ -22,6 +22,7 @@
        (at most a second and a half, should the script fail to load). -->
   <script>try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('glaseo-lang');if(l!=='en'&&l!=='ru')l=/^ru\b/i.test(navigator.language||'ru')?'ru':'en';document.documentElement.dataset.lang=l;setTimeout(function(){document.documentElement.classList.add('i18n-ready')},1500)}catch(e){}</script>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cabinet-demo.css">
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <!-- Where the closing buttons lead. Empty means "not available yet": the button is shown as coming soon. -->
@@ -31,6 +32,7 @@
   <meta name="okolo-donate" content="">
   <script src="intro.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="cabinet-demo.js" defer></script>
   <script src="i18n.js" defer></script>
 </head>
 <body data-role="business">
@@ -300,96 +302,14 @@
     <section class="cab-demo section-pearl" id="cabinet-demo" aria-labelledby="cabinet-demo-title" data-for="business">
       <div class="section-head">
         <h2 id="cabinet-demo-title">Попробуйте<br>кабинет<span class="berry-dot">.</span></h2>
-        <p>Нажимайте: примите заказ, выпустите публикацию, загляните в статистику. Это пример с выдуманной кофейней.</p>
+        <p>Всё как в настоящем кабинете: выставьте счёт и ответьте гостю, проведите заказ до двери, начислите баллы по карте гостя, загляните в PRO. Кофейня и цифры выдуманы.</p>
       </div>
-      <div class="cab-view" role="group" aria-label="Вид кабинета" data-choice="desk">
+      <div class="cab-view" role="group" aria-label="Вид кабинета">
         <button type="button" data-cab-view="desk" aria-pressed="true">Компьютер</button>
         <button type="button" data-cab-view="phone" aria-pressed="false">Телефон</button>
       </div>
       <div class="cab-stage" data-view="desk">
-        <div class="cab-frame" aria-label="Интерактивный пример кабинета бизнеса гласео">
-          <div class="cab-chrome" aria-hidden="true"><i></i><i></i><i></i><span translate="no">glaseo.ru</span></div>
-          <div class="cab-status" aria-hidden="true"><span>9:41</span><span>● ▴ ▰</span></div>
-          <div class="cab-app">
-            <header class="cab-top">
-              <span class="cab-logo"><b translate="no">гласео<i>.</i></b><small>для бизнеса</small></span>
-              <span class="cab-place"><b>Кофейня у воды</b><small>ИП Смирнова</small></span>
-              <span class="cab-user"><i aria-hidden="true">А</i><span>Алина</span><em translate="no">PRO</em></span>
-            </header>
-            <nav class="cab-nav" aria-label="Разделы кабинета"><button type="button" data-cab="home" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg><span>Главная</span></button><button type="button" data-cab="orders" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8h14l-1.5 12h-11zM9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Заказы</span><b class="cab-badge" data-orders-badge>1</b></button><button type="button" data-cab="posts" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h12v18H6zM9 8h6M9 12h6M9 16h4"/></svg><span>Публикации</span></button><button type="button" data-cab="bookings" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M8 3v5M16 3v5"/></svg><span>Записи</span></button><button type="button" data-cab="stats" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 20V10M10 20V4M15 20v-7M20 20v-11"/></svg><span>Статистика</span></button></nav>
-            <div class="cab-main">
-
-              <div class="cab-pane" data-pane="home">
-                <p class="cab-eyebrow">Карточка опубликована</p>
-                <h3 class="cab-title">Кофейня у воды</h3>
-                <div class="cab-card">
-                  <h4>Ждут вас <b class="cab-badge" data-waiting>3</b></h4>
-                  <ul class="cab-rows">
-                    <li data-task="order"><div><strong>Анна · новый заказ</strong><small>№ 24 · 2 поз. · 640 ₽ · Университетская, 7</small></div><button type="button" class="cab-btn cab-btn-red" data-do="accept">Принять</button><p class="cab-done">Заказ принят — готовим</p></li>
-                    <li data-task="booking"><div><strong>Марат · новая запись</strong><small>Завтра, 12:30 · Мастер-класс по латте-арту</small></div><button type="button" class="cab-btn" data-do="open-bookings">Открыть</button><p class="cab-done">Запись в расписании</p></li>
-                    <li data-task="post"><div><strong>Тыквенный латте вернулся</strong><small>Публикация сотрудника ждёт вашего решения</small></div><button type="button" class="cab-btn cab-btn-red" data-do="release">Выпустить</button><p class="cab-done">Отправлено на проверку гласео</p></li>
-                  </ul>
-                  <p class="cab-empty" hidden>Всё сделано. Новые заказы и записи появятся здесь.</p>
-                </div>
-                <div class="cab-card cab-kpis">
-                  <div><small>Подписчики</small><strong>1 284</strong><span>+96 за месяц</span></div>
-                  <div><small>Просмотры публикаций</small><strong>8 930</strong><span>+18 %</span></div>
-                  <div><small>Действия в карточке</small><strong>612</strong><span>маршрут, звонок, меню</span></div>
-                </div>
-              </div>
-
-              <div class="cab-pane" data-pane="orders" hidden>
-                <h3 class="cab-title">Заказы</h3>
-                <p class="cab-sub">Оплата — напрямую вам. гласео не берёт процент.</p>
-                <div class="cab-order" data-order="24" data-step="-1">
-                  <div class="cab-order-head"><div><strong>№ 24</strong><small>Анна · 12:04 · Университетская, 7</small></div><b>640 ₽</b></div>
-                  <ol class="cab-steps"><li>Принят</li><li>Готовим</li><li>Готов</li><li>Курьер</li><li>Доставлен</li></ol>
-                  <p class="cab-items">Капучино 0,3 · Сырники со сметаной</p>
-                  <button type="button" class="cab-btn cab-btn-red" data-do="advance">Принять</button>
-                </div>
-                <div class="cab-order" data-order="23" data-step="2">
-                  <div class="cab-order-head"><div><strong>№ 23</strong><small>Ольга · 11:40 · Квантовый бульвар, 3</small></div><b>1 120 ₽</b></div>
-                  <ol class="cab-steps"><li>Принят</li><li>Готовим</li><li>Готов</li><li>Курьер</li><li>Доставлен</li></ol>
-                  <p class="cab-items">Матча с жасмином ×2 · Круассан · Тыквенный пирог</p>
-                  <button type="button" class="cab-btn cab-btn-red" data-do="advance">Передать курьеру</button>
-                </div>
-              </div>
-
-              <div class="cab-pane" data-pane="posts" hidden>
-                <div class="cab-pane-head"><h3 class="cab-title">Публикации</h3><button type="button" class="cab-btn cab-btn-red" data-do="compose">Создать публикацию</button></div>
-                <div class="cab-card cab-compose" hidden>
-                  <div class="cab-chips" role="group" aria-label="Тип публикации"><button type="button" aria-pressed="false" data-kind="Новость">Новость</button><button type="button" aria-pressed="true" data-kind="Акция">Акция</button><button type="button" aria-pressed="false" data-kind="Событие">Событие</button></div>
-                  <label>Заголовок<input type="text" value="Второй кофе в подарок до 10:00" maxlength="80" data-compose-title></label>
-                  <label>Когда выйдет<select><option>Сразу после проверки</option><option>Завтра в 08:00</option><option>В субботу в 08:30 — совет ИИ-маркетолога</option></select></label>
-                  <div class="cab-compose-foot"><button type="button" class="cab-btn" data-do="compose-cancel">Отмена</button><button type="button" class="cab-btn cab-btn-red" data-do="compose-send">Отправить на проверку</button></div>
-                </div>
-                <ul class="cab-list" data-post-list>
-                  <li><em class="cab-tag cab-tag-ok">Опубликована</em><strong>Новое сезонное меню</strong><small>Новость · 1 480 просмотров</small></li>
-                  <li><em class="cab-tag cab-tag-plan">Запланирована</em><strong>Книжный вечер у воды</strong><small>Событие · выйдет 24 октября в 18:00</small></li>
-                  <li><em class="cab-tag">Черновик</em><strong>Завтраки до 12:00</strong><small>Акция · сохранено вчера</small></li>
-                </ul>
-              </div>
-
-              <div class="cab-pane" data-pane="bookings" hidden>
-                <h3 class="cab-title">Записи</h3>
-                <div class="cab-chips" role="group" aria-label="День"><button type="button" aria-pressed="false" data-day="0">Сегодня</button><button type="button" aria-pressed="true" data-day="1">Завтра</button><button type="button" aria-pressed="false" data-day="2">Пятница</button></div>
-                <ul class="cab-slots" data-slots></ul>
-              </div>
-
-              <div class="cab-pane" data-pane="stats" hidden>
-                <div class="cab-pane-head"><h3 class="cab-title">Статистика</h3><div class="cab-chips" role="group" aria-label="Период"><button type="button" aria-pressed="true" data-period="7">7 дней</button><button type="button" aria-pressed="false" data-period="30">30 дней</button><button type="button" aria-pressed="false" data-period="90">90 дней</button></div></div>
-                <div class="cab-card cab-kpis">
-                  <div><small>Показы в ленте</small><strong data-kpi="0">3 887</strong></div>
-                  <div><small>Переходы в карточку</small><strong data-kpi="1">336</strong></div>
-                  <div><small>Маршрут, звонок, меню</small><strong data-kpi="2">82</strong></div>
-                </div>
-                <div class="cab-card"><h4>Интерес по дням</h4><div class="cab-bars" aria-hidden="true"></div></div>
-                <div class="cab-card cab-pro"><h4><em translate="no">PRO</em> ИИ-маркетолог</h4><p data-tip>Лучшее время для следующей публикации — суббота, 08:30–09:30: тогда ваши подписчики активнее всего.</p><button type="button" class="cab-btn" data-do="tip">Ещё совет</button></div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        <div class="cab-frame" id="cab-demo" role="region" aria-label="Интерактивный пример кабинета бизнеса гласео"></div>
       </div>
       <p class="honest-note">Пример кабинета. Заведение, гости, заказы и цифры выдуманы.</p>
     </section>
