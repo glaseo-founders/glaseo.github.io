@@ -181,8 +181,6 @@ body[data-role="user"] [data-for="business"],body[data-role="business"] [data-fo
 .business-path{grid-template-columns:minmax(0,1fr);min-height:auto}
 /* heading on the left, steps on the right: no empty half of the screen */
 .business-path .product-copy{position:static;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(30px,5vw,100px);align-items:start}.business-path .steps{margin-top:0;max-width:none}.business-path h2 span{white-space:nowrap}
-/* three phone screens of the cabinet: centred, the same size as the app screens above */
-#cabinet .screen-strip{grid-template-columns:repeat(3,minmax(0,300px));justify-content:center}
 .store-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
 .store-link{min-height:68px;padding:12px 20px;background:var(--pearl);color:var(--ink);display:grid;align-content:center;gap:2px;font-weight:700;transition:background-color .2s,transform .2s}
 .store-link small,.connect-link small{font-size:12px;font-weight:400;color:var(--muted)}
@@ -193,13 +191,7 @@ body[data-role="user"] [data-for="business"],body[data-role="business"] [data-fo
 .screens .section-head{margin-bottom:clamp(48px,6vw,90px)}
 .screen-strip{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,40px)}
 .screens figure{margin:0}
-/* Responsive vector branding for legacy interface previews; their UI surface stays light. */
-.app-screen{display:block;position:relative}
-.screen-brand{position:absolute;left:4.48718%;top:1.65877%;width:17.5641%;height:2.48815%;padding:0 .35%;display:flex;align-items:center;background:#f3f3ef;color:#0d0d0c;pointer-events:none}
-.screen-brand .wordmark-logo{width:100%;height:auto}
-.app-screen-wide .screen-brand{left:3.86703%;top:2.09302%;width:6.8521%;height:3.48837%}
 .screens img{display:block;width:100%;height:auto;background:#f3f3ef;border:1px solid var(--ink);border-radius:clamp(18px,2vw,30px)}
-.screen-wide{margin-bottom:clamp(40px,5vw,72px)!important}.screen-wide img{border-radius:clamp(10px,1.2vw,18px)}
 .screens figcaption{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline}
 .screens figcaption span{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 .screens figcaption strong{font-size:clamp(19px,1.7vw,26px);letter-spacing:-.03em;line-height:1.1}
@@ -257,3 +249,111 @@ body[data-role="user"] [data-for="business"],body[data-role="business"] [data-fo
 :is(.launch,.button-berry,.scenario-route)::selection,:is(.launch,.button-berry,.scenario-route) ::selection,.header-cta:hover ::selection{background:#0d0d0c;color:#f3f3ef}
 /* …and red again on the plates that lie on the red section with a colour of their own. */
 :is(.store-link,.share-button,.donate-link)::selection,:is(.store-link,.share-button,.donate-link) ::selection{background:var(--berry);color:#fff}
+
+/* Business facts above the benefits: three large figures on a hairline. */
+.facts{list-style:none;margin:0 0 clamp(40px,5vw,72px);padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.facts li{padding:28px clamp(16px,2.4vw,36px) 28px 0}.facts li+li{padding-left:clamp(16px,2.4vw,36px);border-left:1px solid var(--line)}
+.facts strong{display:block;font-size:clamp(52px,6.4vw,104px);font-weight:800;letter-spacing:-.065em;line-height:.9}.facts li:first-child strong{color:var(--berry)}
+.facts p{margin-top:12px;font-size:17px;color:var(--soft);max-width:340px;text-wrap:pretty}
+@media(max-width:760px){.facts{grid-template-columns:1fr}.facts li,.facts li+li{padding:22px 0;border-left:0;border-bottom:1px solid var(--line)}}
+
+/* Six app screens in two rows of three; the cabinet's computer screens three abreast. */
+.screen-strip-six{grid-template-columns:repeat(3,minmax(0,300px));justify-content:center;row-gap:clamp(40px,5vw,72px)}
+.screen-strip-wide{grid-template-columns:repeat(3,minmax(0,1fr))}.screen-strip-wide img{border-radius:clamp(8px,1vw,14px)}
+@media(max-width:760px){.screen-strip.screen-strip-wide li{flex-basis:min(86vw,520px)}}
+
+/* The cabinet example. Hand-made HTML like the phone above, not the cabinet's code. The same markup is drawn as
+   a browser window on a computer and as a phone: [data-view] on .cab-stage decides. Its surface is light on either theme. */
+.cab-view{display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);margin-bottom:clamp(24px,3vw,40px)}
+.cab-view button{min-height:44px;padding:0 24px;border:0;background:none;font-size:14px;cursor:pointer;transition:background-color .2s,color .2s}
+.cab-view button+button{border-left:1px solid var(--ink)}.cab-view button:hover{color:var(--berry)}
+.cab-view button[aria-pressed="true"]{background:var(--ink);color:var(--pearl);font-weight:700}
+.cab-stage{position:relative}
+.cab-frame{--c-bg:#f3f3ef;--c-ink:#0d0d0c;--c-muted:#6e6e68;--c-line:rgba(13,13,12,.13);--c-red:#d12d23;--c-chip:#e8e8e3;background:var(--c-bg);color:var(--c-ink);overflow:hidden;display:flex;flex-direction:column;font-size:14px;line-height:1.35;text-align:left}
+.cab-frame svg{width:20px;height:20px;flex:none}
+.cab-frame button,.cab-frame input,.cab-frame select{font:inherit;color:inherit}
+.cab-frame ::selection{background:var(--c-red);color:#fff}
+.cab-stage[data-view="desk"] .cab-frame{width:1100px;height:680px;border:1px solid var(--ink);border-radius:16px;transform-origin:top left}
+.cab-stage[data-view="phone"]{display:flex;justify-content:center}
+.cab-stage[data-view="phone"] .cab-frame{width:min(380px,100%);height:780px;border:10px solid #0d0d0c;border-radius:50px;outline:1px solid var(--line)}
+.cab-chrome{flex:none;height:38px;padding:0 14px;display:flex;align-items:center;gap:7px;background:#e4e4df;border-bottom:1px solid var(--c-line)}
+.cab-chrome i{width:11px;height:11px;border-radius:50%;background:#c9c9c3}.cab-chrome span{margin:0 auto;padding:4px 40px;border-radius:999px;background:var(--c-bg);font-size:12px;color:var(--c-muted)}
+.cab-status{display:none;flex:none;height:34px;padding:10px 28px 0;justify-content:space-between;font-size:12px;font-weight:700}
+.cab-stage[data-view="phone"] .cab-chrome{display:none}.cab-stage[data-view="phone"] .cab-status{display:flex}
+.cab-app{flex:1;min-height:0;display:grid;grid-template-columns:200px minmax(0,1fr);grid-template-rows:64px minmax(0,1fr);grid-template-areas:"top top" "nav main"}
+.cab-top{grid-area:top;display:flex;align-items:center;gap:18px;padding:0 22px;border-bottom:1px solid var(--c-line)}
+.cab-logo{display:grid;line-height:1}.cab-logo b{font-size:23px;font-weight:800;letter-spacing:-.07em}.cab-logo i{font-style:normal;color:var(--c-red)}.cab-logo small{font-size:10.5px;font-weight:700;color:var(--c-muted);margin-top:3px}
+.cab-place{display:grid;padding:6px 16px;border:1px solid var(--c-line);border-radius:999px;line-height:1.15}.cab-place b{font-size:13px}.cab-place small{font-size:11px;color:var(--c-muted)}
+.cab-user{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
+.cab-user i{width:30px;height:30px;border-radius:50%;background:var(--c-red);color:#fff;display:grid;place-items:center;font-style:normal}
+.cab-user em,.cab-pro em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 6px;background:var(--c-red);color:#fff}
+.cab-nav{grid-area:nav;padding:16px 12px;border-right:1px solid var(--c-line);display:flex;flex-direction:column;gap:4px}
+.cab-nav button{position:relative;min-height:44px;padding:0 14px;border:0;border-radius:12px;background:none;display:flex;align-items:center;gap:12px;font-size:14px;cursor:pointer;text-align:left}
+.cab-nav button:hover{background:var(--c-chip)}
+.cab-nav button[aria-pressed="true"]{background:var(--c-ink);color:#fff;font-weight:700}
+.cab-badge{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--c-red);color:#fff;display:inline-grid;place-items:center;font-size:11px;font-weight:800}
+.cab-nav .cab-badge{margin-left:auto}.cab-badge[hidden]{display:none}
+.cab-main{grid-area:main;overflow:auto;overscroll-behavior:contain;padding:28px 34px;scrollbar-width:thin}
+.cab-eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--c-red)}
+.cab-title{font-size:32px;font-weight:800;letter-spacing:-.055em;line-height:1;margin:6px 0 20px}
+.cab-pane-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.cab-pane-head .cab-title{margin:0}
+.cab-sub{margin:-10px 0 16px;color:var(--c-muted);font-size:13px}
+.cab-card{background:#fff;border-radius:18px;padding:18px 20px;margin-bottom:14px}
+.cab-card h4{display:flex;align-items:center;gap:8px;font-size:17px;letter-spacing:-.02em;margin:0 0 8px}
+.cab-rows{list-style:none;margin:0;padding:0}
+.cab-rows li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--c-line)}
+.cab-rows strong,.cab-list strong{display:block;font-size:14px}.cab-rows small,.cab-list small{display:block;font-size:12.5px;color:var(--c-muted)}
+.cab-done{display:none;font-size:12.5px;color:var(--c-muted);font-weight:700}.cab-done::before{content:"✓ ";color:var(--c-ink)}
+.cab-rows li.is-done .cab-btn{display:none}.cab-rows li.is-done .cab-done{display:block}.cab-rows li.is-done strong{color:var(--c-muted)}
+.cab-empty{padding:12px 0 2px;color:var(--c-muted);font-size:13px}
+.cab-btn{min-height:36px;padding:0 16px;border:0;border-radius:999px;background:var(--c-chip);font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;transition:opacity .15s,transform .15s}
+.cab-btn:hover{opacity:.82}.cab-btn:active{transform:scale(.97)}.cab-btn-red{background:var(--c-red);color:#fff}
+.cab-btn[disabled]{background:none;color:var(--c-muted);cursor:default;padding:0}
+.cab-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:16px 4px}
+.cab-kpis>div{padding:2px 16px;min-width:0}.cab-kpis>div+div{border-left:1px solid var(--c-line)}
+.cab-kpis small{display:block;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--c-muted)}
+.cab-kpis strong{display:block;font-size:30px;font-weight:800;letter-spacing:-.05em;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.cab-kpis span{font-size:12px;color:var(--c-muted)}
+.cab-order{background:#fff;border-radius:18px;padding:18px 20px;margin-bottom:14px}
+.cab-order-head{display:flex;justify-content:space-between;align-items:start;gap:12px}.cab-order-head strong{font-size:21px;letter-spacing:-.04em}.cab-order-head small{display:block;font-size:12.5px;color:var(--c-muted)}.cab-order-head b{font-size:17px;white-space:nowrap}
+.cab-steps{list-style:none;margin:14px 0 10px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.cab-steps li{padding-top:7px;border-top:4px solid #e2e2dc;font-size:11px;color:var(--c-muted);transition:border-color .3s}
+.cab-steps li.is-past{border-color:var(--c-ink);color:var(--c-ink)}.cab-steps li.is-now{border-color:var(--c-red);color:var(--c-ink);font-weight:800}
+.cab-items{font-size:13px;margin-bottom:12px}
+.cab-chips{display:flex;flex-wrap:wrap;gap:6px}
+.cab-chips button{min-height:34px;padding:0 14px;border:1px solid rgba(13,13,12,.2);border-radius:999px;background:#fff;font-size:13px;cursor:pointer}
+.cab-chips button[aria-pressed="true"]{background:var(--c-ink);border-color:var(--c-ink);color:#fff;font-weight:700}
+.cab-compose label{display:grid;gap:6px;margin-top:12px;font-size:12px;color:var(--c-muted)}
+.cab-compose input,.cab-compose select{width:100%;min-height:42px;padding:0 12px;border:1px solid rgba(13,13,12,.2);border-radius:10px;background:#fff;font-size:14px;color:var(--c-ink)}
+.cab-compose-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+.cab-list{list-style:none;margin:0;padding:0}
+.cab-list li{display:grid;gap:3px;justify-items:start;background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:8px}
+.cab-tag{font-style:normal;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--c-chip);margin-bottom:3px}
+.cab-tag-ok{background:var(--c-ink);color:#fff}.cab-tag-plan{background:none;box-shadow:inset 0 0 0 1px var(--c-red);color:var(--c-red)}.cab-tag-review{background:#fbe3e1;color:var(--c-red)}
+.cab-list li.is-new,.cab-slots li.is-new{animation:cab-in .5s ease-out}
+@keyframes cab-in{from{opacity:0;transform:translateY(-8px)}}
+.cab-slots{list-style:none;margin:16px 0 0;padding:0}
+.cab-slots li{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 16px;margin-bottom:8px}
+.cab-slots time{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}.cab-slots strong{display:block}.cab-slots small{display:block;font-size:12.5px;color:var(--c-muted)}
+.cab-slots li.is-free{background:none;box-shadow:inset 0 0 0 1px rgba(13,13,12,.18);color:var(--c-muted)}
+.cab-bars{height:140px;display:flex;align-items:flex-end;gap:5px;padding-top:6px}
+.cab-bars i{flex:1;min-width:2px;background:var(--c-ink);border-radius:4px 4px 0 0;transition:height .4s}.cab-bars i:last-child{background:var(--c-red)}
+.cab-pro{box-shadow:inset 0 0 0 1.5px var(--c-red)}.cab-pro p{font-size:14px;margin-bottom:12px;min-height:38px}
+/* The phone layout: the sections move to a bottom bar, the header keeps the place and the avatar. */
+.cab-stage[data-view="phone"] .cab-app{grid-template-columns:minmax(0,1fr);grid-template-rows:56px minmax(0,1fr) auto;grid-template-areas:"top" "main" "nav"}
+.cab-stage[data-view="phone"] .cab-top{padding:0 16px;gap:10px}
+.cab-stage[data-view="phone"] .cab-logo small,.cab-stage[data-view="phone"] .cab-user>span,.cab-stage[data-view="phone"] .cab-user em{display:none}
+.cab-stage[data-view="phone"] .cab-logo b{font-size:20px}.cab-stage[data-view="phone"] .cab-place{padding:4px 12px}
+.cab-stage[data-view="phone"] .cab-nav{flex-direction:row;gap:0;padding:6px 4px 14px;border-right:0;border-top:1px solid var(--c-line)}
+.cab-stage[data-view="phone"] .cab-nav button{flex:1;min-width:0;flex-direction:column;justify-content:center;gap:3px;min-height:50px;padding:0 2px;font-size:10px;border-radius:10px;text-align:center}
+.cab-stage[data-view="phone"] .cab-nav button[aria-pressed="true"]{background:none;color:var(--c-red)}
+.cab-stage[data-view="phone"] .cab-nav .cab-badge{position:absolute;top:2px;left:calc(50% + 6px);min-width:17px;height:17px;font-size:10px;padding:0 4px}
+.cab-stage[data-view="phone"] .cab-main{padding:18px 14px}
+.cab-stage[data-view="phone"] .cab-title{font-size:27px}
+.cab-stage[data-view="phone"] .cab-rows li{grid-template-columns:minmax(0,1fr)}.cab-stage[data-view="phone"] .cab-rows .cab-btn{justify-self:start}
+.cab-stage[data-view="phone"] .cab-kpis{padding:14px 0}.cab-stage[data-view="phone"] .cab-kpis>div{padding:0 10px}
+.cab-stage[data-view="phone"] .cab-kpis strong{font-size:20px}.cab-stage[data-view="phone"] .cab-kpis small{font-size:9px;letter-spacing:.03em}
+.cab-stage[data-view="phone"] .cab-kpis span{display:none}
+.cab-stage[data-view="phone"] .cab-card,.cab-stage[data-view="phone"] .cab-order{padding:16px}
+.cab-stage[data-view="phone"] .cab-steps li{font-size:9.5px}
+@media(max-width:420px){.cab-stage[data-view="phone"] .cab-frame{height:min(780px,calc(100svh - 120px));min-height:600px;border-width:8px;border-radius:40px}}
