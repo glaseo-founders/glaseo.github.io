@@ -91,7 +91,7 @@
   }
 
   // ---------- Screens ----------
-  const tabHead = (title, extra = '') => `<header class="rd-head"><span class="rd-logo">гласео<i>.</i></span>${title ? `<span class="rd-title">${title}</span>` : ''}${extra}<button type="button" class="rd-city" data-act="city">${t('Иннополис', 'Innopolis')} ${icon('down2').replace('<svg', '<svg style="width:12px;height:12px"')}</button></header>`;
+  const tabHead = (title, extra = '') => `<header class="rd-head"><span class="rd-logo">гласео<i>.</i></span>${title ? `<span class="rd-title">${title}</span>` : ''}${extra}${extra ? `<button type="button" class="rd-city-pin" data-act="city" aria-label="${t('Город: Иннополис', 'City: Innopolis')}" title="${t('Город: Иннополис', 'City: Innopolis')}">${icon('pin')}<i></i></button>` : `<button type="button" class="rd-city" data-act="city">${t('Иннополис', 'Innopolis')} ${icon('down2').replace('<svg', '<svg style="width:12px;height:12px"')}</button>`}</header>`;
   const backHead = (label, title = '') => `<header class="rd-head"><button type="button" class="rd-back" data-act="back">${icon('back').replace('<svg', '<svg style="width:16px;height:16px"')}${label}</button>${title ? `<span class="rd-title">${title}</span>` : ''}</header>`;
   const chips = (act, list, current) => `<div class="rd-chips">${list.map(([v, l]) => `<button type="button" data-act="${act}" data-v="${v}" aria-pressed="${String(current instanceof Set ? current.has(v) : current === v)}">${T(l)}</button>`).join('')}</div>`;
 
@@ -165,8 +165,8 @@
       head: backHead(t('Места', 'Places')),
       body: `<div class="rd-pad"><div class="rd-place-top"><span class="rd-ava">${T(p.logo)}</span><div><h2>${T(p.name)}</h2><small>${p.cats.map((c) => T(CAT_NAME[c])).join(' · ')}</small><b>${hoursText(p)}</b></div></div>
         <button type="button" class="rd-btn ${followed ? 'rd-btn-line' : 'rd-btn-ink'} rd-btn-wide" data-act="follow" data-v="${id}">${followed ? t('Вы подписаны', 'Following') : t('Подписаться', 'Follow')}</button>
-        <div class="rd-actions"><button type="button" data-act="write" data-v="${id}">${icon('chat')}${t('Написать', 'Message')}</button><button type="button" data-act="toast" data-v="call">${icon('phone')}${t('Позвонить', 'Call')}</button><button type="button" data-act="route" data-v="${id}">${icon('route')}${t('Маршрут', 'Route')}</button><button type="button" data-act="toast" data-v="more">${icon('more')}${t('Ещё', 'More')}</button></div>
-        ${p.bonus ? `<div class="rd-bonus"><i>${icon('gift')}</i><div><b>${t('Бонусы заведения', 'The place\'s bonuses')}</b><small>${T(p.bonus)}</small></div><u data-act="tab" data-v="profile" style="cursor:pointer">${t('Карта', 'Card')}</u></div>` : ''}
+        <div class="rd-actions"><button type="button" data-act="write" data-v="${id}">${icon('chat')}${t('Чат', 'Chat')}</button><button type="button" data-act="toast" data-v="call">${icon('phone')}${t('Звонок', 'Call')}</button><button type="button" data-act="route" data-v="${id}">${icon('route')}${t('Маршрут', 'Route')}</button><button type="button" data-act="toast" data-v="more">${icon('more')}${t('Ещё', 'More')}</button></div>
+        ${p.bonus ? `<div class="rd-bonus"><i>${icon('gift')}</i><div><b>${t('Бонусы заведения', 'The place\'s bonuses')}</b><small>${T(p.bonus)}</small></div><span data-act="tab" data-v="profile" style="cursor:pointer" aria-label="${t('Карта гостя', 'Guest card')}">${icon('chev')}</span></div>` : ''}
         <div class="rd-tabrow">${tabs.map(([v, l]) => `<button type="button" data-act="ptab" data-v="${v}" aria-pressed="${S.ptab === v}">${T(l)}</button>`).join('')}</div>${content}</div>`,
       foot: bar,
     };
