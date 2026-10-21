@@ -11,6 +11,7 @@ const EN = {
   "К содержанию": "Skip to content",
   "Что внутри": "What's inside",
   "Как работает": "How it works",
+  "Вопросы и ответы для бизнеса, обзор кабинета": "Questions and answers for businesses, a tour of the cabinet",
   "Светлая": "Light",
   "Тёмная": "Dark",
   "Системная": "System",
