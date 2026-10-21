@@ -12,57 +12,6 @@ scenarios.forEach((scenario) => {
   scenario.querySelector('.scenario-toggle').addEventListener('click', () => activateScenario(scenario));
 });
 
-const feedTabs = [...document.querySelectorAll('[data-feed]')];
-const filters = [...document.querySelectorAll('[data-filter]')];
-const posts = [...document.querySelectorAll('.post')];
-const emptyState = document.querySelector('.feed-empty');
-let currentFeed = 'all';
-let currentFilter = 'all';
-
-function renderFeed() {
-  let visible = 0;
-  posts.forEach((post) => {
-    const inFeed = currentFeed === 'all' || post.dataset.followed === 'true';
-    const inCategory = currentFilter === 'all' || post.dataset.kind === currentFilter;
-    const show = inFeed && inCategory;
-    post.hidden = !show;
-    if (show) visible += 1;
-  });
-  emptyState.hidden = visible !== 0;
-}
-
-feedTabs.forEach((tab) => {
-  tab.addEventListener('click', () => {
-    currentFeed = tab.dataset.feed;
-    feedTabs.forEach((item) => item.setAttribute('aria-selected', String(item === tab)));
-    renderFeed();
-  });
-});
-
-filters.forEach((filter) => {
-  filter.addEventListener('click', () => {
-    currentFilter = filter.dataset.filter;
-    filters.forEach((item) => {
-      const active = item === filter;
-      item.classList.toggle('is-active', active);
-      item.setAttribute('aria-pressed', String(active));
-    });
-    renderFeed();
-  });
-});
-
-document.querySelectorAll('.follow').forEach((button) => {
-  button.addEventListener('click', () => {
-    const post = button.closest('.post');
-    const followed = post.dataset.followed !== 'true';
-    post.dataset.followed = String(followed);
-    button.classList.toggle('is-followed', followed);
-    button.setAttribute('aria-pressed', String(followed));
-    button.textContent = followed ? 'В подписках' : 'Подписаться';
-    renderFeed();
-  });
-});
-
 const shareButton = document.querySelector('.share-button');
 const shareStatus = document.querySelector('.share-status');
 

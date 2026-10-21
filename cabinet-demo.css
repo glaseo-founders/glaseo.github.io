@@ -272,3 +272,32 @@ textarea.cd-input{min-height:96px;resize:vertical}
 .cab-stage[data-view="phone"] .cd-post-stats b{font-size:22px}
 .cab-stage[data-view="phone"] .cd-guest-figs{gap:18px}
 @media (prefers-reduced-motion:reduce){.cab-frame *{transition:none!important;animation:none!important}}
+
+/* Compact controls (21.10.2026): icon buttons with a tooltip, one-line headers, tiles instead of rows of long labels. */
+.cd-ibtn{position:relative;width:40px;height:40px;flex:none;display:inline-grid;place-items:center;border:0;border-radius:50%;background:var(--soft);color:var(--ink);padding:0;transition:filter .15s}
+.cd-ibtn:hover{filter:brightness(.94)}.cd-ibtn svg{width:19px;height:19px}
+.cd-ibtn-ink{background:var(--ink);color:#fff}.cd-ibtn-dark{background:#2c2c2a;color:#fff}
+.cd-acts{display:inline-flex;align-items:center;gap:8px;flex:none}
+.cd-head-one{flex-wrap:nowrap}.cd-head-one>.cd-h1{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cd-head-one>:not(.cd-h1){flex:none}
+.cd-pair{display:flex;gap:10px}.cd-pair>.cd-btn{flex:1 1 0;min-width:0}
+.cd-btn{overflow:hidden;text-overflow:ellipsis}
+.cd-btn-icon{display:inline-flex;align-items:center;gap:8px}.cd-btn-icon svg{width:19px;height:19px}
+.cd-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0 6px}
+.cd-tiles button{display:grid;justify-items:center;gap:6px;padding:12px 4px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:12.5px;font-weight:700;white-space:nowrap}
+.cd-tiles button:hover{border-color:var(--ink)}
+.cd-chat-list-head .cd-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}.cd-chat-list-head .cd-chips::-webkit-scrollbar{display:none}
+.cd-chips>button{white-space:nowrap;flex:none}
+.cab-stage[data-view="phone"] .cd-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-14px;padding-inline:14px}
+.cab-stage[data-view="phone"] .cd-chips::-webkit-scrollbar{display:none}
+.cab-stage[data-view="phone"] .cd-head{flex-wrap:nowrap}.cab-stage[data-view="phone"] .cd-head>.cd-h1,.cab-stage[data-view="phone"] .cd-head>.cd-h3{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cab-stage[data-view="phone"] .cd-head>:not(.cd-h1):not(.cd-h3){flex:none}
+.cab-stage[data-view="phone"] .cd-head .cd-chips{margin:0;padding:0;flex:none}
+.cab-stage[data-view="phone"] .cd-btn-big{min-height:42px;padding:0 16px}
+.cab-stage[data-view="phone"] .cd-tiles button{font-size:11px;padding:10px 2px}
+.cab-stage[data-view="phone"] .cd-table td .cd-acts{gap:6px}
+.cd-code-row{display:flex!important;gap:10px;align-items:center;max-width:480px}.cd-code-row .cd-code{flex:1;min-width:0}.cd-ibtn-big{width:56px;height:56px}
+/* On the phone a header with a period switch keeps the whole title: the switch goes under it. */
+.cab-stage[data-view="phone"] .cd-head:has(>.cd-chips){flex-wrap:wrap}
+.cab-stage[data-view="phone"] .cd-head:has(>.cd-chips)>.cd-h3{white-space:normal;overflow:visible}
+.cab-stage[data-view="phone"] .cd-sec-title small{display:none}

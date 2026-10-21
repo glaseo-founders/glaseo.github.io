@@ -24,8 +24,13 @@
     guide: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18 M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14 M12 17h.01', more: 'M5 12h.01 M12 12h.01 M19 12h.01',
     profile: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M4 21v-2a8 8 0 0 1 16 0v2', plus: 'M12 5v14 M5 12h14', out: 'M14 4h5v16h-5 M10 8l-4 4 4 4 M6 12h10',
     chat: 'M4 5h16v11H9l-5 4z M8 9h8 M8 12h5', arrow: 'M7 17 17 7 M8 7h9v9',
+    camera: 'M4 8h4l2-3h4l2 3h4v11H4z M12 10a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7', send: 'M4 12 20 4l-6 16-3-7z M11 13l9-9', pencil: 'M4 20h4L19 9l-4-4L4 16z M14 6l4 4',
+    trash: 'M5 7h14 M9 7V4h6v3 M7 7l1 13h8l1-13', gear: 'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6 M12 3v2 M12 19v2 M4.2 7.5l1.7 1 M18.1 15.5l1.7 1 M4.2 16.5l1.7-1 M18.1 8.5l1.7-1',
+    truck: 'M3 6h11v10H3z M14 10h4l3 3v3h-7 M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4 M17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4', store: 'M4 9l1-5h14l1 5 M4 9h16v11H4z M9 20v-6h6v6', close: 'M6 6l12 12 M18 6 6 18', check: 'M5 12l5 5 9-10',
   };
   const icon = (name) => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[name]}"/></svg>`;
+  // An icon-only button: the label is read aloud and shown as a tooltip.
+  const ibtn = (name, label, attrs = '', cls = '') => `<button type="button" class="cd-ibtn ${cls}" aria-label="${label}" title="${label}" ${attrs}>${icon(name)}</button>`;
 
   // ---------- The made-up place and everything in it ----------
   const S = {
@@ -87,7 +92,7 @@
     { n: 19, count: 2, chat: 'dina', who: ['Дина', 'Dina'], at: '09:20', addr: ['Университетская, 1', 'Universitetskaya 1'], sum: 450, items: ['Капучино 0,3 · Круассан', 'Cappuccino 0.3 · Croissant'], step: 4, pay: 'paid' },
   ];
   const STEPS = [['Оплата', 'Payment'], ['Готовим', 'Cooking'], ['Готов', 'Ready'], ['Курьер', 'Courier'], ['Доставлен', 'Delivered']];
-  const NEXT = [['Начать готовить', 'Start cooking'], ['Готово', 'Ready'], ['Назначить курьера', 'Assign a courier'], ['Отметить доставленным', 'Mark as delivered']];
+  const NEXT = [['Готовим', 'Cooking'], ['Готово', 'Ready'], ['Курьер', 'Courier'], ['Доставлен', 'Delivered']];
   const orderBadge = (o) => (o.step >= 4 ? badge(t('Доставлен', 'Delivered'), 'good')
     : o.pay === 'new' ? badge(t('Новый заказ', 'New order'), 'warn') : o.pay === 'wait' ? badge(t('Ждёт оплаты', 'Awaiting payment'), 'wait') : badge(t('Оплачен', 'Paid'), 'good'));
   const chatState = (c) => {
@@ -174,7 +179,7 @@
     90: [[t('Подписчики', 'Followers'), '1 284', t('+402 за 3 месяца', '+402 in 3 months'), 'up'], [t('Просмотры публикаций', 'Post views'), '30 410', '+41 %', 'up'], [t('Открытия карточки', 'Page opens'), '8 960', '+33 %', 'up'], [t('Вышло публикаций', 'Posts out'), '31', t('в среднем 2–3 в неделю', '2–3 a week on average'), '']],
   });
   const kpis = () => `<div class="cd-kpis">${KPI()[S.period].map(([label, value, note, dir]) => `<div><small>${label}</small><strong>${value}</strong><span class="${dir === 'up' ? 'cd-up' : ''}">${note}</span></div>`).join('')}</div>`;
-  const periodChips = () => chips('period', [[7, t('7 дней', '7 days')], [30, t('30 дней', '30 days')], [90, t('90 дней', '90 days')]], S.period);
+  const periodChips = () => chips('period', [[7, t('7 дн', '7 d')], [30, t('30 дн', '30 d')], [90, t('90 дн', '90 d')]], S.period);
 
   const INSIGHTS = () => [
     ['→', t('Лучшее время для следующей публикации — суббота, 08:30–09:30', 'The best time for your next post is Saturday, 08:30–09:30'), t('Через час после этого ваша аудитория активнее всего: публикация успеет подняться в ленте.', 'An hour later your audience is at its most active: the post has time to rise in the feed.')],
@@ -207,8 +212,8 @@
         <button type="button" class="cd-btn" data-act="go" data-v="stats-pro" style="margin-top:12px">${t('Открыть отчёт PRO', 'Open the PRO report')}</button></section>
       <div class="cd-grid3">
         <section><div class="cd-sec-title"><b>${t('Публикации', 'Posts')}</b><small>${t('Последние 20', 'Last 20')}</small></div>
-          <button type="button" class="cd-btn cd-btn-red" data-act="go" data-v="compose">+ ${t('Добавить публикацию', 'Add a post')}</button>
-          <div class="cd-quick"><button type="button" class="cd-btn" data-act="set" data-v="card">${t('Карточка места', 'Place page')}</button><button type="button" class="cd-btn" data-act="go" data-v="menu">${t('Меню и услуги', 'Menu and services')}</button><button type="button" class="cd-btn" data-act="set" data-v="delivery">${t('Доставка и оплата', 'Delivery and payment')}</button><button type="button" class="cd-btn" data-act="go" data-v="bookings">${t('Специалисты и запись', 'Specialists and booking')}</button></div>
+          <button type="button" class="cd-btn cd-btn-red" data-act="go" data-v="compose">+ ${t('Пост', 'Post')}</button>
+          <div class="cd-tiles"><button type="button" data-act="set" data-v="card" title="${t('Карточка места', 'Place page')}">${icon('store')}${t('Карточка', 'Page')}</button><button type="button" data-act="go" data-v="menu" title="${t('Меню и услуги', 'Menu and services')}">${icon('menu')}${t('Меню', 'Menu')}</button><button type="button" data-act="set" data-v="delivery" title="${t('Доставка и оплата', 'Delivery and payment')}">${icon('truck')}${t('Доставка', 'Delivery')}</button><button type="button" data-act="go" data-v="bookings" title="${t('Специалисты и запись', 'Specialists and booking')}">${icon('bookings')}${t('Запись', 'Booking')}</button></div>
           <div style="border-top:1px solid var(--ink);margin-top:10px">${posts.slice(0, 4).map((p) => rowBtn('post', p.id, postBadge(p), t(p.ru, p.en), postMeta(p))).join('')}</div></section>
         <section><div class="cd-sec-title"><b>${t('Команда', 'Team')}</b></div>
           <button type="button" class="cd-btn cd-btn-red" data-act="go" data-v="team" style="margin-bottom:12px">${t('Управлять командой', 'Manage the team')}</button>
@@ -221,7 +226,7 @@
   function panePosts() {
     const list = posts.filter((p) => S.postFilter === 'all' || p.st === S.postFilter);
     const options = [['all', t('Все', 'All')], ...Object.entries(POST_ST).map(([k, v]) => [k, t(v[0], v[1])])];
-    return `<div class="cd-head"><h1 class="cd-h1">${t('Публикации', 'Posts')}</h1><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="go" data-v="compose">${t('Создать публикацию', 'Create a post')}</button></div>
+    return `<div class="cd-head"><h1 class="cd-h1">${t('Публикации', 'Posts')}</h1><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="go" data-v="compose" title="${t('Создать публикацию', 'Create a post')}">+ ${t('Пост', 'Post')}</button></div>
       <label class="cd-field" style="max-width:260px"><span>${t('Статус', 'Status')}</span><select class="cd-input" data-input="postFilter">${options.map(([v, l]) => `<option value="${v}" ${S.postFilter === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
       <div class="cd-sec-title"><b>${t('Публикации', 'Posts')}</b><small>${t('Последние 20', 'Last 20')}</small></div>
       ${list.length ? list.map((p) => rowBtn('post', p.id, postBadge(p), t(p.ru, p.en), postMeta(p))).join('') : `<div class="cd-empty">${t('С таким статусом публикаций нет.', 'No posts with this status.')}</div>`}`;
@@ -232,8 +237,8 @@
     if (!p) return panePosts();
     const actions = {
       owner: `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="release" data-v="${p.id}">${t('Выпустить', 'Release')}</button>`,
-      draft: `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="send" data-v="${p.id}">${t('Отправить на проверку', 'Send for review')}</button>`,
-      published: `<button type="button" class="cd-btn cd-btn-big" data-act="unpublish" data-v="${p.id}">${t('Снять с публикации', 'Take down')}</button>`,
+      draft: `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="send" data-v="${p.id}">${t('На проверку', 'To review')}</button>`,
+      published: `<button type="button" class="cd-btn cd-btn-big" data-act="unpublish" data-v="${p.id}">${t('Снять', 'Take down')}</button>`,
       review: `<p class="cd-note">${t('Публикацию читает команда гласео. Решение придёт во «Входящие».', 'The glaseo team is reading the post. The decision will arrive in the Inbox.')}</p>`,
       scheduled: `<p class="cd-note">${t('Одобрена командой гласео и выйдет сама в назначенное время.', 'Approved by the glaseo team, it goes out by itself at the set time.')}</p>`,
       archived: `<p class="cd-note">${t('Публикация в архиве места. Жители видят её в карточке, но не в ленте.', 'The post is in the place\'s archive. Residents see it on the page, not in the feed.')}</p>`,
@@ -248,7 +253,7 @@
   function paneCompose() {
     const kicker = draft.kind === 'news' ? '' : `<span class="cd-kicker">${t(...KIND[draft.kind])} · ${t('до 27 октября', 'until 27 October')}</span>`;
     return `<p class="cd-eyebrow">${t('Карточка опубликована', 'Page published')}</p>
-      <div class="cd-head cd-head-line"><h1 class="cd-h1">${esc(placeName())}</h1><div class="cd-hide-narrow" style="border-left:1px solid var(--line);padding-left:22px"><b style="font-size:40px;font-weight:900;letter-spacing:-.05em">1 284</b><br><small class="cd-note">${t('подписчика', 'followers')}</small></div></div>
+      <div class="cd-head cd-head-line cd-head-one"><h1 class="cd-h1">${esc(placeName())}</h1><div class="cd-hide-narrow" style="border-left:1px solid var(--line);padding-left:22px"><b style="font-size:40px;font-weight:900;letter-spacing:-.05em">1 284</b><br><small class="cd-note">${t('подписчика', 'followers')}</small></div></div>
       <div class="cd-sec-title" style="margin-top:22px"><b>${t('Новая публикация', 'New post')}</b><small>${t('Покажем в ленте после проверки', 'Shown in the feed after review')}</small></div>
       <div class="cd-compose"><div>
         <div style="margin:14px 0 18px">${chips('kind', [['news', t('Новость', 'News')], ['offer', t('Акция', 'Offer')], ['event', t('Событие', 'Event')]], draft.kind)}</div>
@@ -259,7 +264,7 @@
           ${draft.more ? `<div><label class="cd-field"><span>${t('Когда выйдет', 'When it goes out')}</span><select class="cd-input" data-draft="when"><option value="now" ${draft.when === 'now' ? 'selected' : ''}>${t('Сразу после проверки', 'Right after review')}</option><option value="tomorrow" ${draft.when === 'tomorrow' ? 'selected' : ''}>${t('Завтра в 08:00', 'Tomorrow at 08:00')}</option><option value="ai" ${draft.when === 'ai' ? 'selected' : ''}>${t('Сб, 08:30 — совет ИИ-маркетолога', 'Sat, 08:30 — the AI marketer\'s tip')}</option></select></label>
             <label class="cd-check"><input type="checkbox" data-draft="soon" ${draft.soon ? 'checked' : ''}>${t('Анонс в блоке «Скоро» до выхода', 'Announce in "Soon" before release')}</label>
             <button type="button" class="cd-btn" data-act="toast" data-v="picture">+ ${t('Картинка', 'Picture')}</button></div>` : ''}</div>
-        <div style="display:flex;flex-wrap:wrap;gap:10px"><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="submit" data-v="review">${t('Отправить на проверку', 'Send for review')}</button><button type="button" class="cd-btn cd-btn-big" data-act="submit" data-v="draft">${t('Сохранить черновик', 'Save draft')}</button></div>
+        <div class="cd-pair"><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="submit" data-v="review">${t('На проверку', 'To review')}</button><button type="button" class="cd-btn cd-btn-big" data-act="submit" data-v="draft">${t('В черновики', 'To drafts')}</button></div>
         <p class="cd-note" style="margin-top:14px">${t('Сначала публикацию и анонс проверит команда гласео. Публикацию сотрудника после этого принимает владелец или тот, кому он доверил выпуск.', 'First the glaseo team reviews the post and the announcement. After that a staff post is accepted by the owner or whoever they trusted with releases.')}</p>
       </div><div>
         <h3 class="cd-h3" style="font-size:22px">${t('Так это увидят жители', 'This is how residents will see it')}</h3>
@@ -278,16 +283,15 @@
     const o = c && orders.find((x) => x.n === c.order);
     const [tone, label] = c ? chatState(c) : ['', ''];
     let act = '';
-    if (o && o.step < 4 && o.pay === 'new') act = `<div class="cd-thread-act"><p>${t('Проверьте состав и цену: житель получит счёт и подсказку, как оплатить.', 'Check the items and the price: the resident gets an invoice and a hint on how to pay.')}</p><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="invoice" data-v="${o.n}">${t('Проверить и выставить счёт', 'Check and send the invoice')}</button></div>`;
+    if (o && o.step < 4 && o.pay === 'new') act = `<div class="cd-thread-act"><p>${t('Проверьте состав и цену: житель получит счёт и подсказку, как оплатить.', 'Check the items and the price: the resident gets an invoice and a hint on how to pay.')}</p><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="invoice" data-v="${o.n}">${t('Выставить счёт', 'Send invoice')}</button></div>`;
     else if (o && o.step < 4 && o.pay === 'wait') act = `<div class="cd-thread-act"><p>${t('Счёт у жителя. Оплата приходит вам напрямую — по ссылке или QR вашего банка.', 'The resident has the invoice. Payment comes straight to you — by your bank\'s link or QR.')}</p><button type="button" class="cd-btn cd-btn-big" data-act="paid" data-v="${o.n}">${t('Отметить оплаченным', 'Mark as paid')}</button></div>`;
-    const thread = c ? `<div class="cd-thread-head"><div><button type="button" class="cd-back cd-only-phone" data-act="chat-back" style="margin:0 0 4px">‹ ${t('Чаты', 'Chats')}</button><b>${esc(t(c.ru, c.en))}</b><small>${esc(t(...c.addr))}</small></div><button type="button" class="cd-btn" data-act="toast" data-v="block">${t('Заблокировать', 'Block')}</button></div>
+    const thread = c ? `<div class="cd-thread-head"><div><button type="button" class="cd-back cd-only-phone" data-act="chat-back" style="margin:0 0 4px">‹ ${t('Чаты', 'Chats')}</button><b>${esc(t(c.ru, c.en))}</b><small>${esc(t(...c.addr))}</small></div>${ibtn('more', t('Ещё: заблокировать жителя', 'More: block the resident'), 'data-act="toast" data-v="block"')}</div>
         ${o ? `<div class="cd-thread-order"><span>${t('Заказ №', 'Order No.')} ${o.n} · ${money(o.sum)}</span>${badge(label, tone)}</div>` : ''}
         <div class="cd-msgs">${c.msgs.map(([k, ru, en, at]) => `<div class="cd-msg cd-msg-${k}">${esc(t(ru, en))}${k === 'sys' ? '' : `<time>${at || c.at}</time>`}</div>`).join('')}</div>
-        ${act}<div class="cd-compose-line"><input class="cd-input" data-chat-input placeholder="${t('Сообщение', 'Message')}"><button type="button" class="cd-btn" data-act="say" data-v="${c.id}">${t('Отправить', 'Send')}</button></div>`
+        ${act}<div class="cd-compose-line"><input class="cd-input" data-chat-input placeholder="${t('Сообщение', 'Message')}">${ibtn('send', t('Отправить', 'Send'), `data-act="say" data-v="${c.id}"`, 'cd-ibtn-ink')}</div>`
       : `<p class="cd-thread-empty">${t('Выберите чат слева.', 'Pick a chat on the left.')}</p>`;
     const count = (key) => chats.filter(filters[key]).length;
-    return `<div class="cd-chats" ${S.chatOpen ? 'data-open' : ''}><div class="cd-chat-list"><div class="cd-chat-list-head"><div><h2>${t('Чаты', 'Chats')}</h2><button type="button" class="cd-btn" data-act="go" data-v="bookings">${t('Записи', 'Bookings')}</button></div>
-        <div><button type="button" class="cd-btn" data-act="set" data-v="delivery">${t('Доставка и оплата', 'Delivery and payment')}</button></div>
+    return `<div class="cd-chats" ${S.chatOpen ? 'data-open' : ''}><div class="cd-chat-list"><div class="cd-chat-list-head"><div><h2>${t('Чаты', 'Chats')}</h2><span class="cd-acts">${ibtn('bookings', t('Записи', 'Bookings'), 'data-act="go" data-v="bookings"')}${ibtn('truck', t('Доставка и оплата', 'Delivery and payment'), 'data-act="set" data-v="delivery"')}</span></div>
         ${chips('chatFilter', [['new', t('Новые', 'New'), count('new')], ['wait', t('Ждут оплаты', 'Awaiting payment'), count('wait')], ['work', t('В работе', 'In progress')], ['all', t('Все', 'All')]], S.chatFilter)}</div>
       <div class="cd-chat-items">${list.map((x) => { const [tn, lb] = chatState(x); const last = x.msgs[x.msgs.length - 1]; const ord = orders.find((y) => y.n === x.order); return `<button type="button" class="cd-chat-item" data-act="chat" data-v="${x.id}" aria-current="${String(x.id === S.chat)}"><b>${esc(t(x.ru, x.en))}</b><time>${x.at}</time><small>${ord && ord.pay !== 'paid' ? `${ord.count} ${t('поз.', 'items')} · ${money(ord.sum)}` : esc(t(last[1], last[2]))}</small>${badge(lb, tn)}</button>`; }).join('') || `<p class="cd-note" style="padding:16px">${t('Здесь пусто.', 'Nothing here.')}</p>`}</div></div>
       <div class="cd-thread">${thread}</div></div>`;
@@ -296,12 +300,12 @@
   function paneOrders() {
     const list = orders.filter((o) => S.orderFilter === 'all' || o.step < 4);
     return `<div class="cd-chips cd-only-phone" style="margin-bottom:12px"><button type="button" aria-pressed="true">${t('Заказы и чаты', 'Orders and chats')} · ${needs()}</button><button type="button" data-act="go" data-v="bookings" aria-pressed="false">${t('Записи', 'Bookings')}</button></div>
-      <div class="cd-head cd-head-line"><h1 class="cd-h1">${t('Заказы', 'Orders')}</h1><button type="button" class="cd-btn cd-btn-big" data-act="go" data-v="chats">${t('Открыть чаты', 'Open chats')}</button></div>
+      <div class="cd-head cd-head-line cd-head-one"><h1 class="cd-h1">${t('Заказы', 'Orders')}</h1>${ibtn('chat', t('Открыть чаты', 'Open chats'), 'data-act="go" data-v="chats"')}</div>
       <p class="cd-note" style="margin:16px 0 12px">${t('Заказы через гласео · Доставка. Оплата — напрямую вам, гласео не берёт процент.', 'Orders through glaseo · Delivery. Payment goes straight to you, glaseo takes no percentage.')}</p>
       <div style="margin-bottom:18px">${chips('orderFilter', [['active', t('Активные', 'Active')], ['all', t('Все', 'All')]], S.orderFilter)}</div>
       ${list.map((o) => {
         let button = '';
-        if (o.step < 4 && o.pay === 'new') button = `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="chat" data-v="${o.chat}">${t('Проверить и выставить счёт', 'Check and send the invoice')}</button>`;
+        if (o.step < 4 && o.pay === 'new') button = `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="chat" data-v="${o.chat}">${t('Выставить счёт', 'Send invoice')}</button>`;
         else if (o.step === 2 && S.courierFor === o.n) button = `<div class="cd-couriers"><span class="cd-note">${t('Кто везёт:', 'Who delivers:')}</span><button type="button" class="cd-btn" data-act="courier" data-v="${o.n}:0">${t('Илья · на смене', 'Ilya · on shift')}</button><button type="button" class="cd-btn" data-act="courier" data-v="${o.n}:1">${t('Рустам · на смене', 'Rustam · on shift')}</button></div>`;
         else if (o.step < 4) button = `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="advance" data-v="${o.n}">${t(...NEXT[o.step])}</button>`;
         return `<article class="cd-order"><div class="cd-order-head"><div><h3>${t('№', 'No.')} ${o.n}</h3><small>${esc(t(...o.who))} · ${o.at} · ${esc(t(...o.addr))}</small></div><div class="cd-order-sum"><b>${money(o.sum)}</b>${orderBadge(o)}</div></div>
@@ -324,7 +328,7 @@
       info = `<section class="cd-card cd-slot-info"><h3>${esc(t(sel[0], sel[1]))} ${sel[3] ? badge(t('Новая', 'New'), 'warn') : ''}</h3><p style="margin:6px 0 14px">${t(day[0], day[1])}, ${day[2]} ${t('октября', 'October')}, ${h} · ${esc(t(sv[0], sv[1]))} · ${t('мастер', 'with')} ${t(...MASTERS[mi])} · ${money(sv[2])}</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px"><button type="button" class="cd-btn" data-act="toast" data-v="move">${t('Перенести', 'Move')}</button><button type="button" class="cd-btn" data-act="cancel-slot">${t('Отменить', 'Cancel')}</button></div></section>`;
     }
-    return `<button type="button" class="cd-back" data-act="go" data-v="chats">‹ ${t('Чаты', 'Chats')}</button><div class="cd-head"><h1 class="cd-h1">${t('Записи', 'Bookings')}</h1><span class="cd-note">${t('Неделя 20–26 октября', 'Week of 20–26 October')}</span></div>
+    return `<button type="button" class="cd-back" data-act="go" data-v="chats">‹ ${t('Чаты', 'Chats')}</button><h1 class="cd-h1" style="margin-bottom:4px!important">${t('Записи', 'Bookings')}</h1><p class="cd-note" style="margin-bottom:14px">${t('Неделя 20–26 октября', 'Week of 20–26 October')}</p>
       <div style="margin-bottom:16px">${chips('day', DAYS.map((d, i) => [i, i === 0 ? t('Сегодня', 'Today') : `${t(d[0], d[1])} ${d[2]}`]), S.day)}</div>
       <div class="cd-cal"><div class="cd-cal-h"></div>${MASTERS.map((m) => `<div class="cd-cal-h">${t(...m)}</div>`).join('')}${cells}</div>${info}
       <p class="cd-note" style="margin-top:14px">${t('Записи открываются сами: гость выбирает свободное время в приложении, мастер видит визит в «Моих записях». Перенос — только с согласия гостя.', 'Bookings open by themselves: the guest picks a free time in the app, the specialist sees the visit in "My bookings". Moving a visit needs the guest\'s consent.')}</p>`;
@@ -333,7 +337,7 @@
   function paneLoyalty() {
     const on = programs.filter((p) => p.on);
     const tabs = chips('loyTab', [['till', t('Касса', 'Till')], ['programs', t('Программы', 'Programmes')], ['guests', t('Гости', 'Guests')]], S.loyTab);
-    const head = `<div class="cd-head cd-head-line"><h1 class="cd-h1">${t('Лояльность', 'Loyalty')}</h1><span class="cd-note">${on.length ? t(`Работают программы: ${on.length}`, `Programmes running: ${on.length}`) : t('Ни одна программа пока не работает', 'No programme is running yet')}</span></div><div style="margin:18px 0">${tabs}</div>`;
+    const head = `<div class="cd-head cd-head-line cd-head-one"><h1 class="cd-h1">${t('Лояльность', 'Loyalty')}</h1><span class="cd-note cd-hide-narrow">${on.length ? t(`Работают программы: ${on.length}`, `Programmes running: ${on.length}`) : t('Программы не работают', 'No programmes running')}</span></div><div style="margin:18px 0">${tabs}</div>`;
     if (S.loyTab === 'programs') return `${head}${programs.map((p) => `<div class="cd-program"><div><b>${t(p.ru[0], p.en[0])}</b><small>${t(p.ru[1], p.en[1])}</small></div><button type="button" class="cd-switch" role="switch" aria-checked="${p.on}" data-act="program" data-v="${p.id}" aria-label="${t(p.ru[0], p.en[0])}"></button></div>`).join('')}
       <p class="cd-note" style="margin-top:12px">${t('Скидки, «N + M», подарки, баллы с уровнями, штампы и промокоды работают на месте по карте гостя и в заказах доставки.', 'Discounts, "N + M", gifts, points with levels, stamps and promo codes work on the spot with the guest card and in delivery orders.')}</p>`;
     if (S.loyTab === 'guests') return `${head}<table class="cd-table cd-collapse"><thead><tr><th>${t('Гость', 'Guest')}</th><th>${t('Уровень', 'Level')}</th><th>${t('Баллы', 'Points')}</th><th>${t('Визиты', 'Visits')}</th><th>${t('Последняя покупка', 'Last purchase')}</th></tr></thead><tbody>
@@ -344,14 +348,14 @@
         <div class="cd-stamps">${stamps}</div>
         <label class="cd-field" style="color:#fff"><span>${t('Сумма покупки, ₽', 'Purchase amount, ₽')}</span><input class="cd-input" data-input="amount" inputmode="numeric" value="${S.amount ?? 640}"></label>
         <label class="cd-check"><input type="checkbox" data-input="spend" ${S.spend ? 'checked' : ''}>${t('Списать баллы — до 30 % чека', 'Spend points — up to 30% of the bill')}</label>
-        <div class="cd-guest-act"><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="buy">${t('Провести покупку', 'Record the purchase')}</button><button type="button" class="cd-btn" data-act="close-guest">${t('Закрыть карту', 'Close the card')}</button></div></div>` : '';
+        <div class="cd-guest-act"><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="buy">${t('Провести', 'Record')}</button>${ibtn('close', t('Закрыть карту', 'Close the card'), 'data-act="close-guest"', 'cd-ibtn-dark')}</div></div>` : '';
     return `${head}<div class="cd-loy"><div>
         <div class="cd-callout">${on.length ? `${t('Работают:', 'Running:')} ${on.map((p) => `<b>${t(p.ru[0], p.en[0])}</b>`).join(', ')}. <u data-act="loyTab" data-v="programs" style="cursor:pointer">${t('Настроить программы', 'Set up programmes')}</u>` : `${t('Ни одна программа не работает — покупка просто запишется гостю.', 'No programme is running — the purchase is simply recorded for the guest.')} <u data-act="loyTab" data-v="programs" style="cursor:pointer">${t('Настроить программы', 'Set up programmes')}</u>`}</div>
-        ${card || `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="scan">${t('Сфотографировать QR', 'Photograph the QR')}</button>
+        ${card || `<button type="button" class="cd-btn cd-btn-red cd-btn-big cd-btn-icon" data-act="scan" title="${t('Сфотографировать QR-код гостя', 'Photograph the guest\'s QR code')}">${icon('camera')}${t('Сканировать', 'Scan')}</button>
         <p class="cd-note" style="margin:10px 0 24px">${t('Гость показывает QR в приложении: «Профиль → Карта гостя». Карта откроется сама.', 'The guest shows the QR in the app: Profile → Guest card. The card opens by itself.')}</p>
-        <label class="cd-field"><span>${t('Или код карты вручную', 'Or type the card code')}</span><input class="cd-code" data-input="code" inputmode="numeric" maxlength="9" placeholder="0000 0000"></label>
+        <label class="cd-field"><span>${t('Или код карты вручную', 'Or type the card code')}</span><span class="cd-code-row"><input class="cd-code" data-input="code" inputmode="numeric" maxlength="9" placeholder="0000 0000">${ibtn('arrow', t('Открыть карту', 'Open the card'), 'data-act="scan"', 'cd-ibtn-ink cd-ibtn-big')}</span></label>
         <p class="cd-note" style="margin:-6px 0 12px">${t('Если камера не справилась: гость называет 8 цифр под QR-кодом.', 'If the camera fails, the guest reads out the 8 digits under the QR code.')}</p>
-        <button type="button" class="cd-btn cd-btn-ghost cd-btn-big" data-act="scan" style="width:100%;max-width:420px">${t('Открыть карту', 'Open the card')}</button>`}
+        `}
       </div><aside class="cd-buys"><h3>${t('Последние покупки', 'Recent purchases')}</h3><ul>${buys.map((b) => `<li class="${b.fresh ? 'cd-new' : ''}"><b>${t(b.ru, b.en)} · ${money(b.sum)}</b><small>${b.at} · +${b.plus} ${t('баллов', 'points')}${b.stamp ? ` · ${t('штамп', 'stamp')} ${b.stamp}/8` : ''}</small></li>`).join('')}</ul></aside></div>`;
   }
 
@@ -366,10 +370,10 @@
       const facts = m.type === 'service' ? `${m.dur} ${t('мин · по записи', 'min · by booking')}` : m.kbju ? `${m.kbju[0]} ${t('ккал', 'kcal')} · ${t('Б', 'P')} ${m.kbju[1]} · ${t('Ж', 'F')} ${m.kbju[2]} · ${t('У', 'C')} ${m.kbju[3]} · ${t('на порцию', 'per portion')}` : '';
       const tag = m.type === 'service' ? `<span class="cd-tag">${t('Услуга', 'Service')}</span>` : missing(m) ? `<span class="cd-tag cd-tag-red">${t('Нужно заполнить', 'Needs filling in')}</span>` : '';
       const price = S.editing === m.id ? `<input class="cd-price-input" data-input="price" data-v="${m.id}" inputmode="numeric" value="${m.price}">` : `<b>${money(m.price)}</b>`;
-      const act = S.editing === m.id ? `<button type="button" class="cd-btn cd-btn-red" data-act="save-item" data-v="${m.id}">${t('Сохранить', 'Save')}</button>` : `<button type="button" class="cd-btn" data-act="edit-item" data-v="${m.id}">${t('Изменить', 'Edit')}</button> <button type="button" class="cd-btn cd-btn-ghost" data-act="drop-item" data-v="${m.id}">${t('Убрать', 'Remove')}</button>`;
+      const act = S.editing === m.id ? `<button type="button" class="cd-btn cd-btn-red" data-act="save-item" data-v="${m.id}">${t('Сохранить', 'Save')}</button>` : `<span class="cd-acts">${ibtn('pencil', t('Изменить', 'Edit'), `data-act="edit-item" data-v="${m.id}"`)}${ibtn('trash', t('Убрать', 'Remove'), `data-act="drop-item" data-v="${m.id}"`)}</span>`;
       return `<tr class="${m.fresh ? 'cd-new' : ''}"><td><b>${esc(name)} ${tag}</b><small>${esc(desc)}</small>${facts ? `<small>${facts}${m.size ? ` · ${t(...m.size)}` : ''}</small>` : ''}${missing(m) ? `<small class="cd-down">${t('Не указаны вес и КБЖУ', 'No weight or nutrition yet')}</small>` : ''}</td><td>${price}</td><td style="white-space:nowrap;text-align:right">${act}</td></tr>`;
     };
-    return `<div class="cd-head"><h1 class="cd-h1">${t('Меню и услуги', 'Menu and services')}</h1><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="cd-btn cd-btn-red" data-act="add-item" data-v="service">+ ${t('Услуга по записи', 'Bookable service')}</button><button type="button" class="cd-btn" data-act="add-item" data-v="menu">+ ${t('Позиция меню', 'Menu item')}</button></div></div>
+    return `<div class="cd-head cd-head-one"><h1 class="cd-h1">${t('Меню и услуги', 'Menu and services')}</h1><span class="cd-acts"><button type="button" class="cd-btn cd-btn-red" data-act="add-item" data-v="service" title="${t('Услуга по записи', 'Bookable service')}">+ ${t('Услуга', 'Service')}</button><button type="button" class="cd-btn" data-act="add-item" data-v="menu" title="${t('Позиция меню', 'Menu item')}">+ ${t('Позиция', 'Item')}</button></span></div>
       <p class="cd-lead" style="margin-top:-8px!important">${t(`Позиции, которые жители видят в карточке «${PLACES[S.place].ru}». Блюда и товары заказывают, на услуги записываются. Изменения видны жителям сразу.`, `Items residents see on the ${PLACES[S.place].en} page. Dishes and goods get ordered, services get booked. Changes show to residents at once.`)}</p>
       <label class="cd-field"><span>${t('Поиск по меню и услугам', 'Search the menu and services')}</span><input class="cd-input" data-input="menuQuery" value="${esc(S.menuQuery)}" placeholder="${t('Название или описание', 'Name or description')}"></label>
       <div style="margin-bottom:12px">${chips('menuFilter', [['all', `${t('Все', 'All')} ${count('all')}`], ['menu', `${t('Меню', 'Menu')} ${count('menu')}`], ['service', `${t('Услуги', 'Services')} ${count('service')}`], ['missing', `${t('Нужно заполнить', 'Needs filling in')} ${count('missing')}`]], S.menuFilter)}</div>
@@ -407,12 +411,12 @@
   }
   function paneStats() {
     const head = `<h1 class="cd-h1">${t('Статистика', 'Statistics')}</h1><div style="margin:-6px 0 20px">${chips('statsTab', [['kpi', t('Показатели', 'Figures')], ['pro', t('PRO: аудитория и рынок', 'PRO: audience and market')]], S.statsTab)}</div>`;
-    if (S.statsTab === 'pro') return `${head}<section class="cd-card cd-pro-card"><div class="cd-head" style="margin-bottom:14px"><h3 class="cd-h3"><span class="cd-pro">PRO</span> ${t('Аудитория, рынок и что делать дальше', 'Audience, market and what to do next')} <span class="cd-tagline" style="padding:2px 8px;border:1px dashed var(--ink);border-radius:999px;font-size:11px;font-weight:400">${t('демо-данные', 'demo data')}</span></h3>${periodChips()}</div>
+    if (S.statsTab === 'pro') return `${head}<section class="cd-card cd-pro-card"><div class="cd-head" style="margin-bottom:14px"><h3 class="cd-h3"><span class="cd-pro">PRO</span> ${t('Аудитория, рынок и что делать дальше', 'Audience, market and what to do next')} <span class="cd-tagline" style="padding:2px 8px;border:1px dashed var(--ink);border-radius:999px;font-size:11px;font-weight:400">${t('демо-данные', 'demo data')}</span></h3></div><div style="margin:-6px 0 12px">${periodChips()}</div>
       <div style="margin-bottom:16px">${chips('proTab', PRO_TABS(), S.proTab)}</div>${proBody()}</section>`;
     const [a, b] = SERIES[S.period];
     const read = posts.filter((p) => p.views).slice(0, 3);
     return `${head}<section class="cd-card"><div class="cd-head" style="margin:0"><h3 class="cd-h3">${t('Показатели', 'Figures')}</h3>${periodChips()}</div>${kpis()}
-      <div class="cd-grid2" style="margin-top:22px"><div><div class="cd-head" style="margin-bottom:6px"><h3 class="cd-h3" style="font-size:17px">${t('Интерес по дням', 'Interest by day')}</h3><div class="cd-legend"><span><i></i>${t('Просмотры публикаций', 'Post views')}</span><span><i class="cd-dash"></i>${t('Открытия карточки', 'Page opens')}</span></div></div>
+      <div class="cd-grid2" style="margin-top:22px"><div><h3 class="cd-h3" style="font-size:17px;margin-bottom:6px!important">${t('Интерес по дням', 'Interest by day')}</h3><div><div class="cd-legend"><span><i></i>${t('Просмотры публикаций', 'Post views')}</span><span><i class="cd-dash"></i>${t('Открытия карточки', 'Page opens')}</span></div></div>
         <svg class="cd-chart" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0,199.5H600" stroke="#cfcfc9" style="stroke-width:1"/><path d="${line(a)}" stroke="#d12d23"/><path d="${line(b)}" stroke="#0d0d0c" stroke-dasharray="6 5"/></svg></div>
         <div><h3 class="cd-h3" style="font-size:17px;margin-bottom:6px">${t('Что читали', 'What was read')}</h3>${read.map((p) => `<div style="display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)"><div><b>${esc(t(p.ru, p.en))}</b><small class="cd-note" style="display:block">${t(...KIND[p.kind])}</small></div><b style="white-space:nowrap">${num(p.views)}</b></div>`).join('')}
         <h3 class="cd-h3" style="font-size:17px;margin:18px 0 4px">${t('Что делали в карточке', 'What people did on the page')}</h3>${bars([[t('Открыли меню', 'Opened the menu'), 412, 412], [t('Нажали «Маршрут»', 'Tapped "Route"'), 128, 412], [t('Нажали «Позвонить»', 'Tapped "Call"'), 54, 412], [t('Написали в чат', 'Wrote in the chat'), 31, 412]])}</div></div></section>`;
@@ -425,14 +429,14 @@
     const form = S.adding ? `<section class="cd-card cd-new"><h3>${t('Новый сотрудник', 'New staff member')}</h3><div class="cd-toolbar" style="margin-top:12px"><label class="cd-field"><span>${t('Имя', 'Name')}</span><input class="cd-input" data-input="newName" placeholder="${t('Например, Камила', 'For example, Kamila')}"></label>
       <label class="cd-field"><span>${t('Роль', 'Role')}</span><select class="cd-input" data-input="newRole">${['admin', 'moder', 'operator', 'master'].map((r) => `<option value="${r}">${t(...ROLES[r])}</option>`).join('')}</select></label></div>
       <div style="display:flex;gap:8px"><button type="button" class="cd-btn cd-btn-red" data-act="add-member">${t('Создать учётную запись', 'Create the account')}</button><button type="button" class="cd-btn" data-act="adding">${t('Отмена', 'Cancel')}</button></div></section>` : '';
-    return `<div class="cd-head"><h1 class="cd-h1">${t('Сотрудники', 'Staff')}</h1><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="adding">+ ${t('Добавить сотрудника', 'Add staff')}</button></div>
+    return `<div class="cd-head cd-head-one"><h1 class="cd-h1">${t('Сотрудники', 'Staff')}</h1><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="adding" title="${t('Добавить сотрудника', 'Add staff')}">+ ${t('Сотрудник', 'Staff')}</button></div>
       <p class="cd-lead">${t('Кто работает в организации и к каким заведениям имеет доступ.', 'Who works in the organisation and which places they can access.')}<br>${team.length} ${t('из 10 учётных записей', 'of 10 accounts')} · ${org()}</p>${form}
       <div class="cd-toolbar"><label class="cd-field"><span>${t('Поиск сотрудников', 'Search staff')}</span><input class="cd-input" data-input="teamQuery" value="${esc(S.teamQuery)}" placeholder="${t('Имя, логин или заведение', 'Name, login or place')}"></label>
         <label class="cd-field"><span>${t('Роль', 'Role')}</span><select class="cd-input" data-input="teamRole"><option value="all">${t('Все роли', 'All roles')}</option>${Object.keys(ROLES).map((r) => `<option value="${r}" ${S.teamRole === r ? 'selected' : ''}>${t(...ROLES[r])}</option>`).join('')}</select></label></div>
       <table class="cd-table cd-collapse"><thead><tr><th>${t('Сотрудник', 'Staff member')}</th><th>${t('Роль', 'Role')}</th><th>${t('Заведения', 'Places')}</th><th style="text-align:right">${t('Доступ', 'Access')}</th></tr></thead><tbody>
       ${list.map((m) => { const i = team.indexOf(m); const open = S.teamOpen === i; const rights = m.rights || ROLE_RIGHTS[m.role];
         return `<tr class="${m.fresh ? 'cd-new' : ''}"><td><div style="display:flex;gap:12px;align-items:center"><span class="cd-ava">${esc(t(m.ru, m.en)[0])}</span><div><b>${esc(t(m.ru, m.en))}${m.me ? ` ${t('(вы)', '(you)')}` : ''}</b><small>${m.login} · ${m.last ? `${t('последний вход', 'last sign-in')} ${t(...m.last)}` : t('ещё не входил', 'not signed in yet')}</small></div></div></td>
-          <td><span class="cd-role">${t(...ROLES[m.role])}</span></td><td class="cd-hide-phone">${placeOf(m)}</td><td style="text-align:right">${m.me ? `<span class="cd-note">${t('Полный доступ', 'Full access')}</span>` : `<button type="button" class="cd-btn" data-act="team-open" data-v="${i}">${open ? t('Готово', 'Done') : t('Настроить', 'Set up')}</button>`}</td></tr>
+          <td><span class="cd-role">${t(...ROLES[m.role])}</span></td><td class="cd-hide-phone">${placeOf(m)}</td><td style="text-align:right">${m.me ? `<span class="cd-note">${t('Полный доступ', 'Full access')}</span>` : ibtn(open ? 'check' : 'gear', open ? t('Готово', 'Done') : t('Настроить права', 'Set up rights'), `data-act="team-open" data-v="${i}"`, open ? 'cd-ibtn-ink' : '')}</td></tr>
           ${open ? `<tr><td colspan="4"><div class="cd-rights">${RIGHTS.map((r, ri) => `<label class="cd-check"><input type="checkbox" data-input="right" data-v="${i}:${ri}" ${rights.includes(ri) ? 'checked' : ''}>${t(...r)}</label>`).join('')}</div><small class="cd-note">${t('Права меняются сразу. Пароль и ключ для входа выдаются здесь же.', 'Rights change at once. Password and sign-in key are issued here too.')}</small></td></tr>` : ''}`; }).join('')}</tbody></table>
       <p class="cd-note" style="margin-top:16px">▸ ${t('Доступ курьеров к доставке — в «Гласео Курьер»', 'Couriers\' delivery access — in Glaseo Courier')}</p>`;
   }
