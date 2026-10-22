@@ -225,7 +225,7 @@ textarea.cd-input{min-height:96px;resize:vertical}
 .cd-slot[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--ink)}
 .cd-slot-info{margin-top:14px}
 
-/* The phone layout. Header holds only the place; sections go to the bottom bar and the «Ещё» sheet, as in the cabinet. */
+/* The phone layout. Header holds only the place; sections go to the bottom bar and the «Еще» sheet, as in the cabinet. */
 .cab-stage[data-view="phone"] .cd-app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;grid-template-areas:"top" "main" "tab"}
 .cab-stage[data-view="phone"] .cd-top{padding:6px 10px;gap:8px;border-bottom:1px solid var(--line)}
 .cab-stage[data-view="phone"] .cd-brand,.cab-stage[data-view="phone"] .cd-top-right,.cab-stage[data-view="phone"] .cd-nav{display:none}

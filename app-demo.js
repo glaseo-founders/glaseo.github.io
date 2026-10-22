@@ -51,9 +51,9 @@
       { id: 'c5', n: ['Тыквенный пирог', 'Pumpkin pie'], d: ['С корицей и грецким орехом', 'With cinnamon and walnut'], k: '320 · 5 · 14 · 44', s: ['140 г', '140 g'], p: 280 },
     ],
     bakery: [
-      { id: 'b1', n: ['Багет на закваске', 'Sourdough baguette'], d: ['Печём к 8 утра', 'Out of the oven by 8 am'], k: '250 · 8 · 1 · 50', s: ['250 г', '250 g'], p: 120 },
+      { id: 'b1', n: ['Багет на закваске', 'Sourdough baguette'], d: ['Печем к 8 утра', 'Out of the oven by 8 am'], k: '250 · 8 · 1 · 50', s: ['250 г', '250 g'], p: 120 },
       { id: 'b2', n: ['Круассан', 'Croissant'], d: ['Сливочный', 'Butter'], k: '290 · 6 · 16 · 31', s: ['70 г', '70 g'], p: 150 },
-      { id: 'b3', n: ['Ватрушка с творогом', 'Curd bun'], d: ['Тёплая до обеда', 'Warm until lunch'], k: '260 · 10 · 9 · 34', s: ['100 г', '100 g'], p: 110 },
+      { id: 'b3', n: ['Ватрушка с творогом', 'Curd bun'], d: ['Теплая до обеда', 'Warm until lunch'], k: '260 · 10 · 9 · 34', s: ['100 г', '100 g'], p: 110 },
     ],
   };
   const DISH = Object.fromEntries(Object.values(MENUS).flat().map((d) => [d.id, d]));
@@ -98,7 +98,7 @@
   function postCard(p) {
     const pl = placeOf(p.place);
     const kicker = KIND[p.kind] ? `<p class="rd-kicker">${T(KIND[p.kind])}${p.until ? ` · ${T(p.until)}` : ''}</p>` : '';
-    return `<article class="rd-post"><div class="rd-post-head"><span class="rd-ava ${p.place === 'cafe' ? '' : 'rd-ava-line'}">${T(pl.logo)}</span><div><b>${T(pl.name)}</b><small>${T(p.ago)}</small></div><button type="button" class="rd-more" data-act="post" data-v="${p.id}" aria-label="${t('Ещё', 'More')}">···</button></div>
+    return `<article class="rd-post"><div class="rd-post-head"><span class="rd-ava ${p.place === 'cafe' ? '' : 'rd-ava-line'}">${T(pl.logo)}</span><div><b>${T(pl.name)}</b><small>${T(p.ago)}</small></div><button type="button" class="rd-more" data-act="post" data-v="${p.id}" aria-label="${t('Еще', 'More')}">···</button></div>
       ${kicker}<div class="rd-post-body"><div><h3>${T(p.title)}</h3><p>${T(p.text)}</p></div>${p.img ? `<img class="rd-thumb" src="assets/proto/${p.img}.jpg" alt="" loading="lazy">` : ''}</div>
       <div class="rd-post-foot"><u data-act="post" data-v="${p.id}">${t('Подробнее', 'More')}</u>${p.kind !== 'news' ? `<button type="button" class="rd-icon-btn" data-act="like" data-v="${p.id}" aria-pressed="${S.liked.has(p.id)}" aria-label="${t('Интересно', 'Interested')}">${icon('heart')}</button><button type="button" class="rd-icon-btn" data-act="dislike" data-v="${p.id}" aria-pressed="${S.disliked.has(p.id)}" aria-label="${t('Не интересно', 'Not interested')}">${icon('down')}</button>` : ''}<span class="rd-views">${icon('eye')}${p.views + (S.liked.has(p.id) ? 1 : 0)}</span></div></article>`;
   }
@@ -165,7 +165,7 @@
       head: backHead(t('Места', 'Places')),
       body: `<div class="rd-pad"><div class="rd-place-top"><span class="rd-ava">${T(p.logo)}</span><div><h2>${T(p.name)}</h2><small>${p.cats.map((c) => T(CAT_NAME[c])).join(' · ')}</small><b>${hoursText(p)}</b></div></div>
         <button type="button" class="rd-btn ${followed ? 'rd-btn-line' : 'rd-btn-ink'} rd-btn-wide" data-act="follow" data-v="${id}">${followed ? t('Вы подписаны', 'Following') : t('Подписаться', 'Follow')}</button>
-        <div class="rd-actions"><button type="button" data-act="write" data-v="${id}">${icon('chat')}${t('Чат', 'Chat')}</button><button type="button" data-act="toast" data-v="call">${icon('phone')}${t('Звонок', 'Call')}</button><button type="button" data-act="route" data-v="${id}">${icon('route')}${t('Маршрут', 'Route')}</button><button type="button" data-act="toast" data-v="more">${icon('more')}${t('Ещё', 'More')}</button></div>
+        <div class="rd-actions"><button type="button" data-act="write" data-v="${id}">${icon('chat')}${t('Чат', 'Chat')}</button><button type="button" data-act="toast" data-v="call">${icon('phone')}${t('Звонок', 'Call')}</button><button type="button" data-act="route" data-v="${id}">${icon('route')}${t('Маршрут', 'Route')}</button><button type="button" data-act="toast" data-v="more">${icon('more')}${t('Еще', 'More')}</button></div>
         ${p.bonus ? `<div class="rd-bonus"><i>${icon('gift')}</i><div><b>${t('Бонусы заведения', 'The place\'s bonuses')}</b><small>${T(p.bonus)}</small></div><span data-act="tab" data-v="profile" style="cursor:pointer" aria-label="${t('Карта гостя', 'Guest card')}">${icon('chev')}</span></div>` : ''}
         <div class="rd-tabrow">${tabs.map(([v, l]) => `<button type="button" data-act="ptab" data-v="${v}" aria-pressed="${S.ptab === v}">${T(l)}</button>`).join('')}</div>${content}</div>`,
       foot: bar,
@@ -183,7 +183,7 @@
         <p class="rd-sec">${t('Куда привезти', 'Where to deliver')}</p><input class="rd-input rd-input-box" data-input="addr" value="${esc(S.addr)}" placeholder="${t('Улица и дом', 'Street and house')}">
         <div class="rd-addr">${ADDR.map((a) => `<button type="button" data-act="addr" data-v="${esc(T(a))}" aria-pressed="${S.addr === T(a)}">${T(a)}</button>`).join('')}</div>
         <p class="rd-note" style="margin-top:10px">${t('Цена доставки зависит от адреса.', 'The delivery price depends on the address.')}</p>
-        <p class="rd-note" style="margin-top:12px">${t('Заведение проверит заказ и пришлёт в чат счёт со ссылкой или QR для оплаты. Гласео деньги не принимает.', 'The place checks the order and sends an invoice with a link or QR to the chat. Glaseo takes no money.')}</p></div>`,
+        <p class="rd-note" style="margin-top:12px">${t('Заведение проверит заказ и пришлет в чат счет со ссылкой или QR для оплаты. Гласео деньги не принимает.', 'The place checks the order and sends an invoice with a link or QR to the chat. Glaseo takes no money.')}</p></div>`,
       foot: `<div class="rd-cartbar"><div><b>${n} ${t('поз.', 'items')} · ${money(sum)}</b>${S.addr.trim() ? `<small>${esc(S.addr)}</small>` : `<small class="rd-down">${t('Укажи адрес доставки', 'Enter a delivery address')}</small>`}</div><button type="button" class="rd-btn rd-btn-red" data-act="send-order" ${S.addr.trim() && n ? '' : 'disabled'}>${t('Отправить', 'Send')}</button></div>`,
     };
   }
@@ -227,7 +227,7 @@
   }
 
   function chatState(c) {
-    if (c.kind === 'order') return c.state === 'sent' ? ['warn', t('Заказ отправлен', 'Order sent')] : c.state === 'invoice' ? ['wait', t('Ждёт оплаты', 'Awaiting payment')] : c.state === 'done' ? ['good', t('Доставлен', 'Delivered')] : ['good', t('Оплачен', 'Paid')];
+    if (c.kind === 'order') return c.state === 'sent' ? ['warn', t('Заказ отправлен', 'Order sent')] : c.state === 'invoice' ? ['wait', t('Ждет оплаты', 'Awaiting payment')] : c.state === 'done' ? ['good', t('Доставлен', 'Delivered')] : ['good', t('Оплачен', 'Paid')];
     if (c.kind === 'booking') return ['good', t('Записан', 'Booked')];
     return ['', t('Прочитано', 'Read')];
   }
@@ -252,9 +252,9 @@
     return {
       head: tabHead(t('Твой профиль', 'Your profile')),
       body: `<div class="rd-pad"><div class="rd-me-top"><span class="rd-ava">${t('А', 'A')}</span><div><h2>${t('Алексей', 'Alexey')}</h2><small>+7 999 123-45-67</small></div></div>
-        <p class="rd-label">${t('Моё', 'Mine')}</p><div class="rd-group">${row('card', '', 'gift', t('Карта гостя и бонусы', 'Guest card and bonuses'), t('Код для кассы, баллы и штампы заведений', 'Code for the till, points and stamps of places'))}${row('subs', '', 'heart', t('Мои подписки', 'Following'), '', subs || t('нет', 'none'))}${row('toast', 'addr', 'pin', t('Адреса доставки', 'Delivery addresses'), '', S.saved.length || t('нет', 'none'))}</div>
+        <p class="rd-label">${t('Мое', 'Mine')}</p><div class="rd-group">${row('card', '', 'gift', t('Карта гостя и бонусы', 'Guest card and bonuses'), t('Код для кассы, баллы и штампы заведений', 'Code for the till, points and stamps of places'))}${row('subs', '', 'heart', t('Мои подписки', 'Following'), '', subs || t('нет', 'none'))}${row('toast', 'addr', 'pin', t('Адреса доставки', 'Delivery addresses'), '', S.saved.length || t('нет', 'none'))}</div>
         <p class="rd-label">${t('Настройки', 'Settings')}</p><div class="rd-group">${row('notify', '', 'bell', t('Уведомления', 'Notifications'), '', S.notify ? t('Включены', 'On') : t('Выключены', 'Off'))}${row('city', '', 'filter', t('Город и любимые категории', 'City and favourite categories'), '', t('Иннополис', 'Innopolis'))}${row('theme', '', 'sun', t('Оформление', 'Appearance'), '', t('Системная', 'System'))}${row('lang', '', 'globe', t('Язык', 'Language'), '', t('Русский', 'English'))}</div>
-        <p class="rd-label">${t('Помощь', 'Help')}</p><div class="rd-group">${row('toast', 'guide', 'help', t('Как всё устроено', 'How it all works'), t('Лента, места, заказы, адреса и чаты', 'Feed, places, orders, addresses and chats'))}${row('toast', 'support', 'support', t('Поддержка', 'Support'), t('Вопросы команде Гласео и твои жалобы', 'Questions to the Glaseo team and your complaints'))}</div></div>`,
+        <p class="rd-label">${t('Помощь', 'Help')}</p><div class="rd-group">${row('toast', 'guide', 'help', t('Как все устроено', 'How it all works'), t('Лента, места, заказы, адреса и чаты', 'Feed, places, orders, addresses and chats'))}${row('toast', 'support', 'support', t('Поддержка', 'Support'), t('Вопросы команде Гласео и твои жалобы', 'Questions to the Glaseo team and your complaints'))}</div></div>`,
     };
   }
   // A QR-looking pattern: three finder squares and a fixed scatter, enough to look like a code without being one.
@@ -310,7 +310,7 @@
     call: t('Здесь откроется звонок в заведение.', 'This opens a call to the place.'), more: t('Поделиться, адрес и сообщить о проблеме.', 'Share, address and report a problem.'),
     less: t('Покажем меньше похожего.', 'We will show less like this.'), zoom: t('На настоящей карте — весь Иннополис.', 'The real map covers all of Innopolis.'),
     support: t('Поддержка отвечает в чате и на support@glaseo.tech.', 'Support answers in the chat and at support@glaseo.tech.'), guide: t('Короткая справка по каждому экрану.', 'A short guide to each screen.'),
-    addr: t('Адреса сохраняются после первого заказа.', 'Addresses are saved after the first order.'), theme: t('Светлая, тёмная или как в системе — и размер текста.', 'Light, dark or system — and text size.'),
+    addr: t('Адреса сохраняются после первого заказа.', 'Addresses are saved after the first order.'), theme: t('Светлая, темная или как в системе — и размер текста.', 'Light, dark or system — and text size.'),
   });
 
   // ---------- Life of an order and a booking ----------
@@ -318,8 +318,8 @@
   function addMsg(c, k, text, extra) { c.msgs.push({ k, text, at: clock(), ...extra }); if (S.chats[S.chat] !== c || current() !== 'chat') c.unread = true; }
   const later = (ms, fn) => setTimeout(() => { fn(); render(true); }, ms);
   function runOrder(c) {
-    later(1500, () => { addMsg(c, 'in', ['Здравствуйте! Заказ проверили, всё есть. Доставка — 100 ₽.', 'Hello! We checked the order, everything is in stock. Delivery is 100 ₽.']); c.sum += 100; c.state = 'invoice';
-      addMsg(c, 'sys', ['Счёт на оплату: ссылка банка заведения или QR', 'Invoice: the place\'s bank link or QR'], { pay: true }); });
+    later(1500, () => { addMsg(c, 'in', ['Здравствуйте! Заказ проверили, все есть. Доставка — 100 ₽.', 'Hello! We checked the order, everything is in stock. Delivery is 100 ₽.']); c.sum += 100; c.state = 'invoice';
+      addMsg(c, 'sys', ['Счет на оплату: ссылка банка заведения или QR', 'Invoice: the place\'s bank link or QR'], { pay: true }); });
   }
   function afterPay(c) {
     addMsg(c, 'sys', ['Оплачено — деньги ушли заведению напрямую', 'Paid — the money went straight to the place']); c.state = 'paid';
@@ -345,7 +345,7 @@
       case 'mcat': return;
       case 'pf': if (S.pf.has(v)) S.pf.delete(v); else S.pf.add(v); render(true); return;
       case 'post': S.sheet = Number(v); render(true); return;
-      case 'like': { const id = Number(v); if (S.liked.has(id)) S.liked.delete(id); else { S.liked.add(id); S.disliked.delete(id); toast(t('Напомним, когда событие начнётся.', 'We will remind you when it starts.')); } render(true); return; }
+      case 'like': { const id = Number(v); if (S.liked.has(id)) S.liked.delete(id); else { S.liked.add(id); S.disliked.delete(id); toast(t('Напомним, когда событие начнется.', 'We will remind you when it starts.')); } render(true); return; }
       case 'dislike': { const id = Number(v); if (S.disliked.has(id)) S.disliked.delete(id); else { S.disliked.add(id); S.liked.delete(id); toast(TOASTS().less); } render(true); return; }
       case 'soonlike': { const k = `s${v}`; if (S.liked.has(k)) S.liked.delete(k); else { S.liked.add(k); toast(t('Напомним в день выхода.', 'We will remind you on the day.')); } render(true); return; }
       case 'place': S.place = v; S.ptab = 'news'; S.pin = null; if (current() === 'place') S.stack.pop(); open('place'); return;
@@ -374,7 +374,7 @@
         const c = { place: 'workshop', kind: 'booking', msgs: [], fresh: true };
         addMsg(c, 'sys', [`Запись: ${d[0].toLowerCase()}, ${d[2]} октября, ${S.book.time} · ${m[0]} · Подготовка велосипеда к зиме`, `Booking: ${d[1]}, ${d[2]} October, ${S.book.time} · ${m[1]} · Winter bike service`]);
         S.chats.unshift(c); S.chat = 0; S.tab = 'chats'; S.stack = ['chat']; render();
-        later(1500, () => addMsg(c, 'in', ['Ждём вас! Если планы поменяются — напишите здесь.', 'See you! If your plans change, write here.']));
+        later(1500, () => addMsg(c, 'in', ['Ждем вас! Если планы поменяются — напишите здесь.', 'See you! If your plans change, write here.']));
         toast(t('Ты записан — запись уже у мастера.', 'You are booked — the specialist already has it.')); return;
       }
       case 'write': { let i = S.chats.findIndex((c) => c.place === v && c.kind === 'talk'); if (i < 0) { S.chats.unshift({ place: v, kind: 'talk', msgs: [{ k: 'sys', text: ['Напиши месту — ответит сотрудник', 'Write to the place — a staff member answers'] }] }); i = 0; } S.chat = i; S.tab = 'chats'; S.stack = ['chat']; render(); root.querySelector('[data-input="say"]')?.focus(); return; }

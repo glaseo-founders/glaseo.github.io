@@ -50,15 +50,15 @@
 
   const posts = [
     { id: 1, st: 'owner', ru: 'Тыквенный латте вернулся', en: 'Pumpkin latte is back', kind: 'news', when: ['сегодня', 'today'], text: ['С понедельника снова варим тыквенный латте — с корицей и мускатом.', 'From Monday we brew pumpkin latte again — with cinnamon and nutmeg.'], views: 0 },
-    { id: 2, st: 'review', ru: 'Книжный вечер у воды', en: 'Book evening by the water', kind: 'event', when: ['24 октября', '24 October'], text: ['Читаем вслух и пьём какао. Вход свободный, места у окна — первым.', 'Reading aloud with cocoa. Free entry, window seats go first.'], views: 0 },
+    { id: 2, st: 'review', ru: 'Книжный вечер у воды', en: 'Book evening by the water', kind: 'event', when: ['24 октября', '24 October'], text: ['Читаем вслух и пьем какао. Вход свободный, места у окна — первым.', 'Reading aloud with cocoa. Free entry, window seats go first.'], views: 0 },
     { id: 3, st: 'scheduled', ru: 'Завтраки до 12:00', en: 'Breakfast until 12:00', kind: 'offer', when: ['выйдет 22 октября в 08:00', 'goes out 22 October at 08:00'], text: ['Сырники, каша и яйца по-турецки — по будням до полудня.', 'Syrniki, porridge and Turkish eggs — weekdays until noon.'], views: 0 },
     { id: 4, st: 'published', ru: 'Новое сезонное меню', en: 'New seasonal menu', kind: 'news', when: ['18 октября', '18 October'], text: ['Матча с жасмином, клубника-базилик и холодный тоник с цитрусами.', 'Jasmine matcha, strawberry-basil and a cold citrus tonic.'], views: 1480, opens: 312, likes: 96 },
     { id: 5, st: 'published', ru: 'Второй кофе в подарок до 10:00', en: 'Second coffee free before 10:00', kind: 'offer', when: ['15 октября', '15 October'], text: ['По будням до десяти утра к любому завтраку — второй фильтр-кофе бесплатно.', 'Weekdays before ten — a second filter coffee free with any breakfast.'], views: 2112, opens: 498, likes: 171 },
     { id: 6, st: 'draft', ru: 'Осенние десерты', en: 'Autumn desserts', kind: 'news', when: ['12 октября', '12 October'], text: ['Тыквенный пирог и яблочный крамбл.', 'Pumpkin pie and apple crumble.'], views: 0 },
-    { id: 7, st: 'archived', ru: 'Летняя веранда открыта', en: 'The summer terrace is open', kind: 'news', when: ['20 сентября', '20 September'], text: ['Ждём вас на веранде до конца сентября.', 'See you on the terrace until the end of September.'], views: 3904, opens: 640, likes: 233 },
+    { id: 7, st: 'archived', ru: 'Летняя веранда открыта', en: 'The summer terrace is open', kind: 'news', when: ['20 сентября', '20 September'], text: ['Ждем вас на веранде до конца сентября.', 'See you on the terrace until the end of September.'], views: 3904, opens: 640, likes: 233 },
   ];
   const POST_ST = {
-    owner: ['Ждёт решения владельца', 'Awaiting owner', 'wait'], review: ['На проверке гласео', 'In glaseo review', 'wait'],
+    owner: ['Ждет решения владельца', 'Awaiting owner', 'wait'], review: ['На проверке гласео', 'In glaseo review', 'wait'],
     scheduled: ['Запланирована', 'Scheduled', ''], published: ['Опубликовано', 'Published', 'good'], draft: ['Черновик', 'Draft', ''],
     archived: ['В архиве', 'Archived', ''],
   };
@@ -70,11 +70,11 @@
   const chats = [
     { id: 'anna', ru: 'Анна', en: 'Anna', addr: ['Университетская, 7, кв. 12', 'Universitetskaya 7, apt 12'], at: '12:04', order: 24, msgs: [
       ['sys', 'Заказ № 24: Капучино 0,3 — 250 ₽, Сырники со сметаной — 390 ₽', 'Order No. 24: Cappuccino 0.3 — 250 ₽, Syrniki with sour cream — 390 ₽'],
-      ['in', 'Здравствуйте! Сырники можно со сгущёнкой вместо сметаны?', 'Hello! Could I have the syrniki with condensed milk instead of sour cream?'],
+      ['in', 'Здравствуйте! Сырники можно со сгущенкой вместо сметаны?', 'Hello! Could I have the syrniki with condensed milk instead of sour cream?'],
     ], replies: [['Спасибо! Оплатила 🙌', 'Thank you! Paid 🙌']] },
     { id: 'olga', ru: 'Ольга', en: 'Olga', addr: ['Квантовый бульвар, 3', 'Kvantovy Boulevard 3'], at: '11:40', order: 23, msgs: [
       ['sys', 'Заказ № 23: Матча с жасмином ×2, Круассан, Тыквенный пирог', 'Order No. 23: Jasmine matcha ×2, Croissant, Pumpkin pie'],
-      ['sys', 'Счёт выставлен: 1 120 ₽', 'Invoice sent: 1,120 ₽'],
+      ['sys', 'Счет выставлен: 1 120 ₽', 'Invoice sent: 1,120 ₽'],
       ['in', 'Сейчас оплачу, через 20 минут буду дома', 'Paying now, I will be home in 20 minutes'],
     ], replies: [] },
     { id: 'marat', ru: 'Марат', en: 'Marat', addr: ['Спортивная, 114', 'Sportivnaya 114'], at: '10:12', order: null, msgs: [
@@ -82,7 +82,7 @@
     ], replies: [['Отлично, тогда записался на 12:30. До субботы!', 'Great, booked 12:30 then. See you Saturday!']], waiting: true },
     { id: 'dina', ru: 'Дина', en: 'Dina', addr: ['Университетская, 1', 'Universitetskaya 1'], at: '19.10', order: 19, msgs: [
       ['sys', 'Заказ № 19 доставлен', 'Order No. 19 delivered'],
-      ['in', 'Всё очень вкусно, спасибо курьеру!', 'Everything was delicious, thanks to the courier!'],
+      ['in', 'Все очень вкусно, спасибо курьеру!', 'Everything was delicious, thanks to the courier!'],
     ], replies: [] },
   ];
   const orders = [
@@ -94,14 +94,14 @@
   const STEPS = [['Оплата', 'Payment'], ['Готовим', 'Cooking'], ['Готов', 'Ready'], ['Курьер', 'Courier'], ['Доставлен', 'Delivered']];
   const NEXT = [['Готовим', 'Cooking'], ['Готово', 'Ready'], ['Курьер', 'Courier'], ['Доставлен', 'Delivered']];
   const orderBadge = (o) => (o.step >= 4 ? badge(t('Доставлен', 'Delivered'), 'good')
-    : o.pay === 'new' ? badge(t('Новый заказ', 'New order'), 'warn') : o.pay === 'wait' ? badge(t('Ждёт оплаты', 'Awaiting payment'), 'wait') : badge(t('Оплачен', 'Paid'), 'good'));
+    : o.pay === 'new' ? badge(t('Новый заказ', 'New order'), 'warn') : o.pay === 'wait' ? badge(t('Ждет оплаты', 'Awaiting payment'), 'wait') : badge(t('Оплачен', 'Paid'), 'good'));
   const chatState = (c) => {
     const o = orders.find((x) => x.n === c.order);
-    if (c.waiting) return ['warn', t('Ждёт ответа', 'Awaiting reply')];
+    if (c.waiting) return ['warn', t('Ждет ответа', 'Awaiting reply')];
     if (!o) return ['', t('Прочитано', 'Read')];
     if (o.step >= 4) return ['good', t('Доставлен', 'Delivered')];
     if (o.pay === 'new') return ['warn', t('Новый заказ', 'New order')];
-    if (o.pay === 'wait') return ['wait', t('Ждёт оплаты', 'Awaiting payment')];
+    if (o.pay === 'wait') return ['wait', t('Ждет оплаты', 'Awaiting payment')];
     return ['good', t('Оплачен', 'Paid')];
   };
   const needs = () => chats.filter((c) => ['warn', 'wait'].includes(chatState(c)[0])).length;
@@ -110,7 +110,7 @@
   const DAYS = [['Вт', 'Tue', 20], ['Ср', 'Wed', 21], ['Чт', 'Thu', 22], ['Пт', 'Fri', 23], ['Сб', 'Sat', 24], ['Вс', 'Sun', 25], ['Пн', 'Mon', 26]];
   const MASTERS = [['Вера', 'Vera'], ['Илья', 'Ilya']];
   const HOURS = ['10:00', '11:00', '12:30', '14:00', '15:30', '17:00', '18:30'];
-  const SERVICES = { art: ['Мастер-класс по латте-арту', 'Latte art workshop', 1500], cup: ['Каппинг: кофе трёх стран', 'Cupping: coffee from three countries', 1200], alt: ['Альтернативное заваривание', 'Alternative brewing', 1300] };
+  const SERVICES = { art: ['Мастер-класс по латте-арту', 'Latte art workshop', 1500], cup: ['Каппинг: кофе трех стран', 'Cupping: coffee from three countries', 1200], alt: ['Альтернативное заваривание', 'Alternative brewing', 1300] };
   const bookings = {
     '0-0-10:00': ['Елена', 'Elena', 'cup'], '0-1-14:00': ['Игорь', 'Igor', 'alt'], '1-0-11:00': ['Дина', 'Dina', 'art'], '2-1-17:00': ['Ксения', 'Ksenia', 'alt'],
     '3-0-15:30': ['Тимур', 'Timur', 'cup'], '4-0-10:00': ['Ольга', 'Olga', 'cup'], '4-1-11:00': ['Рената', 'Renata', 'alt'], '4-0-15:30': ['Алексей', 'Alexey', 'art'],
@@ -137,10 +137,10 @@
     { id: 2, type: 'menu', ru: ['Капучино', 'Двойной эспрессо и молоко'], en: ['Cappuccino', 'Double espresso and milk'], kbju: [120, 6, '6,5', 9], size: ['300 мл', '300 ml'], price: 290 },
     { id: 3, type: 'menu', ru: ['Матча с жасмином', 'Горячая или со льдом'], en: ['Jasmine matcha', 'Hot or iced'], kbju: [180, '6,5', 7, 22], size: ['350 мл', '350 ml'], price: 390 },
     { id: 4, type: 'menu', ru: ['Сырники со сметаной', 'И сезонное варенье'], en: ['Syrniki with sour cream', 'And seasonal jam'], kbju: [410, 24, '18,5', 37], size: ['180 г', '180 g'], price: 390 },
-    { id: 5, type: 'menu', ru: ['Круассан', 'Сливочный, печём утром'], en: ['Croissant', 'Butter, baked in the morning'], kbju: null, size: null, price: 210 },
+    { id: 5, type: 'menu', ru: ['Круассан', 'Сливочный, печем утром'], en: ['Croissant', 'Butter, baked in the morning'], kbju: null, size: null, price: 210 },
     { id: 6, type: 'menu', ru: ['Тыквенный пирог', 'С корицей и грецким орехом'], en: ['Pumpkin pie', 'With cinnamon and walnut'], kbju: [320, 5, 14, 44], size: ['140 г', '140 g'], price: 280 },
     { id: 7, type: 'service', ru: ['Мастер-класс по латте-арту', 'Сердце, тюльпан и розетта'], en: ['Latte art workshop', 'Heart, tulip and rosetta'], dur: 60, price: 1500 },
-    { id: 8, type: 'service', ru: ['Каппинг: кофе трёх стран', 'Эфиопия, Колумбия, Бразилия'], en: ['Cupping: coffee from three countries', 'Ethiopia, Colombia, Brazil'], dur: 90, price: 1200 },
+    { id: 8, type: 'service', ru: ['Каппинг: кофе трех стран', 'Эфиопия, Колумбия, Бразилия'], en: ['Cupping: coffee from three countries', 'Ethiopia, Colombia, Brazil'], dur: 90, price: 1200 },
   ];
 
   const team = [
@@ -184,32 +184,32 @@
   const INSIGHTS = () => [
     ['→', t('Лучшее время для следующей публикации — суббота, 08:30–09:30', 'The best time for your next post is Saturday, 08:30–09:30'), t('Через час после этого ваша аудитория активнее всего: публикация успеет подняться в ленте.', 'An hour later your audience is at its most active: the post has time to rise in the feed.')],
     ['▲', t('Акции со скидкой дают на 23 % больше целевых действий', 'Discount offers bring 23% more key actions'), t('Маршрутов, звонков и открытий меню на одну публикацию больше, чем у новостей.', 'More routes, calls and menu opens per post than news brings.')],
-    ['▼', t('Меню открывают, но до заказа доходят реже', 'People open the menu but order less often'), t('У трёх позиций нет фото и веса — добавьте их, это поднимает заказы.', 'Three items have no photo or weight — add them, it lifts orders.'), 'down'],
+    ['▼', t('Меню открывают, но до заказа доходят реже', 'People open the menu but order less often'), t('У трех позиций нет фото и веса — добавьте их, это поднимает заказы.', 'Three items have no photo or weight — add them, it lifts orders.'), 'down'],
   ];
   const insights = (list) => `<ul class="cd-insights">${list.map(([mark, title, note, dir]) => `<li><i class="${dir === 'down' ? 'cd-down' : ''}">${mark}</i><div><b>${title}</b><small>${note}</small></div></li>`).join('')}</ul>`;
 
   const TASKS = {
-    order: () => [t('Анна · новый заказ', 'Anna · new order'), t('№ 24 · 2 поз. · 640 ₽', 'No. 24 · 2 items · 640 ₽'), t('Счёт', 'Invoice'), 'chat:anna'],
-    pay: () => [t('Ольга · ждёт оплаты', 'Olga · awaiting payment'), t('№ 23 · 4 поз. · 1 120 ₽', 'No. 23 · 4 items · 1,120 ₽'), t('Ответить', 'Reply'), 'chat:olga'],
+    order: () => [t('Анна · новый заказ', 'Anna · new order'), t('№ 24 · 2 поз. · 640 ₽', 'No. 24 · 2 items · 640 ₽'), t('Счет', 'Invoice'), 'chat:anna'],
+    pay: () => [t('Ольга · ждет оплаты', 'Olga · awaiting payment'), t('№ 23 · 4 поз. · 1 120 ₽', 'No. 23 · 4 items · 1,120 ₽'), t('Ответить', 'Reply'), 'chat:olga'],
     marat: () => [t('Марат', 'Marat'), t('Добрый день! Можно записаться на мастер-класс по латте-арту в субботу?', 'Good afternoon! Can I sign up for the latte art workshop on Saturday?'), t('Ответить', 'Reply'), 'chat:marat'],
-    post: () => [t('Тыквенный латте вернулся', 'Pumpkin latte is back'), t('Публикация сотрудника ждёт вашего решения', 'A staff post is waiting for your decision'), t('Выпустить', 'Release'), 'release:1', true],
+    post: () => [t('Тыквенный латте вернулся', 'Pumpkin latte is back'), t('Публикация сотрудника ждет вашего решения', 'A staff post is waiting for your decision'), t('Выпустить', 'Release'), 'release:1', true],
   };
 
   function paneHome() {
     const list = tasks.map((id) => { const [title, sub, btn, act, red] = TASKS[id](); const [a, v] = act.split(':'); return `<li><div><strong>${title}</strong><small>${esc(sub)}</small></div><button type="button" class="cd-btn ${red ? 'cd-btn-red' : ''}" data-act="${a}" data-v="${v}">${btn}</button></li>`; }).join('');
     const history = [
-      [t('сегодня, 12:10', 'today, 12:10'), t('Выставлен счёт по заказу № 22', 'Invoice sent for order No. 22'), t('Илья Орлов · Оператор заказов', 'Ilya Orlov · Order operator')],
+      [t('сегодня, 12:10', 'today, 12:10'), t('Выставлен счет по заказу № 22', 'Invoice sent for order No. 22'), t('Илья Орлов · Оператор заказов', 'Ilya Orlov · Order operator')],
       [t('сегодня, 09:02', 'today, 09:02'), t('Изменено меню: «Матча с жасмином»', 'Menu changed: Jasmine matcha'), t('Рустам Галиев · Администратор', 'Rustam Galiev · Administrator')],
       [t('вчера, 18:40', 'yesterday, 18:40'), t('Запрошен совет ИИ-маркетолога', 'AI marketer tip requested'), t('Алина Смирнова · Владелец', 'Alina Smirnova · Owner')],
       [t('вчера, 16:15', 'yesterday, 16:15'), t('Новая запись: каппинг, пт 23 октября', 'New booking: cupping, Fri 23 October'), t('Вера Ким · Мастер', 'Vera Kim · Specialist')],
     ];
     return `<p class="cd-eyebrow">${t('Карточка опубликована', 'Page published')}</p><h1 class="cd-h1">${esc(placeName())}</h1>
       <section class="cd-card"><h3>${t('Ждут вас', 'Waiting for you')} <i class="cd-count">${tasks.length || ''}</i></h3>
-        ${tasks.length ? `<ul class="cd-rows">${list}</ul>` : `<p class="cd-note" style="padding-top:10px">${t('Всё сделано. Новые заказы, сообщения и публикации сотрудников появятся здесь.', 'All done. New orders, messages and staff posts will appear here.')}</p>`}</section>
+        ${tasks.length ? `<ul class="cd-rows">${list}</ul>` : `<p class="cd-note" style="padding-top:10px">${t('Все сделано. Новые заказы, сообщения и публикации сотрудников появятся здесь.', 'All done. New orders, messages and staff posts will appear here.')}</p>`}</section>
       <section class="cd-card"><div class="cd-head" style="margin:0"><h3 class="cd-h3">${t('Показатели', 'Figures')}</h3>${periodChips()}</div>${kpis()}</section>
       <section class="cd-card cd-pro-card"><h3><span class="cd-pro">PRO</span> ${t('Аудитория, рынок и что делать дальше', 'Audience, market and what to do next')} <span class="cd-tagline">${t('демо-данные', 'demo data')}</span></h3>
         <p class="cd-note" style="margin:6px 0 8px">${t('Выводы, лучшее время для публикаций, сравнение с похожими заведениями', 'Findings, the best time to post, a comparison with similar places')}</p>${insights(INSIGHTS())}
-        <button type="button" class="cd-btn" data-act="go" data-v="stats-pro" style="margin-top:12px">${t('Открыть отчёт PRO', 'Open the PRO report')}</button></section>
+        <button type="button" class="cd-btn" data-act="go" data-v="stats-pro" style="margin-top:12px">${t('Открыть отчет PRO', 'Open the PRO report')}</button></section>
       <div class="cd-grid3">
         <section><div class="cd-sec-title"><b>${t('Публикации', 'Posts')}</b><small>${t('Последние 20', 'Last 20')}</small></div>
           <button type="button" class="cd-btn cd-btn-red" data-act="go" data-v="compose">+ ${t('Пост', 'Post')}</button>
@@ -239,9 +239,9 @@
       owner: `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="release" data-v="${p.id}">${t('Выпустить', 'Release')}</button>`,
       draft: `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="send" data-v="${p.id}">${t('На проверку', 'To review')}</button>`,
       published: `<button type="button" class="cd-btn cd-btn-big" data-act="unpublish" data-v="${p.id}">${t('Снять', 'Take down')}</button>`,
-      review: `<p class="cd-note">${t('Публикацию читает команда гласео. Решение придёт во «Входящие».', 'The glaseo team is reading the post. The decision will arrive in the Inbox.')}</p>`,
+      review: `<p class="cd-note">${t('Публикацию читает команда гласео. Решение придет во «Входящие».', 'The glaseo team is reading the post. The decision will arrive in the Inbox.')}</p>`,
       scheduled: `<p class="cd-note">${t('Одобрена командой гласео и выйдет сама в назначенное время.', 'Approved by the glaseo team, it goes out by itself at the set time.')}</p>`,
-      archived: `<p class="cd-note">${t('Публикация в архиве места. Жители видят её в карточке, но не в ленте.', 'The post is in the place\'s archive. Residents see it on the page, not in the feed.')}</p>`,
+      archived: `<p class="cd-note">${t('Публикация в архиве места. Жители видят ее в карточке, но не в ленте.', 'The post is in the place\'s archive. Residents see it on the page, not in the feed.')}</p>`,
     };
     return `<button type="button" class="cd-back" data-act="go" data-v="posts">‹ ${t('Публикации', 'Posts')}</button>${postBadge(p)}
       <h1 class="cd-h1" style="font-size:36px;margin-top:12px!important">${esc(t(p.ru, p.en))}</h1><p style="font-size:16px;max-width:640px">${esc(t(...p.text))}</p>
@@ -283,9 +283,9 @@
     const o = c && orders.find((x) => x.n === c.order);
     const [tone, label] = c ? chatState(c) : ['', ''];
     let act = '';
-    if (o && o.step < 4 && o.pay === 'new') act = `<div class="cd-thread-act"><p>${t('Проверьте состав и цену: житель получит счёт и подсказку, как оплатить.', 'Check the items and the price: the resident gets an invoice and a hint on how to pay.')}</p><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="invoice" data-v="${o.n}">${t('Выставить счёт', 'Send invoice')}</button></div>`;
-    else if (o && o.step < 4 && o.pay === 'wait') act = `<div class="cd-thread-act"><p>${t('Счёт у жителя. Оплата приходит вам напрямую — по ссылке или QR вашего банка.', 'The resident has the invoice. Payment comes straight to you — by your bank\'s link or QR.')}</p><button type="button" class="cd-btn cd-btn-big" data-act="paid" data-v="${o.n}">${t('Отметить оплаченным', 'Mark as paid')}</button></div>`;
-    const thread = c ? `<div class="cd-thread-head"><div><button type="button" class="cd-back cd-only-phone" data-act="chat-back" style="margin:0 0 4px">‹ ${t('Чаты', 'Chats')}</button><b>${esc(t(c.ru, c.en))}</b><small>${esc(t(...c.addr))}</small></div>${ibtn('more', t('Ещё: заблокировать жителя', 'More: block the resident'), 'data-act="toast" data-v="block"')}</div>
+    if (o && o.step < 4 && o.pay === 'new') act = `<div class="cd-thread-act"><p>${t('Проверьте состав и цену: житель получит счет и подсказку, как оплатить.', 'Check the items and the price: the resident gets an invoice and a hint on how to pay.')}</p><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="invoice" data-v="${o.n}">${t('Выставить счет', 'Send invoice')}</button></div>`;
+    else if (o && o.step < 4 && o.pay === 'wait') act = `<div class="cd-thread-act"><p>${t('Счет у жителя. Оплата приходит вам напрямую — по ссылке или QR вашего банка.', 'The resident has the invoice. Payment comes straight to you — by your bank\'s link or QR.')}</p><button type="button" class="cd-btn cd-btn-big" data-act="paid" data-v="${o.n}">${t('Отметить оплаченным', 'Mark as paid')}</button></div>`;
+    const thread = c ? `<div class="cd-thread-head"><div><button type="button" class="cd-back cd-only-phone" data-act="chat-back" style="margin:0 0 4px">‹ ${t('Чаты', 'Chats')}</button><b>${esc(t(c.ru, c.en))}</b><small>${esc(t(...c.addr))}</small></div>${ibtn('more', t('Еще: заблокировать жителя', 'More: block the resident'), 'data-act="toast" data-v="block"')}</div>
         ${o ? `<div class="cd-thread-order"><span>${t('Заказ №', 'Order No.')} ${o.n} · ${money(o.sum)}</span>${badge(label, tone)}</div>` : ''}
         <div class="cd-msgs">${c.msgs.map(([k, ru, en, at]) => `<div class="cd-msg cd-msg-${k}">${esc(t(ru, en))}${k === 'sys' ? '' : `<time>${at || c.at}</time>`}</div>`).join('')}</div>
         ${act}<div class="cd-compose-line"><input class="cd-input" data-chat-input placeholder="${t('Сообщение', 'Message')}">${ibtn('send', t('Отправить', 'Send'), `data-act="say" data-v="${c.id}"`, 'cd-ibtn-ink')}</div>`
@@ -301,12 +301,12 @@
     const list = orders.filter((o) => S.orderFilter === 'all' || o.step < 4);
     return `<div class="cd-chips cd-only-phone" style="margin-bottom:12px"><button type="button" aria-pressed="true">${t('Заказы и чаты', 'Orders and chats')} · ${needs()}</button><button type="button" data-act="go" data-v="bookings" aria-pressed="false">${t('Записи', 'Bookings')}</button></div>
       <div class="cd-head cd-head-line cd-head-one"><h1 class="cd-h1">${t('Заказы', 'Orders')}</h1>${ibtn('chat', t('Открыть чаты', 'Open chats'), 'data-act="go" data-v="chats"')}</div>
-      <p class="cd-note" style="margin:16px 0 12px">${t('Заказы через гласео · Доставка. Оплата — напрямую вам, гласео не берёт процент.', 'Orders through glaseo · Delivery. Payment goes straight to you, glaseo takes no percentage.')}</p>
+      <p class="cd-note" style="margin:16px 0 12px">${t('Заказы через гласео · Доставка. Оплата — напрямую вам, гласео не берет процент.', 'Orders through glaseo · Delivery. Payment goes straight to you, glaseo takes no percentage.')}</p>
       <div style="margin-bottom:18px">${chips('orderFilter', [['active', t('Активные', 'Active')], ['all', t('Все', 'All')]], S.orderFilter)}</div>
       ${list.map((o) => {
         let button = '';
-        if (o.step < 4 && o.pay === 'new') button = `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="chat" data-v="${o.chat}">${t('Выставить счёт', 'Send invoice')}</button>`;
-        else if (o.step === 2 && S.courierFor === o.n) button = `<div class="cd-couriers"><span class="cd-note">${t('Кто везёт:', 'Who delivers:')}</span><button type="button" class="cd-btn" data-act="courier" data-v="${o.n}:0">${t('Илья · на смене', 'Ilya · on shift')}</button><button type="button" class="cd-btn" data-act="courier" data-v="${o.n}:1">${t('Рустам · на смене', 'Rustam · on shift')}</button></div>`;
+        if (o.step < 4 && o.pay === 'new') button = `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="chat" data-v="${o.chat}">${t('Выставить счет', 'Send invoice')}</button>`;
+        else if (o.step === 2 && S.courierFor === o.n) button = `<div class="cd-couriers"><span class="cd-note">${t('Кто везет:', 'Who delivers:')}</span><button type="button" class="cd-btn" data-act="courier" data-v="${o.n}:0">${t('Илья · на смене', 'Ilya · on shift')}</button><button type="button" class="cd-btn" data-act="courier" data-v="${o.n}:1">${t('Рустам · на смене', 'Rustam · on shift')}</button></div>`;
         else if (o.step < 4) button = `<button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="advance" data-v="${o.n}">${t(...NEXT[o.step])}</button>`;
         return `<article class="cd-order"><div class="cd-order-head"><div><h3>${t('№', 'No.')} ${o.n}</h3><small>${esc(t(...o.who))} · ${o.at} · ${esc(t(...o.addr))}</small></div><div class="cd-order-sum"><b>${money(o.sum)}</b>${orderBadge(o)}</div></div>
           <ol class="cd-steps">${STEPS.map((s, i) => `<li class="${i < o.step || o.step >= 4 ? 'is-past' : i === o.step ? 'is-now' : ''}">${t(...s)}</li>`).join('')}</ol>
@@ -391,19 +391,19 @@
   const PRO_TABS = () => [['main', t('Главное', 'Main')], ['ai', t('ИИ-маркетолог', 'AI marketer')], ['an', t('Аналитика', 'Analytics')], ['funnel', t('Воронка и действия', 'Funnel and actions')], ['aud', t('Аудитория', 'Audience')], ['market', t('Рынок и спрос', 'Market and demand')], ['ab', t('A/B-тесты', 'A/B tests')], ['pos', t('Касса и промокоды', 'Till and promo codes')]];
   const TIPS = () => [
     [t('Выпустите акцию в субботу в 08:30', 'Release an offer on Saturday at 08:30'), t('В это время подписчики активнее всего, а у похожих кофеен в ленте тихо. Предложение: «Второй кофе в подарок до 10:00».', 'Followers are most active then, and similar cafés are quiet in the feed. Suggestion: "Second coffee free before 10:00".'), t('Второй кофе в подарок до 10:00', 'Second coffee free before 10:00')],
-    [t('Добавьте фото к трём позициям меню', 'Add photos to three menu items'), t('Круассан, сырники и тыквенный пирог открывают чаще всего, но без фото их реже заказывают.', 'Croissant, syrniki and pumpkin pie are opened most, but without photos they are ordered less.'), null],
+    [t('Добавьте фото к трем позициям меню', 'Add photos to three menu items'), t('Круассан, сырники и тыквенный пирог открывают чаще всего, но без фото их реже заказывают.', 'Croissant, syrniki and pumpkin pie are opened most, but without photos they are ordered less.'), null],
     [t('Анонсируйте книжный вечер за 3 дня', 'Announce the book evening 3 days ahead'), t('События с анонсом в блоке «Скоро» собирают на 40 % больше «Интересно».', 'Events announced in "Soon" collect 40% more "Interested".'), t('Книжный вечер у воды — в пятницу', 'Book evening by the water — on Friday')],
   ];
   const bars = (items) => `<ul class="cd-bars">${items.map(([label, value, max]) => `<li><span>${label}</span><b>${num(value)}</b><i><b style="width:${Math.round((value / max) * 100)}%"></b></i></li>`).join('')}</ul>`;
   function proBody() {
     switch (S.proTab) {
       case 'ai': { const [title, text, post] = TIPS()[S.tip]; return `<section class="cd-card" style="background:var(--paper)"><p class="cd-eyebrow">${t('Совет на сегодня', 'Today\'s tip')}</p><h3 class="cd-h3" style="font-size:22px;margin:8px 0">${title}</h3><p>${text}</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">${post ? `<button type="button" class="cd-btn cd-btn-red" data-act="tip-post">${t('Создать публикацию из совета', 'Create a post from the tip')}</button>` : `<button type="button" class="cd-btn cd-btn-red" data-act="go" data-v="menu">${t('Открыть меню', 'Open the menu')}</button>`}<button type="button" class="cd-btn" data-act="tip">${t('Ещё совет', 'Another tip')}</button></div></section>`; }
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">${post ? `<button type="button" class="cd-btn cd-btn-red" data-act="tip-post">${t('Создать публикацию из совета', 'Create a post from the tip')}</button>` : `<button type="button" class="cd-btn cd-btn-red" data-act="go" data-v="menu">${t('Открыть меню', 'Open the menu')}</button>`}<button type="button" class="cd-btn" data-act="tip">${t('Еще совет', 'Another tip')}</button></div></section>`; }
       case 'an': return bars([[t('Понедельник', 'Monday'), 410, 980], [t('Вторник', 'Tuesday'), 465, 980], [t('Среда', 'Wednesday'), 520, 980], [t('Четверг', 'Thursday'), 498, 980], [t('Пятница', 'Friday'), 760, 980], [t('Суббота', 'Saturday'), 980, 980], [t('Воскресенье', 'Sunday'), 702, 980]]);
       case 'funnel': return bars([[t('Показы в ленте', 'Feed impressions'), 3887, 3887], [t('Открыли публикацию', 'Opened a post'), 846, 3887], [t('Перешли в карточку', 'Went to the page'), 336, 3887], [t('Маршрут, звонок, меню', 'Route, call, menu'), 82, 3887]]);
       case 'aud': return bars([[t('Утро, 7–11', 'Morning, 7–11'), 46, 100], [t('День, 11–16', 'Day, 11–16'), 28, 100], [t('Вечер, 16–21', 'Evening, 16–21'), 22, 100], [t('Ночь', 'Night'), 4, 100]]) + `<p class="cd-note">${t('Доля подписчиков, активных в это время. 62 % подписаны больше месяца.', 'Share of followers active at that time. 62% have followed for more than a month.')}</p>`;
       case 'market': return `${bars([[t('«кофе с собой»', '"coffee to go"'), 312, 312], [t('«завтрак»', '"breakfast"'), 204, 312], [t('«без лактозы»', '"lactose-free"'), 96, 312], [t('«десерт»', '"dessert"'), 88, 312]])}<p class="cd-note">${t('Что ищут рядом с вами. CTR похожих мест — 23,7 %, ваш — 21,3 %.', 'What people search near you. Similar places\' CTR is 23.7%, yours is 21.3%.')}</p>`;
-      case 'ab': return `<section class="cd-card" style="background:var(--paper)"><h3 class="cd-h3">${t('Заголовок акции', 'Offer title')}</h3><div class="cd-grid2" style="margin-top:12px"><div><span class="cd-badge">A</span><p style="margin-top:8px"><b>${t('Второй кофе в подарок', 'Second coffee free')}</b></p><p class="cd-note">CTR 19,4 %</p></div><div><span class="cd-badge cd-good">B</span><p style="margin-top:8px"><b>${t('Утро вдвоём: второй кофе — от нас', 'Morning for two: the second coffee is on us')}</b></p><p class="cd-note">CTR 22,9 % · ${t('лучше на 18 %', '18% better')}</p></div></div></section>`;
+      case 'ab': return `<section class="cd-card" style="background:var(--paper)"><h3 class="cd-h3">${t('Заголовок акции', 'Offer title')}</h3><div class="cd-grid2" style="margin-top:12px"><div><span class="cd-badge">A</span><p style="margin-top:8px"><b>${t('Второй кофе в подарок', 'Second coffee free')}</b></p><p class="cd-note">CTR 19,4 %</p></div><div><span class="cd-badge cd-good">B</span><p style="margin-top:8px"><b>${t('Утро вдвоем: второй кофе — от нас', 'Morning for two: the second coffee is on us')}</b></p><p class="cd-note">CTR 22,9 % · ${t('лучше на 18 %', '18% better')}</p></div></div></section>`;
       case 'pos': return `<section class="cd-card" style="background:var(--paper)"><p>${t('Подключите кассу — тогда будет видно, сколько промокодов погашено и какие публикации привели покупателей.', 'Connect your till to see how many promo codes were redeemed and which posts brought buyers.')}</p><button type="button" class="cd-btn cd-btn-red" data-act="set" data-v="integr" style="margin-top:12px">${t('Интеграции', 'Integrations')}</button></section>`;
       default: return `<div class="cd-grid2"><div><div class="cd-sec-title"><b>${t('Коротко: что важно сейчас', 'In short: what matters now')}</b></div>${insights(INSIGHTS())}</div>
         <div><div class="cd-sec-title"><b>${t('Что изменилось за неделю', 'What changed this week')}</b></div>${insights([['▲', `+18 % · ${t('Просмотры публикаций', 'Post views')}`, t('2 940 против 2 490 неделей раньше', '2,940 against 2,490 a week earlier')], ['▲', `+9 % · ${t('Переходы в заведение', 'Visits to the place')}`, t('806 против 739', '806 against 739')], ['▼', `−6 % · ${t('Конверсия в действие', 'Conversion to action')}`, t('Меньше открывали меню — добавьте фото к позициям', 'Fewer menu opens — add photos to items'), 'down']])}</div></div>`;
@@ -428,14 +428,14 @@
     const placeOf = (m) => (m.places === 'all' ? t('Все заведения', 'All places') : t(PLACES[m.places].ru, PLACES[m.places].en));
     const form = S.adding ? `<section class="cd-card cd-new"><h3>${t('Новый сотрудник', 'New staff member')}</h3><div class="cd-toolbar" style="margin-top:12px"><label class="cd-field"><span>${t('Имя', 'Name')}</span><input class="cd-input" data-input="newName" placeholder="${t('Например, Камила', 'For example, Kamila')}"></label>
       <label class="cd-field"><span>${t('Роль', 'Role')}</span><select class="cd-input" data-input="newRole">${['admin', 'moder', 'operator', 'master'].map((r) => `<option value="${r}">${t(...ROLES[r])}</option>`).join('')}</select></label></div>
-      <div style="display:flex;gap:8px"><button type="button" class="cd-btn cd-btn-red" data-act="add-member">${t('Создать учётную запись', 'Create the account')}</button><button type="button" class="cd-btn" data-act="adding">${t('Отмена', 'Cancel')}</button></div></section>` : '';
+      <div style="display:flex;gap:8px"><button type="button" class="cd-btn cd-btn-red" data-act="add-member">${t('Создать учетную запись', 'Create the account')}</button><button type="button" class="cd-btn" data-act="adding">${t('Отмена', 'Cancel')}</button></div></section>` : '';
     return `<div class="cd-head cd-head-one"><h1 class="cd-h1">${t('Сотрудники', 'Staff')}</h1><button type="button" class="cd-btn cd-btn-red cd-btn-big" data-act="adding" title="${t('Добавить сотрудника', 'Add staff')}">+ ${t('Сотрудник', 'Staff')}</button></div>
-      <p class="cd-lead">${t('Кто работает в организации и к каким заведениям имеет доступ.', 'Who works in the organisation and which places they can access.')}<br>${team.length} ${t('из 10 учётных записей', 'of 10 accounts')} · ${org()}</p>${form}
+      <p class="cd-lead">${t('Кто работает в организации и к каким заведениям имеет доступ.', 'Who works in the organisation and which places they can access.')}<br>${team.length} ${t('из 10 учетных записей', 'of 10 accounts')} · ${org()}</p>${form}
       <div class="cd-toolbar"><label class="cd-field"><span>${t('Поиск сотрудников', 'Search staff')}</span><input class="cd-input" data-input="teamQuery" value="${esc(S.teamQuery)}" placeholder="${t('Имя, логин или заведение', 'Name, login or place')}"></label>
         <label class="cd-field"><span>${t('Роль', 'Role')}</span><select class="cd-input" data-input="teamRole"><option value="all">${t('Все роли', 'All roles')}</option>${Object.keys(ROLES).map((r) => `<option value="${r}" ${S.teamRole === r ? 'selected' : ''}>${t(...ROLES[r])}</option>`).join('')}</select></label></div>
       <table class="cd-table cd-collapse"><thead><tr><th>${t('Сотрудник', 'Staff member')}</th><th>${t('Роль', 'Role')}</th><th>${t('Заведения', 'Places')}</th><th style="text-align:right">${t('Доступ', 'Access')}</th></tr></thead><tbody>
       ${list.map((m) => { const i = team.indexOf(m); const open = S.teamOpen === i; const rights = m.rights || ROLE_RIGHTS[m.role];
-        return `<tr class="${m.fresh ? 'cd-new' : ''}"><td><div style="display:flex;gap:12px;align-items:center"><span class="cd-ava">${esc(t(m.ru, m.en)[0])}</span><div><b>${esc(t(m.ru, m.en))}${m.me ? ` ${t('(вы)', '(you)')}` : ''}</b><small>${m.login} · ${m.last ? `${t('последний вход', 'last sign-in')} ${t(...m.last)}` : t('ещё не входил', 'not signed in yet')}</small></div></div></td>
+        return `<tr class="${m.fresh ? 'cd-new' : ''}"><td><div style="display:flex;gap:12px;align-items:center"><span class="cd-ava">${esc(t(m.ru, m.en)[0])}</span><div><b>${esc(t(m.ru, m.en))}${m.me ? ` ${t('(вы)', '(you)')}` : ''}</b><small>${m.login} · ${m.last ? `${t('последний вход', 'last sign-in')} ${t(...m.last)}` : t('еще не входил', 'not signed in yet')}</small></div></div></td>
           <td><span class="cd-role">${t(...ROLES[m.role])}</span></td><td class="cd-hide-phone">${placeOf(m)}</td><td style="text-align:right">${m.me ? `<span class="cd-note">${t('Полный доступ', 'Full access')}</span>` : ibtn(open ? 'check' : 'gear', open ? t('Готово', 'Done') : t('Настроить права', 'Set up rights'), `data-act="team-open" data-v="${i}"`, open ? 'cd-ibtn-ink' : '')}</td></tr>
           ${open ? `<tr><td colspan="4"><div class="cd-rights">${RIGHTS.map((r, ri) => `<label class="cd-check"><input type="checkbox" data-input="right" data-v="${i}:${ri}" ${rights.includes(ri) ? 'checked' : ''}>${t(...r)}</label>`).join('')}</div><small class="cd-note">${t('Права меняются сразу. Пароль и ключ для входа выдаются здесь же.', 'Rights change at once. Password and sign-in key are issued here too.')}</small></td></tr>` : ''}`; }).join('')}</tbody></table>
       <p class="cd-note" style="margin-top:16px">▸ ${t('Доступ курьеров к доставке — в «Гласео Курьер»', 'Couriers\' delivery access — in Glaseo Courier')}</p>`;
@@ -448,7 +448,7 @@
       <label class="cd-field"><span>${t('Название', 'Name')}</span><input class="cd-input" value="${esc(placeName())}"></label>
       <label class="cd-field"><span>${t('Описание', 'Description')}</span><textarea class="cd-input">${t('Кофейня у набережной: свежая обжарка, завтраки весь день и мастер-классы по выходным.', 'A café by the embankment: fresh roast, breakfast all day and workshops at weekends.')}</textarea></label>
       <div class="cd-field"><span>${t('Категории', 'Categories')}</span>${chips('noop', [['1', t('Кофейни', 'Coffee shops')], ['2', t('Кафе', 'Cafés')]], '1')}</div>
-      <div class="cd-field"><span>${t('Точка на карте', 'Point on the map')}</span><span class="cd-note" style="font-weight:400">${t('Иннополис, Университетская, 5 · пеший маршрут строится от неё', 'Innopolis, Universitetskaya 5 · walking routes start from it')}</span></div>${save}</div>
+      <div class="cd-field"><span>${t('Точка на карте', 'Point on the map')}</span><span class="cd-note" style="font-weight:400">${t('Иннополис, Университетская, 5 · пеший маршрут строится от нее', 'Innopolis, Universitetskaya 5 · walking routes start from it')}</span></div>${save}</div>
       <div><div class="cd-sec-title"><b>${t('Часы работы', 'Opening hours')}</b><small>${t('жители видят «Открыто сейчас»', 'residents see "Open now"')}</small></div><table class="cd-table cd-hours"><tbody>
       ${hours.map((h, i) => `<tr><td><b>${t(h[0], h[1])}</b></td><td>${h[4] ? `<input class="cd-input" value="${h[2]}"> – <input class="cd-input" value="${h[3]}">` : `<span class="cd-note">${t('Выходной', 'Closed')}</span>`}</td><td style="text-align:right"><button type="button" class="cd-switch" role="switch" aria-checked="${h[4]}" data-act="day-open" data-v="${i}" aria-label="${t(h[0], h[1])}"></button></td></tr>`).join('')}</tbody></table></div></div>`;
     if (S.set === 'delivery') { const opt = (k, ru, en) => `<div class="cd-program"><div><b>${t(ru, en)}</b></div><button type="button" class="cd-switch" role="switch" aria-checked="${pay[k]}" data-act="pay" data-v="${k}" aria-label="${t(ru, en)}"></button></div>`;
@@ -457,9 +457,9 @@
         <label class="cd-field"><span>${t('Минимальный заказ, ₽', 'Minimum order, ₽')}</span><input class="cd-input" value="${pay.min}" inputmode="numeric"></label>${save}</div>
         <div><div class="cd-sec-title"><b>${t('Как гость платит', 'How the guest pays')}</b><small>${t('деньги идут вам, мимо гласео', 'money goes to you, not through glaseo')}</small></div>${opt('link', 'Ссылка на оплату вашего банка', 'Your bank\'s payment link')}${opt('qr', 'QR по СБП', 'QR via SBP')}${opt('cash', 'Наличными курьеру', 'Cash to the courier')}${opt('cardCourier', 'Картой курьеру', 'Card to the courier')}</div></div>`; }
     if (S.set === 'integr') { const box = (k, name, note) => `<div><b>${name}</b><small>${note}</small>${integrations[k] ? badge(t('Подключено · тестовый режим', 'Connected · test mode'), 'good') : `<button type="button" class="cd-btn cd-btn-red" data-act="integr" data-v="${k}">${t('Подключить', 'Connect')}</button>`}</div>`;
-      return `${back}<h1 class="cd-h1">${t('Интеграции', 'Integrations')}</h1><p class="cd-lead">${t('Касса передаёт покупки и погашенные промокоды — они появятся в статистике PRO.', 'The till passes purchases and redeemed promo codes — they show up in PRO statistics.')}</p><div class="cd-integr">${box('iiko', 'iiko', t('Меню и чеки из iiko', 'Menu and receipts from iiko'))}${box('rk', 'r_keeper', t('Чеки и промокоды из r_keeper', 'Receipts and promo codes from r_keeper'))}</div>`; }
-    if (S.set === 'billing') return `${back}<h1 class="cd-h1">${t('Оплата и PRO', 'Billing and PRO')}</h1><section class="cd-card"><h3><span class="cd-pro">PRO</span> ${t('Тариф подключён', 'Plan active')}</h3><p style="margin:10px 0">${t('Оплачен до 20 ноября 2026. Следующий платёж — по счёту, который пришлёт команда гласео.', 'Paid until 20 November 2026. The next payment is by the invoice the glaseo team sends.')}</p>
-      <p class="cd-note">${t('Ни тариф, ни PRO не поднимают место в ленте — они дают инструменты: отчёты, советы ИИ-маркетолога, A/B-тесты.', 'Neither the plan nor PRO lifts a place in the feed — they give tools: reports, AI marketer tips, A/B tests.')}</p><button type="button" class="cd-btn" data-act="toast" data-v="docs" style="margin-top:12px">${t('Счета и документы', 'Invoices and documents')}</button></section>`;
+      return `${back}<h1 class="cd-h1">${t('Интеграции', 'Integrations')}</h1><p class="cd-lead">${t('Касса передает покупки и погашенные промокоды — они появятся в статистике PRO.', 'The till passes purchases and redeemed promo codes — they show up in PRO statistics.')}</p><div class="cd-integr">${box('iiko', 'iiko', t('Меню и чеки из iiko', 'Menu and receipts from iiko'))}${box('rk', 'r_keeper', t('Чеки и промокоды из r_keeper', 'Receipts and promo codes from r_keeper'))}</div>`; }
+    if (S.set === 'billing') return `${back}<h1 class="cd-h1">${t('Оплата и PRO', 'Billing and PRO')}</h1><section class="cd-card"><h3><span class="cd-pro">PRO</span> ${t('Тариф подключен', 'Plan active')}</h3><p style="margin:10px 0">${t('Оплачен до 20 ноября 2026. Следующий платеж — по счету, который пришлет команда гласео.', 'Paid until 20 November 2026. The next payment is by the invoice the glaseo team sends.')}</p>
+      <p class="cd-note">${t('Ни тариф, ни PRO не поднимают место в ленте — они дают инструменты: отчеты, советы ИИ-маркетолога, A/B-тесты.', 'Neither the plan nor PRO lifts a place in the feed — they give tools: reports, AI marketer tips, A/B tests.')}</p><button type="button" class="cd-btn" data-act="toast" data-v="docs" style="margin-top:12px">${t('Счета и документы', 'Invoices and documents')}</button></section>`;
     const rows = [['card', t('Карточка места', 'Place page'), t('Название, описание, фотографии и часы работы', 'Name, description, photos and opening hours')], ['delivery', t('Доставка и оплата', 'Delivery and payment'), t('Зона доставки, условия и способы оплаты', 'Delivery area, terms and payment methods')], ['integr', t('Интеграции', 'Integrations'), t('iiko и r_keeper', 'iiko and r_keeper')], ['bookings', t('Специалисты и запись', 'Specialists and booking'), t('Мастера, услуги и расписание', 'Specialists, services and schedule')], ['billing', t('Оплата и PRO', 'Billing and PRO'), t('Тариф, счета и документы', 'Plan, invoices and documents')]];
     return `<h1 class="cd-h1">${t('Настройки', 'Settings')}</h1><div class="cd-set-list">${rows.map(([k, title, note]) => rowBtn(k === 'bookings' ? 'go' : 'set', k, '', title, note)).join('')}</div>`;
   }
@@ -470,11 +470,11 @@
       : S.inboxTab === 'review' ? posts.filter((p) => ['review', 'scheduled', 'published'].includes(p.st)).slice(0, 5) : [];
     const pending = posts.filter((p) => p.st === 'owner').length;
     const line = (p) => S.inboxTab === 'approve'
-      ? `<div style="padding:14px 0 14px 14px;border-bottom:1px solid var(--line);border-left:3px solid var(--red)"><small class="cd-note">${t('сегодня в 09:40', 'today at 09:40')} · ${t('Дарья Лис', 'Darya Lis')}</small><b style="display:block;font-size:20px;margin:4px 0">«${esc(t(p.ru, p.en))}»</b><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span class="cd-note">${t('Ждёт вашего решения', 'Waiting for your decision')}</span><button type="button" class="cd-btn cd-btn-red" data-act="release" data-v="${p.id}">${t('Выпустить', 'Release')}</button></div></div>`
+      ? `<div style="padding:14px 0 14px 14px;border-bottom:1px solid var(--line);border-left:3px solid var(--red)"><small class="cd-note">${t('сегодня в 09:40', 'today at 09:40')} · ${t('Дарья Лис', 'Darya Lis')}</small><b style="display:block;font-size:20px;margin:4px 0">«${esc(t(p.ru, p.en))}»</b><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span class="cd-note">${t('Ждет вашего решения', 'Waiting for your decision')}</span><button type="button" class="cd-btn cd-btn-red" data-act="release" data-v="${p.id}">${t('Выпустить', 'Release')}</button></div></div>`
       : rowBtn('post', p.id, postBadge(p), `«${t(p.ru, p.en)}»`, p.st === 'review' ? t('Читает команда гласео', 'The glaseo team is reading it') : t('Решение принято', 'Decision made'));
     return `<div style="margin-bottom:18px">${chips('inboxTab', [['approve', t('На согласование', 'To approve'), pending], ['review', t('Проверка гласео', 'glaseo review')], ['complaints', t('Жалобы', 'Complaints')]], S.inboxTab)}</div>
       <div class="cd-sec-title"><b>${S.inboxTab === 'approve' ? t('На согласование', 'To approve') : S.inboxTab === 'review' ? t('Проверка гласео', 'glaseo review') : t('Жалобы', 'Complaints')}</b><small>${t('Инбокс', 'Inbox')}</small></div>
-      ${items.map(line).join('') || `<div class="cd-empty">${S.inboxTab === 'complaints' ? t('Жалоб нет. Жалобы жителей разбирает команда гласео и сообщает вам решение.', 'No complaints. The glaseo team handles residents\' complaints and tells you the decision.') : t('Здесь пусто — всё решено.', 'Nothing here — all decided.')}</div>`}`;
+      ${items.map(line).join('') || `<div class="cd-empty">${S.inboxTab === 'complaints' ? t('Жалоб нет. Жалобы жителей разбирает команда гласео и сообщает вам решение.', 'No complaints. The glaseo team handles residents\' complaints and tells you the decision.') : t('Здесь пусто — все решено.', 'Nothing here — all decided.')}</div>`}`;
   }
 
   const PANES = { home: paneHome, posts: panePosts, post: panePost, compose: paneCompose, chats: paneChats, orders: paneOrders, bookings: paneBookings, loyalty: paneLoyalty, menu: paneMenu, stats: paneStats, team: paneTeam, settings: paneSettings, inbox: paneInbox };
@@ -501,7 +501,7 @@
           <button type="button" data-act="go" data-v="orders" ${current === 'orders' ? 'aria-current="page"' : ''}>${icon('orders')}${t('Заказы', 'Orders')}<i class="cd-count">${needs() || ''}</i></button>
           <button type="button" class="cd-tab-add" data-act="go" data-v="compose">${icon('plus')}${t('Пост', 'Post')}</button>
           <button type="button" data-act="go" data-v="inbox" ${S.view === 'inbox' ? 'aria-current="page"' : ''}>${icon('inbox')}${t('Входящие', 'Inbox')}<i class="cd-count">${inboxCount || ''}</i></button>
-          <button type="button" data-act="sheet" ${S.sheet ? 'aria-current="page"' : ''}>${icon('more')}${t('Ещё', 'More')}</button></nav>
+          <button type="button" data-act="sheet" ${S.sheet ? 'aria-current="page"' : ''}>${icon('more')}${t('Еще', 'More')}</button></nav>
       </div>
       <div class="cd-sheet-back ${S.sheet ? 'is-on' : ''}" data-act="sheet"></div>
       <div class="cd-sheet ${S.sheet ? 'is-on' : ''}"><div class="cd-sheet-me"><span class="cd-ava">${icon('profile')}</span><div><b>${t('Алина Смирнова', 'Alina Smirnova')}</b><small>${t('Владелец', 'Owner')} · ${org()}</small></div><span class="cd-pro">PRO</span></div>
@@ -552,7 +552,7 @@
       case 'set': S.set = v || null; go('settings'); return;
       case 'set-billing': S.set = 'billing'; go('settings'); return;
       case 'place-menu': S.placeMenu = !S.placeMenu; render(true); return;
-      case 'place': S.place = Number(v); S.placeMenu = false; render(true); toast(t('Активное заведение сменилось. Один владелец ведёт несколько мест из одного кабинета.', 'The active place changed. One owner runs several places from one cabinet.')); return;
+      case 'place': S.place = Number(v); S.placeMenu = false; render(true); toast(t('Активное заведение сменилось. Один владелец ведет несколько мест из одного кабинета.', 'The active place changed. One owner runs several places from one cabinet.')); return;
       case 'sheet': S.sheet = !S.sheet; render(true); return;
       case 'toast': toast(TOASTS()[v]); return;
       case 'period': S.period = Number(v); render(true); return;
@@ -570,13 +570,13 @@
       case 'submit': {
         if (!draft.title.trim()) { toast(t('Добавьте заголовок — без него публикацию не отправить.', 'Add a title — a post cannot go without one.')); root.querySelector('[data-draft="title"]')?.focus(); return; }
         posts.unshift({ id: Date.now(), st: v === 'draft' ? 'draft' : 'review', ru: draft.title, en: draft.title, kind: draft.kind, when: ['только что', 'just now'], text: [draft.excerpt, draft.excerpt], views: 0, fresh: true });
-        go('posts'); toast(v === 'draft' ? t('Черновик сохранён.', 'Draft saved.') : t('Отправлено на проверку. Подписчики получат уведомление, когда публикация выйдет.', 'Sent for review. Followers get a notification when the post goes out.')); return;
+        go('posts'); toast(v === 'draft' ? t('Черновик сохранен.', 'Draft saved.') : t('Отправлено на проверку. Подписчики получат уведомление, когда публикация выйдет.', 'Sent for review. Followers get a notification when the post goes out.')); return;
       }
       case 'chatFilter': S.chatFilter = v; render(true); return;
       case 'chat': S.chat = v; S.view = 'chats'; S.sheet = false; S.chatOpen = true; render(); return;
       case 'chat-back': S.chatOpen = false; render(); return;
       case 'invoice': { const o = orders.find((x) => x.n === Number(v)); const ch = chats.find((x) => x.order === o.n); o.pay = 'wait'; done('order');
-        ch.msgs.push(['sys', `Счёт выставлен: ${o.sum} ₽. Житель оплатит по вашей ссылке или QR.`, `Invoice sent: ${o.sum} ₽. The resident pays by your link or QR.`]); render(true);
+        ch.msgs.push(['sys', `Счет выставлен: ${o.sum} ₽. Житель оплатит по вашей ссылке или QR.`, `Invoice sent: ${o.sum} ₽. The resident pays by your link or QR.`]); render(true);
         later(() => { o.pay = 'paid'; const r = ch.replies.shift(); if (r) ch.msgs.push(['in', r[0], r[1], '12:09']); ch.msgs.push(['sys', 'Оплата получена — можно готовить', 'Payment received — you can start cooking']); }, 2200); return; }
       case 'paid': { const o = orders.find((x) => x.n === Number(v)); const ch = chats.find((x) => x.order === o.n); o.pay = 'paid'; done('pay'); ch.msgs.push(['sys', 'Оплата получена — можно готовить', 'Payment received — you can start cooking']); render(true); return; }
       case 'say': {
@@ -615,7 +615,7 @@
       }
       case 'menuFilter': S.menuFilter = v; render(true); return;
       case 'edit-item': S.editing = Number(v); render(true); root.querySelector('.cd-price-input')?.focus(); return;
-      case 'save-item': S.editing = null; render(true); toast(t('Цена обновлена — жители видят её сразу.', 'Price updated — residents see it at once.')); return;
+      case 'save-item': S.editing = null; render(true); toast(t('Цена обновлена — жители видят ее сразу.', 'Price updated — residents see it at once.')); return;
       case 'drop-item': { const i = menu.findIndex((m) => m.id === Number(v)); menu.splice(i, 1); render(true); toast(t('Позиция убрана из карточки.', 'The item is removed from the page.')); return; }
       case 'add-item': { const id = ++menuId; menu.unshift(v === 'service' ? { id, type: 'service', ru: ['Новая услуга', 'Длительность и мастер'], en: ['New service', 'Duration and specialist'], dur: 60, price: 1000, fresh: true } : { id, type: 'menu', ru: ['Новая позиция', 'Описание, вес и КБЖУ'], en: ['New item', 'Description, weight and nutrition'], kbju: null, size: null, price: 300, fresh: true }); S.menuFilter = 'all'; S.editing = id; render(true); return; }
       case 'adding': S.adding = !S.adding; render(true); if (S.adding) root.querySelector('[data-input="newName"]')?.focus(); return;
@@ -625,7 +625,7 @@
         const login = `${name.toLowerCase().replace(/[^a-zа-яё]/gi, '').slice(0, 8) || 'staff'}${team.length + 1}`;
         team.push({ ru: name, en: name, login, last: null, role: S.newRole || 'admin', places: S.place, fresh: true });
         S.adding = false; S.newName = ''; render(true);
-        toast(t('Учётная запись создана. Логин и пароль показываются один раз — передайте их сотруднику.', 'Account created. The login and password are shown once — pass them on.')); return;
+        toast(t('Учетная запись создана. Логин и пароль показываются один раз — передайте их сотруднику.', 'Account created. The login and password are shown once — pass them on.')); return;
       }
       case 'team-open': S.teamOpen = S.teamOpen === Number(v) ? null : Number(v); render(true); return;
       case 'day-open': hours[Number(v)][4] = !hours[Number(v)][4]; render(true); return;
