@@ -7,7 +7,6 @@ const EN = {
   "В": "E",
   "Чаты": "Chats",
   "гласео": "glaseo",
-  "Язык": "Language",
   "К содержанию": "Skip to content",
   "Что внутри": "What's inside",
   "Как работает": "How it works",
@@ -191,7 +190,6 @@ const EN = {
   "Политика обработки данных": "Personal data policy",
   "Пользовательское соглашение": "Terms of use",
   "Оферта для бизнеса": "Business offer",
-  "Русский": "Russian",
   "Экран «Лента»: анонсы и публикации мест города": "The Feed screen: announcements and posts of city places",
   "Экран «Места рядом»: места по расстоянию пешком и фильтры": "The Places nearby screen: places by walking distance and filters",
   "Карточка места: подписка, сообщение, звонок, маршрут и бонусы": "A place's page: follow, message, call, route and bonuses",
@@ -210,7 +208,7 @@ const EN = {
 };
 
 (() => {
-  const root = document.documentElement, ATTRS = ["aria-label", "alt", "content", "data-live-note", "value"];
+  const root = document.documentElement, ATTRS = ["aria-label", "title", "alt", "content", "data-live-note", "value"];
   const squeeze = (text) => text.replace(/\s+/g, " ").trim();
   // What each node and attribute said in Russian, to put it back.
   const texts = new Map(), attrs = new Map();
@@ -257,9 +255,13 @@ const EN = {
     root.lang = next; root.dataset.lang = next;
     if (next === "en") say(root);
     document.querySelector("meta[property=\"og:locale\"]")?.setAttribute("content", next === "en" ? "en_US" : "ru_RU");
-    document.querySelectorAll("[data-lang-choice]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.langChoice === next)));
-    const group = document.querySelector(".lang-switch");
-    if (group) group.dataset.choice = next;
+    // The toggle shows the language on screen; its label, in the other language, says what a press does.
+    const toggle = document.querySelector("[data-lang-toggle]");
+    if (toggle) {
+      toggle.textContent = next === "en" ? "EN" : "РУ";
+      toggle.lang = next === "en" ? "ru" : "en";
+      toggle.setAttribute("aria-label", next === "en" ? "Переключить на русский" : "Switch to English");
+    }
     root.classList.add("i18n-ready");
     queueMicrotask(() => { observer.takeRecords(); busy = false; });
   }
@@ -283,8 +285,9 @@ const EN = {
     chosen = localStorage.getItem("glaseo-lang");
   } catch { /* private mode: the language of the browser decides */ }
   apply(chosen === "en" || chosen === "ru" ? chosen : /^ru\b/i.test(navigator.language || "ru") ? "ru" : "en");
-  document.querySelectorAll("[data-lang-choice]").forEach((button) => button.addEventListener("click", () => {
-    try { localStorage.setItem("glaseo-lang", button.dataset.langChoice); } catch { /* not kept, still switched */ }
-    apply(button.dataset.langChoice);
-  }));
+  document.querySelector("[data-lang-toggle]")?.addEventListener("click", () => {
+    const next = lang === "en" ? "ru" : "en";
+    try { localStorage.setItem("glaseo-lang", next); } catch { /* not kept, still switched */ }
+    apply(next);
+  });
 })();

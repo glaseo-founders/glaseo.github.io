@@ -390,7 +390,7 @@
       case 'card': open('card'); return;
       case 'subs': open('subs'); return;
       case 'notify': S.notify = !S.notify; render(true); return;
-      case 'lang': document.querySelector(`.lang-switch [data-lang-choice="${lang === 'en' ? 'ru' : 'en'}"]`)?.click(); return;
+      case 'lang': document.querySelector('[data-lang-toggle]')?.click(); return;
       case 'theme': toast(TOASTS().theme); return;
       default:
     }
