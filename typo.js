@@ -12,10 +12,18 @@
   const hang = new RegExp(`(?<=^|[\\s(«„"\\[—–/])(${SHORT})[ \\t]+(?=\\S)`, "giu");
   const particle = /(?<=\S)[ \t]+(же|ли|ль|бы|б)(?=[\s.,:;!?»)]|$)/giu;
   const unit = new RegExp(`(\\d)[ \\t]+(${UNITS})(?=[\\s.,:;!?»)/]|$)`, "gu");
-  
+  // The first words of a sentence inside a paragraph, already bound together by the rules above.
+  const sentence = /(?<=[.!?…][»")]?[ \t])(\S+(?:\u00a0\S+)*)[ \t]+(?=\S)/gu;
+
+  /** A new sentence never starts with a short scrap at the end of a line: its first words go together, at least 12 characters. */
+  function bindSentenceStart(text) {
+    for (let i = 0; i < 2; i++) text = text.replace(sentence, (all, start) => start.length < 12 ? `${start}\u00a0` : all);
+    return text;
+  }
+
   function typeset(text) {
     if (!text || !/\s|\d[–-]\d|\p{L}-\p{L}/u.test(text)) return text;
-    return text
+    return bindSentenceStart(text
       .replace(hang, "$1\u00a0")
       .replace(particle, "\u00a0$1")
       .replace(/[ \t]+(?=[—–][ \t\u00a0])/g, "\u00a0")
@@ -23,7 +31,7 @@
       .replace(/№[ \t]*(?=\d)/g, "№\u00a0")
       .replace(/(\d)[ \t](?=\d{3}(?!\d))/g, "$1\u00a0")
       .replace(/(\d)([–-])(?=\d)/g, "$1\u2060$2\u2060")
-      .replace(/(\p{L})-(?=\p{L})/gu, "$1-\u2060");
+      .replace(/(\p{L})-(?=\p{L})/gu, "$1-\u2060"));
   }
   
   /** A heading also keeps a short last word with the one before it, so it never stands alone on the last line. */
